@@ -1,0 +1,17 @@
+# === WolvenKit Generated Build Outputs ===
+packed/
+backup/
+.logs/
+
+# === Local / Machine-Specific WolvenKit Files ===
+install_log.xml
+layout.xml
+.projectFiles/
+
+# === IDE & OS Files ===
+.vscode/
+**/.vscode/
+Thumbs.db
+desktop.ini
+.DS_Store
+test1.cpmodproj

@@ -1,0 +1,619 @@
+# =============================================================
+# PAFS - Perks & Attributes for Sale
+# =============================================================
+
+# 1. Quantity Modifier
+Vendors.PAFS_StockModifier:
+  $base: Vendors.Always_Present
+  $type: gamedataConstantStatModifier_Record
+  modifierType: Additive
+  value: 60
+
+# Backward compatibility alias for existing saves
+Vendors.MyStackOf200:
+  $base: Vendors.Always_Present
+  $type: gamedataConstantStatModifier_Record
+  modifierType: Additive
+  value: 60
+
+# 2. Custom Perk Shard
+Items.PAFS_PerkShard:
+  $base: Items.IKPerkPointSkillbook
+  isSingleInstance: True
+  statModifierGroups: []
+  tags:
+    - Preload
+    - Consumable
+    - skillbook
+    - SkipActivityLogOnRemove
+    - DontShowLooted
+    - PerkSkillbook
+    - LargeSkillbook
+
+# Backward compatibility alias
+Items.Custom_Infinite_PerkShard:
+  $base: Items.PAFS_PerkShard
+
+# 3. Custom Attribute Shard
+Items.PAFS_AttributeShard:
+  $base: Items.AttributePointSkillbook
+  isSingleInstance: True
+  statModifierGroups: []
+  tags:
+    - Preload
+    - Consumable
+    - skillbook
+    - SkipActivityLogOnRemove
+    - DontShowLooted
+    - PerkSkillbook
+    - LargeSkillbook
+
+# Backward compatibility alias
+Items.Custom_Infinite_AttributeShard:
+  $base: Items.PAFS_AttributeShard
+
+# 4. Custom Permanent Health Food
+Items.PAFS_HealthFood:
+  $base: Items.PermanentHealthFood
+  isSingleInstance: True
+  tags:
+    - Preload
+    - Consumable
+    - Edible
+    - HasModel
+    - Food
+    - SkipActivityLog
+    - DontShowLooted
+
+# Backward compatibility alias
+Items.Custom_Infinite_HealthFood:
+  $base: Items.PAFS_HealthFood
+
+# 5. Shared Vendor Items
+Vendors.PAFS_VendorItem_PerkShard:
+  $type: VendorItem
+  item: Items.PAFS_PerkShard
+  quantity: [ Vendors.PAFS_StockModifier ]
+
+Vendors.PAFS_VendorItem_AttributeShard:
+  $type: VendorItem
+  item: Items.PAFS_AttributeShard
+  quantity: [ Vendors.PAFS_StockModifier ]
+
+Vendors.PAFS_VendorItem_HealthFood:
+  $type: VendorItem
+  item: Items.PAFS_HealthFood
+  quantity: [ Vendors.PAFS_StockModifier ]
+
+# Backward compatibility aliases for vendor stubs
+Vendors.Custom_VendorItem_PerkShard:
+  $base: Vendors.PAFS_VendorItem_PerkShard
+Vendors.Custom_VendorItem_AttributeShard:
+  $base: Vendors.PAFS_VendorItem_AttributeShard
+Vendors.Custom_VendorItem_HealthFood:
+  $base: Vendors.PAFS_VendorItem_HealthFood
+
+# Weapon Vendors (Gunsmiths)
+# -------------------------------------------------------------
+Vendors.wat_lch_gunsmith_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.wat_kab_gunsmith_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.wat_kab_gunsmith_02:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.wat_nid_gunsmith_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.wbr_jpn_gunsmith_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.cct_dtn_guns_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.hey_spr_gunsmith_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.hey_gle_gunsmith_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.hey_rey_gunsmith_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.std_arr_gunsmith_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.std_rcr_gunsmith_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.pac_wwd_gunsmith_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.bls_ina_se1_gunsmith_01a:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.bls_ina_se1_gunsmith_02:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.bls_ina_se5_gunsmith_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# -------------------------------------------------------------
+# Ripperdocs
+# -------------------------------------------------------------
+Vendors.wat_lch_ripperdoc_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.wat_kab_ripperdoc_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.wat_kab_ripperdoc_02:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.wat_kab_ripperdoc_03:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.wat_nid_ripperdoc_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.wbr_jpn_ripperdoc_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.wbr_jpn_ripperdoc_02:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.wbr_hil_ripdoc_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.cct_dtn_ripdoc_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.hey_spr_ripperdoc_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.std_arr_ripperdoc_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.std_rcr_ripperdoc_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.pac_wwd_ripperdoc_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.bls_ina_se1_ripperdoc_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.bls_ina_se1_ripperdoc_02:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# -------------------------------------------------------------
+# Netrunners & Skill Trainers
+# -------------------------------------------------------------
+Vendors.wat_kab_netrunner_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.wat_lch_netrunner_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.wbr_jpn_netrunner_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.wbr_jpn_netrunner_02:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.hey_rey_netrunner_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.pac_cvi_techstore_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.NetrunnerTrainer:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.MeleeTrainer:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.wat_lch_melee_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.wat_lch_melee_02:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# -------------------------------------------------------------
+# Junk Shops
+# -------------------------------------------------------------
+Vendors.wat_kab_junkshop_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.wbr_jpn_junkshop_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.wbr_jpn_junkshop_02:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.wbr_jpn_junkshop_03:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.hey_spr_junkshop_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.hey_gle_junkshop_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.hey_rey_junkshop_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.bls_ina_se1_junkshop_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.bls_ina_se1_junkshop_02:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.bls_ina_se5_junkshop_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# -------------------------------------------------------------
+# Pharmacies / Medstores
+# -------------------------------------------------------------
+Vendors.wat_lch_medicstore_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.wat_kab_medicstore_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.wat_nid_medicstore_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.wat_nid_medicstore_02:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.wbr_jpn_medicstore_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.wbr_jpn_medicstore_02:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.wbr_jpn_medicstore_03:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.wbr_nok_medic_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.cct_dtn_medic_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.cct_cpz_medic_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.hey_spr_medicstore_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.std_arr_medicstore_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.std_rcr_medicstore_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.pac_cvi_medicstore_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.bls_ina_se1_medicstore_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# -------------------------------------------------------------
+# Clothing Stores
+# -------------------------------------------------------------
+Vendors.wat_lch_clothingshop_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.wat_kab_clothingshop_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.wat_nid_clothingshop_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.wbr_jpn_clothingshop_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.wbr_jpn_clothingshop_02:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.wbr_hil_clothingshop_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.cct_dtn_cloth_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.cct_cpz_cloth_02:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.hey_spr_clothingshop_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.std_arr_clothingshop_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.std_rcr_clothingshop_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.pac_cvi_clothingshop_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.pac_wwd_clothingshop_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.bls_ina_se1_clothingshop_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# -------------------------------------------------------------
+# Food Shops & Diners
+# -------------------------------------------------------------
+Vendors.wat_nid_foodshop_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.bls_ina_se1_foodshop_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.bls_ina_se1_foodshop_02:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.bls_ina_se1_foodshop_03:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+Vendors.bls_ina_se5_foodshop_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
