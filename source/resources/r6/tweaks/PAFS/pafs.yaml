@@ -19,6 +19,8 @@ Vendors.MyStackOf200:
 # 2. Custom Perk Shard
 Items.PAFS_PerkShard:
   $base: Items.IKPerkPointSkillbook
+  displayName: LocKey#51160
+  localizedDescription: LocKey#2694
   isSingleInstance: True
   statModifierGroups: []
   tags:
@@ -39,6 +41,7 @@ Items.PAFS_AttributeShard:
   $base: Items.AttributePointSkillbook
   isSingleInstance: True
   statModifierGroups: []
+  quality: Quality.Legendary
   tags:
     - Preload
     - Consumable
