@@ -35,11 +35,11 @@ A lightweight, highly configurable mod for **Cyberpunk 2077** that adds **Perk P
     - *Custom:* Unlocks individual price sliders.
   - **Advanced Prices:** Fine-tune individual prices from 0 to 100,000 E$ using step sliders.
   - **Item Availability:** Individual ON/OFF toggles for Perk Shards, Attribute Shards, and Permanent Health Food.
-  - **Vendor Availability:** Choose exactly which vendor types stock modded items:
+  - **Vendor Availability:** Choose exactly which vendor types stock modded items across Night City and Dogtown (Phantom Liberty):
     - Weapon Vendors (Gunsmiths)
     - Ripperdoc Clinics
     - Netrunner & Skill Trainers
-    - Junk Shops & Pawnbrokers
+    - Junk Shops, Pawnbrokers & Street Kiosks
     - Pharmacies / Medpoints
     - Diners, Food Stalls & Bars
     - Clothing & Apparel Stores

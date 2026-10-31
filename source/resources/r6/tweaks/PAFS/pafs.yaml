@@ -617,3 +617,793 @@ Vendors.bls_ina_se5_foodshop_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
 
+
+# -------------------------------------------------------------
+# Phantom Liberty / Dogtown & Spaceport
+# -------------------------------------------------------------
+# Dogtown Stadium Gunsmith - Herold
+Vendors.cz_stadium_gunsmith_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Dogtown Containers / Stacks Gunsmith
+Vendors.cz_con_gunsmith_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Dogtown Stadium Ripperdoc
+Vendors.cz_stadium_ripperdoc_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Dogtown Longshore Stacks Ripperdoc
+Vendors.cz_con_ripdoc_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Terra Cognita Clinic - Dr. Anderson
+Vendors.cz_monument_ripperdoc_anderson:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Dogtown Clinic - Farida
+Vendors.cz_monument_ripperdoc_farida:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Dogtown Stadium Netrunner
+Vendors.cz_stadium_netrunner_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Dogtown Stacks Netrunner
+Vendors.cz_con_netrunner_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Dogtown Stadium Apparel
+Vendors.cz_stadium_clothing_001:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Dogtown Stacks Apparel
+Vendors.cz_con_clothingshop_001:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Dogtown Stadium Black Market / Skill Shards - Michal K
+Vendors.cz_stadium_junk_01_michal_k:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Dogtown Stadium Junk - Marcin I
+Vendors.cz_stadium_junk_01_marcin_i:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Dogtown Stacks Junk Shop
+Vendors.cz_con_junkshop_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Dogtown Stadium Clinic
+Vendors.cz_stadium_medic_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Dogtown Stacks Clinic
+Vendors.cz_con_medic_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Spaceport Clinic
+Vendors.nw4_spaceport_medic_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Dogtown Stadium Food 01
+Vendors.cz_stadium_food_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Dogtown Stadium Food 02
+Vendors.cz_stadium_food_02:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Dogtown Stadium Food 03
+Vendors.cz_stadium_food_03:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Terra Cognita Food Shop
+Vendors.cz_monument_foodshop_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Dogtown Stacks Food Shop
+Vendors.cz_con_foodshop_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+
+# -------------------------------------------------------------
+# Night City Armorsmiths (Crafting / Apparel Specialists)
+# -------------------------------------------------------------
+# Watson Northside Armorsmith
+Vendors.wat_northside_armorsmith_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Watson Waterfront Armorsmith
+Vendors.wat_waterfront_armorsmith_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Watson Little China Armorsmith
+Vendors.wat_little_china_armorsmith_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Watson Kabuki Armorsmith
+Vendors.wat_kabuki_armorsmith_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Westbrook Japantown Armorsmith
+Vendors.wes_japan_town_armorsmith_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# City Center Downtown Armorsmith
+Vendors.cc_downtown_armorsmith_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Heywood Wellsprings Armorsmith
+Vendors.heywood_springs_armorsmith_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Heywood The Glen Armorsmith
+Vendors.heywood_glen_armorsmith_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Heywood Vista Del Rey Armorsmith
+Vendors.heywood_del_rey_armorsmith_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Santo Domingo Arroyo Armorsmith
+Vendors.santo_domingo_arroyo_armorsmith_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Santo Domingo Rancho Coronado Armorsmith
+Vendors.santo_domingo_rancho_armorsmith_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Pacifica West Wind Armorsmith 01
+Vendors.pacific_west_armorsmith_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Pacifica West Wind Armorsmith 02
+Vendors.pacific_west_armorsmith_02:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Pacifica Coastview Armorsmith
+Vendors.pacific_view_armorsmith_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+
+# -------------------------------------------------------------
+# Night City Cyberware Stores / Ripperdocs
+# -------------------------------------------------------------
+# Watson Little China Cyberware Store
+Vendors.wat_lch_cyberware_store_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Watson Northside Cyberware Store
+Vendors.wat_nid_cyberware_store_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Westbrook Japantown Cyberware Store
+Vendors.wbr_jpn_cyberware_store_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Westbrook North Oak Cyberware Store
+Vendors.wbr_nok_cyberware_store_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Westbrook Charter Hill Cyberware Store
+Vendors.wbr_hil_cyberware_store_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# City Center Downtown Cyberware Store
+Vendors.cct_dtn_cyber_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Heywood The Glen Cyberware Store
+Vendors.hey_gle_cyberware_store_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Heywood Vista Del Rey Cyberware Store
+Vendors.hey_rey_cyberware_store_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Santo Domingo Arroyo Cyberware Store
+Vendors.std_arr_cyberware_store_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Santo Domingo Rancho Coronado Cyberware Store
+Vendors.std_rcr_cyberware_store_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Pacifica Coastview Cyberware Store
+Vendors.pac_cvi_cyberware_store_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Pacifica West Wind Cyberware Store
+Vendors.pac_wwd_cyberware_store_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Badlands Cyberware Store
+Vendors.bls_ina_se5_cyberware_store_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+
+# -------------------------------------------------------------
+# Night City Melee Skill Trainers
+# -------------------------------------------------------------
+# Westbrook Japantown Melee Trainer
+Vendors.wbr_jpn_melee_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Santo Domingo Arroyo Melee Trainer
+Vendors.std_arr_melee_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Pacifica Coastview Melee Trainer
+Vendors.pac_cvi_melee_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Pacifica West Wind Melee Trainer
+Vendors.pac_wwd_melee_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Badlands Melee Trainer
+Vendors.bls_ina_se5_melee_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+
+# -------------------------------------------------------------
+# Night City Techstores (Netrunner Trainers)
+# -------------------------------------------------------------
+# Watson Kabuki Techstore
+Vendors.wat_kab_techstore_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Westbrook Japantown Techstore
+Vendors.wbr_jpn_techstore_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Santo Domingo Arroyo Techstore
+Vendors.std_arr_techstore_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Santo Domingo Rancho Coronado Techstore
+Vendors.std_rcr_techstore_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+
+# -------------------------------------------------------------
+# Night City Diners, Food Stands & Bars
+# -------------------------------------------------------------
+# Watson Arasaka Waterfront Food Store
+Vendors.wat_awf_foodstore_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Watson Kabuki Food Shop 01
+Vendors.wat_kab_foodshop_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Watson Kabuki Food Shop 02
+Vendors.wat_kab_foodshop_02:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Watson Kabuki Food Shop 03
+Vendors.wat_kab_foodshop_03:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Watson Kabuki Food Shop 04
+Vendors.wat_kab_foodshop_04:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Watson Little China Food Shop 01
+Vendors.wat_lch_foodshop_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Watson Little China Food Shop 02
+Vendors.wat_lch_foodshop_02:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Watson Little China Food Shop 03
+Vendors.wat_lch_foodshop_03:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Watson Northside Food Shop 02
+Vendors.wat_nid_foodshop_02:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Westbrook Charter Hill Food Shop 01
+Vendors.wbr_hil_foodshop_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Westbrook Charter Hill Food Shop 02
+Vendors.wbr_hil_foodshop_02:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Westbrook Japantown Food Shop 01
+Vendors.wbr_jpn_foodshop_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Westbrook Japantown Food Shop 02
+Vendors.wbr_jpn_foodshop_02:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Westbrook Japantown Food Shop 03
+Vendors.wbr_jpn_foodshop_03:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Westbrook Japantown Food Shop 04
+Vendors.wbr_jpn_foodshop_04:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Westbrook Japantown Food Shop 05
+Vendors.wbr_jpn_foodshop_05:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Westbrook Jig-Jig Street Bar
+Vendors.wbr_jpn_jig_bar_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Westbrook North Oak Food Shop 02
+Vendors.wbr_nok_foodshop_02:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# City Center Corp Plaza Food Shop 01
+Vendors.cct_cpz_food_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# City Center Corp Plaza Food Shop 02
+Vendors.cct_cpz_food_02:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# City Center Downtown Food Shop 01
+Vendors.cct_dtn_food_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# City Center Downtown Food Shop 02
+Vendors.cct_dtn_food_02:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Heywood The Glen Food Shop 01
+Vendors.hey_gle_foodshop_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Heywood The Glen Food Shop 02
+Vendors.hey_gle_foodshop_02:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Heywood Vista Del Rey Food Shop 01
+Vendors.hey_rey_foodshop_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Heywood Vista Del Rey Food Shop 02
+Vendors.hey_rey_foodshop_02:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Heywood Vista Del Rey Food Shop 03
+Vendors.hey_rey_foodshop_03:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Heywood Vista Del Rey Food Shop 04
+Vendors.hey_rey_foodshop_04:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Heywood Wellsprings Food Shop 01
+Vendors.hey_spr_foodshop_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Santo Domingo Arroyo Food Shop 01
+Vendors.std_arr_foodshop_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Santo Domingo Arroyo Food Shop 02
+Vendors.std_arr_foodshop_02:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Santo Domingo Arroyo Food Shop 03
+Vendors.std_arr_foodshop_03:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Santo Domingo Arroyo Food Shop 04
+Vendors.std_arr_foodshop_04:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Santo Domingo Rancho Coronado Food Shop 01
+Vendors.std_rcr_foodshop_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Pacifica Coastview Food Shop 01
+Vendors.pac_cvi_foodshop_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Airport Food Shop 01
+Vendors.aip_foodshop_01:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+
+# -------------------------------------------------------------
+# Street Kiosks, Markets & Ambient Fluff Vendors
+# -------------------------------------------------------------
+# Night City Street Kiosk
+Vendors.Kiosk:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Dogtown Street Kiosk
+Vendors.Kiosk_EP1:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Night City Street Market Stall
+Vendors.Market:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Dogtown Street Market Stall
+Vendors.Market_EP1:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Night City Street Grilled Food Cart
+Vendors.Grilled_Food:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Dogtown Street Grilled Food Cart
+Vendors.Grilled_Food_EP1:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Night City Street Chinese / Noodle Food Cart
+Vendors.Chinese_Food:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Dogtown Street Chinese / Noodle Food Cart
+Vendors.Chinese_Food_EP1:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Night City Street Packed Food Stand
+Vendors.Packed_Food:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Dogtown Street Packed Food Stand
+Vendors.Packed_Food_EP1:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Night City Street Drink Stand
+Vendors.Drinks:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Dogtown Street Drink Stand
+Vendors.Drinks_EP1:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Night City Street Bazaar Clothing Stall
+Vendors.Clothes:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Dogtown Street Bazaar Clothing Stall
+Vendors.Clothes_EP1:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Night City Street Tech Junk Stall
+Vendors.Tech_Junk:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood
+
+# Dogtown Street Tech Junk Stall
+Vendors.Tech_Junk_EP1:
+  itemStock:
+    - !append Vendors.PAFS_VendorItem_PerkShard
+    - !append Vendors.PAFS_VendorItem_AttributeShard
+    - !append Vendors.PAFS_VendorItem_HealthFood

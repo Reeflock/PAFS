@@ -104,8 +104,8 @@ public class PAFSSettings extends ScriptableSystem {
     @runtimeProperty("ModSettings.mod", "PAFS - Perks & Attributes for Sale")
     @runtimeProperty("ModSettings.category", "Vendor Availability")
     @runtimeProperty("ModSettings.category.order", "4")
-    @runtimeProperty("ModSettings.displayName", "Junk Shops")
-    @runtimeProperty("ModSettings.description", "Stock items at junk shops and pawnbrokers.")
+    @runtimeProperty("ModSettings.displayName", "Junk Shops & Kiosks")
+    @runtimeProperty("ModSettings.description", "Stock items at junk shops, pawnbrokers, street markets, and kiosks.")
     public let enableJunk: Bool = false;
 
     @runtimeProperty("ModSettings.mod", "PAFS - Perks & Attributes for Sale")
@@ -187,7 +187,7 @@ public class PAFSSettings extends ScriptableSystem {
         if Equals(type, gamedataVendorType.SkillTrainer) || Equals(type, gamedataVendorType.Tech) || Equals(type, gamedataVendorType.Cyberware) {
             return this.enableNetrunners;
         }
-        if Equals(type, gamedataVendorType.Junk) || Equals(type, gamedataVendorType.TechJunk) {
+        if Equals(type, gamedataVendorType.Junk) || Equals(type, gamedataVendorType.TechJunk) || Equals(type, gamedataVendorType.Kiosk) || Equals(type, gamedataVendorType.Market) {
             return this.enableJunk;
         }
         if Equals(type, gamedataVendorType.Medical) {
