@@ -39,6 +39,7 @@ Items.Custom_Infinite_PerkShard:
 # 3. Custom Attribute Shard
 Items.PAFS_AttributeShard:
   $base: Items.AttributePointSkillbook
+  iconPath: perkpoints_remover
   isSingleInstance: True
   statModifierGroups: []
   quality: Quality.Legendary
