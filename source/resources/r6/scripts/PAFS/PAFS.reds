@@ -210,20 +210,20 @@ public class PAFSSettings extends ScriptableSystem {
     }
 
     @if(ModuleExists("ModSettingsModule"))
-    private func OnAttach() -> Void {
+    public func OnAttach() -> Void {
         ModSettings.RegisterListenerToClass(this);
     }
 
     @if(!ModuleExists("ModSettingsModule"))
-    private func OnAttach() -> Void {}
+    public func OnAttach() -> Void {}
 
     @if(ModuleExists("ModSettingsModule"))
-    private func OnDetach() -> Void {
+    public func OnDetach() -> Void {
         ModSettings.UnregisterListenerToClass(this);
     }
 
     @if(!ModuleExists("ModSettingsModule"))
-    private func OnDetach() -> Void {}
+    public func OnDetach() -> Void {}
 }
 
 // -----------------------------------------------------------------
