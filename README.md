@@ -1,6 +1,6 @@
 # PAFS - Perks & Attributes for Sale
 
-A lightweight, highly configurable mod for **Cyberpunk 2077** that adds **Perk Point Shards**, **Attribute Point Shards**, and **Permanent Health Food** to vendor inventories across Night City, complete with real-time in-game customization via **Mod Settings**.
+A lightweight, highly configurable mod for **Cyberpunk 2077** that adds **Perk Point Shards**, **Attribute Point Shards**, and **Permanent Health Food** to vendor inventories across Night City, complete with real-time in-game settings and safe, save-friendly injection.
 
 > [!IMPORTANT]
 > ### ⏳ First Time Installing on an Existing Save?
@@ -8,7 +8,7 @@ A lightweight, highly configurable mod for **Cyberpunk 2077** that adds **Perk P
 > 
 > *⚠️ **Note:** This refers to **IN-GAME time** (which takes 2 seconds using the fast-forward feature), **NOT** 24 real-world hours! Do not sit and wait in real life.*
 > 
-> In *Cyberpunk 2077*, vendor inventories are cached on a 24-hour cycle. When loading an existing save file after installing this mod, vendors you have already visited will **not** display the shards until their stock refreshes.
+> In *Cyberpunk 2077*, vendor inventories are cached on a 24-hour cycle. When loading an existing save file after installing this mod, vendors you have already visited will **not** display the shards or food until time advances.
 > 
 > #### 🕒 How to Skip Time Instantly (Takes 2 Seconds):
 > 1. Press **`I`** (or open the character/inventory hub menu).
@@ -62,10 +62,14 @@ Ensure the following core framework mods are installed and updated for your Cybe
 
 ## 📥 Installation
 
-### Method 1: Vortex / Mod Manager (Recommended)
+### Method 1: Nexus Mods
+Download and install the mod directly from the Nexus page:
+- [PAFS - Perks & Attributes for Sale on Nexus Mods](https://www.nexusmods.com/cyberpunk2077/mods/36526)
+
+### Method 2: Vortex / Mod Manager (Recommended)
 Download and install the release archive through Vortex or your preferred mod manager.
 
-### Method 2: Manual Installation
+### Method 3: Manual Installation
 1. Download the latest release from the [Releases](https://github.com) page.
 2. Extract the archive into your Cyberpunk 2077 root directory:
    ```text
@@ -79,7 +83,7 @@ Download and install the release archive through Vortex or your preferred mod ma
                └── pafs.yaml
    ```
 
-### Method 3: WolvenKit
+### Method 4: WolvenKit
 1. Clone this repository or open the project folder.
 2. Open `PAFS.cpmodproj` in [WolvenKit](https://github.com/WolvenKit/WolvenKit).
 3. Click **Install**.
