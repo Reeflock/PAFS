@@ -54,7 +54,21 @@ Items.PAFS_HealthFood:
     - SkipActivityLog
     - DontShowLooted
 
-# 5. Shared Vendor Items
+# 5. Custom Cyberware Capacity Shard
+Items.PAFS_CyberwareCapacityShard:
+  $base: Items.CWCapacityPermaReward_Legendary
+  isSingleInstance: True
+  quality: Quality.Legendary
+  statModifierGroups: []
+  tags:
+    - Preload
+    - Consumable
+    - skillbook
+    - SkipActivityLogOnRemove
+    - DontShowLooted
+    - LargeSkillbook
+
+# 6. Shared Vendor Items
 Vendors.PAFS_VendorItem_PerkShard:
   $type: VendorItem
   item: Items.PAFS_PerkShard
@@ -70,6 +84,11 @@ Vendors.PAFS_VendorItem_HealthFood:
   item: Items.PAFS_HealthFood
   quantity: [ Vendors.PAFS_StockModifier ]
 
+Vendors.PAFS_VendorItem_CWCapacityShard:
+  $type: VendorItem
+  item: Items.PAFS_CyberwareCapacityShard
+  quantity: [ Vendors.PAFS_StockModifier ]
+
 # Weapon Vendors (Gunsmiths)
 # -------------------------------------------------------------
 Vendors.wat_lch_gunsmith_01:
@@ -77,90 +96,105 @@ Vendors.wat_lch_gunsmith_01:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.wat_kab_gunsmith_01:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.wat_kab_gunsmith_02:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.wat_nid_gunsmith_01:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.wbr_jpn_gunsmith_01:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.cct_dtn_guns_01:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.hey_spr_gunsmith_01:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.hey_gle_gunsmith_01:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.hey_rey_gunsmith_01:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.std_arr_gunsmith_01:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.std_rcr_gunsmith_01:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.pac_wwd_gunsmith_01:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.bls_ina_se1_gunsmith_01a:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.bls_ina_se1_gunsmith_02:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.bls_ina_se5_gunsmith_01:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # -------------------------------------------------------------
 # Ripperdocs
@@ -170,90 +204,105 @@ Vendors.wat_lch_ripperdoc_01:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.wat_kab_ripperdoc_01:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.wat_kab_ripperdoc_02:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.wat_kab_ripperdoc_03:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.wat_nid_ripperdoc_01:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.wbr_jpn_ripperdoc_01:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.wbr_jpn_ripperdoc_02:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.wbr_hil_ripdoc_01:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.cct_dtn_ripdoc_01:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.hey_spr_ripperdoc_01:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.std_arr_ripperdoc_01:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.std_rcr_ripperdoc_01:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.pac_wwd_ripperdoc_01:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.bls_ina_se1_ripperdoc_01:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.bls_ina_se1_ripperdoc_02:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # -------------------------------------------------------------
 # Netrunners & Skill Trainers
@@ -263,60 +312,70 @@ Vendors.wat_kab_netrunner_01:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.wat_lch_netrunner_01:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.wbr_jpn_netrunner_01:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.wbr_jpn_netrunner_02:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.hey_rey_netrunner_01:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.pac_cvi_techstore_01:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.NetrunnerTrainer:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.MeleeTrainer:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.wat_lch_melee_01:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.wat_lch_melee_02:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # -------------------------------------------------------------
 # Junk Shops
@@ -326,60 +385,70 @@ Vendors.wat_kab_junkshop_01:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.wbr_jpn_junkshop_01:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.wbr_jpn_junkshop_02:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.wbr_jpn_junkshop_03:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.hey_spr_junkshop_01:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.hey_gle_junkshop_01:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.hey_rey_junkshop_01:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.bls_ina_se1_junkshop_01:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.bls_ina_se1_junkshop_02:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.bls_ina_se5_junkshop_01:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # -------------------------------------------------------------
 # Pharmacies / Medstores
@@ -389,90 +458,105 @@ Vendors.wat_lch_medicstore_01:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.wat_kab_medicstore_01:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.wat_nid_medicstore_01:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.wat_nid_medicstore_02:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.wbr_jpn_medicstore_01:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.wbr_jpn_medicstore_02:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.wbr_jpn_medicstore_03:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.wbr_nok_medic_01:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.cct_dtn_medic_01:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.cct_cpz_medic_01:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.hey_spr_medicstore_01:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.std_arr_medicstore_01:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.std_rcr_medicstore_01:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.pac_cvi_medicstore_01:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.bls_ina_se1_medicstore_01:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # -------------------------------------------------------------
 # Clothing Stores
@@ -482,84 +566,98 @@ Vendors.wat_lch_clothingshop_01:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.wat_kab_clothingshop_01:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.wat_nid_clothingshop_01:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.wbr_jpn_clothingshop_01:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.wbr_jpn_clothingshop_02:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.wbr_hil_clothingshop_01:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.cct_dtn_cloth_01:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.cct_cpz_cloth_02:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.hey_spr_clothingshop_01:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.std_arr_clothingshop_01:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.std_rcr_clothingshop_01:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.pac_cvi_clothingshop_01:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.pac_wwd_clothingshop_01:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.bls_ina_se1_clothingshop_01:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # -------------------------------------------------------------
 # Food Shops & Diners
@@ -569,30 +667,35 @@ Vendors.wat_nid_foodshop_01:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.bls_ina_se1_foodshop_01:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.bls_ina_se1_foodshop_02:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.bls_ina_se1_foodshop_03:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 Vendors.bls_ina_se5_foodshop_01:
   itemStock:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 
 # -------------------------------------------------------------
@@ -604,6 +707,7 @@ Vendors.cz_stadium_gunsmith_01:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Dogtown Containers / Stacks Gunsmith
 Vendors.cz_con_gunsmith_01:
@@ -611,6 +715,7 @@ Vendors.cz_con_gunsmith_01:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Dogtown Stadium Ripperdoc
 Vendors.cz_stadium_ripperdoc_01:
@@ -618,6 +723,7 @@ Vendors.cz_stadium_ripperdoc_01:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Dogtown Longshore Stacks Ripperdoc
 Vendors.cz_con_ripdoc_01:
@@ -625,6 +731,7 @@ Vendors.cz_con_ripdoc_01:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Terra Cognita Clinic - Dr. Anderson
 Vendors.cz_monument_ripperdoc_anderson:
@@ -632,6 +739,7 @@ Vendors.cz_monument_ripperdoc_anderson:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Dogtown Clinic - Farida
 Vendors.cz_monument_ripperdoc_farida:
@@ -639,6 +747,7 @@ Vendors.cz_monument_ripperdoc_farida:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Dogtown Stadium Netrunner
 Vendors.cz_stadium_netrunner_01:
@@ -646,6 +755,7 @@ Vendors.cz_stadium_netrunner_01:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Dogtown Stacks Netrunner
 Vendors.cz_con_netrunner_01:
@@ -653,6 +763,7 @@ Vendors.cz_con_netrunner_01:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Dogtown Stadium Apparel
 Vendors.cz_stadium_clothing_001:
@@ -660,6 +771,7 @@ Vendors.cz_stadium_clothing_001:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Dogtown Stacks Apparel
 Vendors.cz_con_clothingshop_001:
@@ -667,6 +779,7 @@ Vendors.cz_con_clothingshop_001:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Dogtown Stadium Black Market / Skill Shards - Michal K
 Vendors.cz_stadium_junk_01_michal_k:
@@ -674,6 +787,7 @@ Vendors.cz_stadium_junk_01_michal_k:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Dogtown Stadium Junk - Marcin I
 Vendors.cz_stadium_junk_01_marcin_i:
@@ -681,6 +795,7 @@ Vendors.cz_stadium_junk_01_marcin_i:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Dogtown Stacks Junk Shop
 Vendors.cz_con_junkshop_01:
@@ -688,6 +803,7 @@ Vendors.cz_con_junkshop_01:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Dogtown Stadium Clinic
 Vendors.cz_stadium_medic_01:
@@ -695,6 +811,7 @@ Vendors.cz_stadium_medic_01:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Dogtown Stacks Clinic
 Vendors.cz_con_medic_01:
@@ -702,6 +819,7 @@ Vendors.cz_con_medic_01:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Spaceport Clinic
 Vendors.nw4_spaceport_medic_01:
@@ -709,6 +827,7 @@ Vendors.nw4_spaceport_medic_01:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Dogtown Stadium Food 01
 Vendors.cz_stadium_food_01:
@@ -716,6 +835,7 @@ Vendors.cz_stadium_food_01:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Dogtown Stadium Food 02
 Vendors.cz_stadium_food_02:
@@ -723,6 +843,7 @@ Vendors.cz_stadium_food_02:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Dogtown Stadium Food 03
 Vendors.cz_stadium_food_03:
@@ -730,6 +851,7 @@ Vendors.cz_stadium_food_03:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Terra Cognita Food Shop
 Vendors.cz_monument_foodshop_01:
@@ -737,6 +859,7 @@ Vendors.cz_monument_foodshop_01:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Dogtown Stacks Food Shop
 Vendors.cz_con_foodshop_01:
@@ -744,6 +867,7 @@ Vendors.cz_con_foodshop_01:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 
 # -------------------------------------------------------------
@@ -755,6 +879,7 @@ Vendors.wat_northside_armorsmith_01:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Watson Waterfront Armorsmith
 Vendors.wat_waterfront_armorsmith_01:
@@ -762,6 +887,7 @@ Vendors.wat_waterfront_armorsmith_01:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Watson Little China Armorsmith
 Vendors.wat_little_china_armorsmith_01:
@@ -769,6 +895,7 @@ Vendors.wat_little_china_armorsmith_01:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Watson Kabuki Armorsmith
 Vendors.wat_kabuki_armorsmith_01:
@@ -776,6 +903,7 @@ Vendors.wat_kabuki_armorsmith_01:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Westbrook Japantown Armorsmith
 Vendors.wes_japan_town_armorsmith_01:
@@ -783,6 +911,7 @@ Vendors.wes_japan_town_armorsmith_01:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # City Center Downtown Armorsmith
 Vendors.cc_downtown_armorsmith_01:
@@ -790,6 +919,7 @@ Vendors.cc_downtown_armorsmith_01:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Heywood Wellsprings Armorsmith
 Vendors.heywood_springs_armorsmith_01:
@@ -797,6 +927,7 @@ Vendors.heywood_springs_armorsmith_01:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Heywood The Glen Armorsmith
 Vendors.heywood_glen_armorsmith_01:
@@ -804,6 +935,7 @@ Vendors.heywood_glen_armorsmith_01:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Heywood Vista Del Rey Armorsmith
 Vendors.heywood_del_rey_armorsmith_01:
@@ -811,6 +943,7 @@ Vendors.heywood_del_rey_armorsmith_01:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Santo Domingo Arroyo Armorsmith
 Vendors.santo_domingo_arroyo_armorsmith_01:
@@ -818,6 +951,7 @@ Vendors.santo_domingo_arroyo_armorsmith_01:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Santo Domingo Rancho Coronado Armorsmith
 Vendors.santo_domingo_rancho_armorsmith_01:
@@ -825,6 +959,7 @@ Vendors.santo_domingo_rancho_armorsmith_01:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Pacifica West Wind Armorsmith 01
 Vendors.pacific_west_armorsmith_01:
@@ -832,6 +967,7 @@ Vendors.pacific_west_armorsmith_01:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Pacifica West Wind Armorsmith 02
 Vendors.pacific_west_armorsmith_02:
@@ -839,6 +975,7 @@ Vendors.pacific_west_armorsmith_02:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Pacifica Coastview Armorsmith
 Vendors.pacific_view_armorsmith_01:
@@ -846,6 +983,7 @@ Vendors.pacific_view_armorsmith_01:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 
 # -------------------------------------------------------------
@@ -857,6 +995,7 @@ Vendors.wat_lch_cyberware_store_01:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Watson Northside Cyberware Store
 Vendors.wat_nid_cyberware_store_01:
@@ -864,6 +1003,7 @@ Vendors.wat_nid_cyberware_store_01:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Westbrook Japantown Cyberware Store
 Vendors.wbr_jpn_cyberware_store_01:
@@ -871,6 +1011,7 @@ Vendors.wbr_jpn_cyberware_store_01:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Westbrook North Oak Cyberware Store
 Vendors.wbr_nok_cyberware_store_01:
@@ -878,6 +1019,7 @@ Vendors.wbr_nok_cyberware_store_01:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Westbrook Charter Hill Cyberware Store
 Vendors.wbr_hil_cyberware_store_01:
@@ -885,6 +1027,7 @@ Vendors.wbr_hil_cyberware_store_01:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # City Center Downtown Cyberware Store
 Vendors.cct_dtn_cyber_01:
@@ -892,6 +1035,7 @@ Vendors.cct_dtn_cyber_01:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Heywood The Glen Cyberware Store
 Vendors.hey_gle_cyberware_store_01:
@@ -899,6 +1043,7 @@ Vendors.hey_gle_cyberware_store_01:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Heywood Vista Del Rey Cyberware Store
 Vendors.hey_rey_cyberware_store_01:
@@ -906,6 +1051,7 @@ Vendors.hey_rey_cyberware_store_01:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Santo Domingo Arroyo Cyberware Store
 Vendors.std_arr_cyberware_store_01:
@@ -913,6 +1059,7 @@ Vendors.std_arr_cyberware_store_01:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Santo Domingo Rancho Coronado Cyberware Store
 Vendors.std_rcr_cyberware_store_01:
@@ -920,6 +1067,7 @@ Vendors.std_rcr_cyberware_store_01:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Pacifica Coastview Cyberware Store
 Vendors.pac_cvi_cyberware_store_01:
@@ -927,6 +1075,7 @@ Vendors.pac_cvi_cyberware_store_01:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Pacifica West Wind Cyberware Store
 Vendors.pac_wwd_cyberware_store_01:
@@ -934,6 +1083,7 @@ Vendors.pac_wwd_cyberware_store_01:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Badlands Cyberware Store
 Vendors.bls_ina_se5_cyberware_store_01:
@@ -941,6 +1091,7 @@ Vendors.bls_ina_se5_cyberware_store_01:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 
 # -------------------------------------------------------------
@@ -952,6 +1103,7 @@ Vendors.wbr_jpn_melee_01:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Santo Domingo Arroyo Melee Trainer
 Vendors.std_arr_melee_01:
@@ -959,6 +1111,7 @@ Vendors.std_arr_melee_01:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Pacifica Coastview Melee Trainer
 Vendors.pac_cvi_melee_01:
@@ -966,6 +1119,7 @@ Vendors.pac_cvi_melee_01:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Pacifica West Wind Melee Trainer
 Vendors.pac_wwd_melee_01:
@@ -973,6 +1127,7 @@ Vendors.pac_wwd_melee_01:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Badlands Melee Trainer
 Vendors.bls_ina_se5_melee_01:
@@ -980,6 +1135,7 @@ Vendors.bls_ina_se5_melee_01:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 
 # -------------------------------------------------------------
@@ -991,6 +1147,7 @@ Vendors.wat_kab_techstore_01:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Westbrook Japantown Techstore
 Vendors.wbr_jpn_techstore_01:
@@ -998,6 +1155,7 @@ Vendors.wbr_jpn_techstore_01:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Santo Domingo Arroyo Techstore
 Vendors.std_arr_techstore_01:
@@ -1005,6 +1163,7 @@ Vendors.std_arr_techstore_01:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Santo Domingo Rancho Coronado Techstore
 Vendors.std_rcr_techstore_01:
@@ -1012,6 +1171,7 @@ Vendors.std_rcr_techstore_01:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 
 # -------------------------------------------------------------
@@ -1023,6 +1183,7 @@ Vendors.wat_awf_foodstore_01:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Watson Kabuki Food Shop 01
 Vendors.wat_kab_foodshop_01:
@@ -1030,6 +1191,7 @@ Vendors.wat_kab_foodshop_01:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Watson Kabuki Food Shop 02
 Vendors.wat_kab_foodshop_02:
@@ -1037,6 +1199,7 @@ Vendors.wat_kab_foodshop_02:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Watson Kabuki Food Shop 03
 Vendors.wat_kab_foodshop_03:
@@ -1044,6 +1207,7 @@ Vendors.wat_kab_foodshop_03:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Watson Kabuki Food Shop 04
 Vendors.wat_kab_foodshop_04:
@@ -1051,6 +1215,7 @@ Vendors.wat_kab_foodshop_04:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Watson Little China Food Shop 01
 Vendors.wat_lch_foodshop_01:
@@ -1058,6 +1223,7 @@ Vendors.wat_lch_foodshop_01:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Watson Little China Food Shop 02
 Vendors.wat_lch_foodshop_02:
@@ -1065,6 +1231,7 @@ Vendors.wat_lch_foodshop_02:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Watson Little China Food Shop 03
 Vendors.wat_lch_foodshop_03:
@@ -1072,6 +1239,7 @@ Vendors.wat_lch_foodshop_03:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Watson Northside Food Shop 02
 Vendors.wat_nid_foodshop_02:
@@ -1079,6 +1247,7 @@ Vendors.wat_nid_foodshop_02:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Westbrook Charter Hill Food Shop 01
 Vendors.wbr_hil_foodshop_01:
@@ -1086,6 +1255,7 @@ Vendors.wbr_hil_foodshop_01:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Westbrook Charter Hill Food Shop 02
 Vendors.wbr_hil_foodshop_02:
@@ -1093,6 +1263,7 @@ Vendors.wbr_hil_foodshop_02:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Westbrook Japantown Food Shop 01
 Vendors.wbr_jpn_foodshop_01:
@@ -1100,6 +1271,7 @@ Vendors.wbr_jpn_foodshop_01:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Westbrook Japantown Food Shop 02
 Vendors.wbr_jpn_foodshop_02:
@@ -1107,6 +1279,7 @@ Vendors.wbr_jpn_foodshop_02:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Westbrook Japantown Food Shop 03
 Vendors.wbr_jpn_foodshop_03:
@@ -1114,6 +1287,7 @@ Vendors.wbr_jpn_foodshop_03:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Westbrook Japantown Food Shop 04
 Vendors.wbr_jpn_foodshop_04:
@@ -1121,6 +1295,7 @@ Vendors.wbr_jpn_foodshop_04:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Westbrook Japantown Food Shop 05
 Vendors.wbr_jpn_foodshop_05:
@@ -1128,6 +1303,7 @@ Vendors.wbr_jpn_foodshop_05:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Westbrook Jig-Jig Street Bar
 Vendors.wbr_jpn_jig_bar_01:
@@ -1135,6 +1311,7 @@ Vendors.wbr_jpn_jig_bar_01:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Westbrook North Oak Food Shop 02
 Vendors.wbr_nok_foodshop_02:
@@ -1142,6 +1319,7 @@ Vendors.wbr_nok_foodshop_02:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # City Center Corp Plaza Food Shop 01
 Vendors.cct_cpz_food_01:
@@ -1149,6 +1327,7 @@ Vendors.cct_cpz_food_01:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # City Center Corp Plaza Food Shop 02
 Vendors.cct_cpz_food_02:
@@ -1156,6 +1335,7 @@ Vendors.cct_cpz_food_02:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # City Center Downtown Food Shop 01
 Vendors.cct_dtn_food_01:
@@ -1163,6 +1343,7 @@ Vendors.cct_dtn_food_01:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # City Center Downtown Food Shop 02
 Vendors.cct_dtn_food_02:
@@ -1170,6 +1351,7 @@ Vendors.cct_dtn_food_02:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Heywood The Glen Food Shop 01
 Vendors.hey_gle_foodshop_01:
@@ -1177,6 +1359,7 @@ Vendors.hey_gle_foodshop_01:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Heywood The Glen Food Shop 02
 Vendors.hey_gle_foodshop_02:
@@ -1184,6 +1367,7 @@ Vendors.hey_gle_foodshop_02:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Heywood Vista Del Rey Food Shop 01
 Vendors.hey_rey_foodshop_01:
@@ -1191,6 +1375,7 @@ Vendors.hey_rey_foodshop_01:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Heywood Vista Del Rey Food Shop 02
 Vendors.hey_rey_foodshop_02:
@@ -1198,6 +1383,7 @@ Vendors.hey_rey_foodshop_02:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Heywood Vista Del Rey Food Shop 03
 Vendors.hey_rey_foodshop_03:
@@ -1205,6 +1391,7 @@ Vendors.hey_rey_foodshop_03:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Heywood Vista Del Rey Food Shop 04
 Vendors.hey_rey_foodshop_04:
@@ -1212,6 +1399,7 @@ Vendors.hey_rey_foodshop_04:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Heywood Wellsprings Food Shop 01
 Vendors.hey_spr_foodshop_01:
@@ -1219,6 +1407,7 @@ Vendors.hey_spr_foodshop_01:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Santo Domingo Arroyo Food Shop 01
 Vendors.std_arr_foodshop_01:
@@ -1226,6 +1415,7 @@ Vendors.std_arr_foodshop_01:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Santo Domingo Arroyo Food Shop 02
 Vendors.std_arr_foodshop_02:
@@ -1233,6 +1423,7 @@ Vendors.std_arr_foodshop_02:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Santo Domingo Arroyo Food Shop 03
 Vendors.std_arr_foodshop_03:
@@ -1240,6 +1431,7 @@ Vendors.std_arr_foodshop_03:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Santo Domingo Arroyo Food Shop 04
 Vendors.std_arr_foodshop_04:
@@ -1247,6 +1439,7 @@ Vendors.std_arr_foodshop_04:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Santo Domingo Rancho Coronado Food Shop 01
 Vendors.std_rcr_foodshop_01:
@@ -1254,6 +1447,7 @@ Vendors.std_rcr_foodshop_01:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Pacifica Coastview Food Shop 01
 Vendors.pac_cvi_foodshop_01:
@@ -1261,6 +1455,7 @@ Vendors.pac_cvi_foodshop_01:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Airport Food Shop 01
 Vendors.aip_foodshop_01:
@@ -1268,6 +1463,7 @@ Vendors.aip_foodshop_01:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 
 # -------------------------------------------------------------
@@ -1279,6 +1475,7 @@ Vendors.Kiosk:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Dogtown Street Kiosk
 Vendors.Kiosk_EP1:
@@ -1286,6 +1483,7 @@ Vendors.Kiosk_EP1:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Night City Street Market Stall
 Vendors.Market:
@@ -1293,6 +1491,7 @@ Vendors.Market:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Dogtown Street Market Stall
 Vendors.Market_EP1:
@@ -1300,6 +1499,7 @@ Vendors.Market_EP1:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Night City Street Grilled Food Cart
 Vendors.Grilled_Food:
@@ -1307,6 +1507,7 @@ Vendors.Grilled_Food:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Dogtown Street Grilled Food Cart
 Vendors.Grilled_Food_EP1:
@@ -1314,6 +1515,7 @@ Vendors.Grilled_Food_EP1:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Night City Street Chinese / Noodle Food Cart
 Vendors.Chinese_Food:
@@ -1321,6 +1523,7 @@ Vendors.Chinese_Food:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Dogtown Street Chinese / Noodle Food Cart
 Vendors.Chinese_Food_EP1:
@@ -1328,6 +1531,7 @@ Vendors.Chinese_Food_EP1:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Night City Street Packed Food Stand
 Vendors.Packed_Food:
@@ -1335,6 +1539,7 @@ Vendors.Packed_Food:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Dogtown Street Packed Food Stand
 Vendors.Packed_Food_EP1:
@@ -1342,6 +1547,7 @@ Vendors.Packed_Food_EP1:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Night City Street Drink Stand
 Vendors.Drinks:
@@ -1349,6 +1555,7 @@ Vendors.Drinks:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Dogtown Street Drink Stand
 Vendors.Drinks_EP1:
@@ -1356,6 +1563,7 @@ Vendors.Drinks_EP1:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Night City Street Bazaar Clothing Stall
 Vendors.Clothes:
@@ -1363,6 +1571,7 @@ Vendors.Clothes:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Dogtown Street Bazaar Clothing Stall
 Vendors.Clothes_EP1:
@@ -1370,6 +1579,7 @@ Vendors.Clothes_EP1:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Night City Street Tech Junk Stall
 Vendors.Tech_Junk:
@@ -1377,6 +1587,7 @@ Vendors.Tech_Junk:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
 
 # Dogtown Street Tech Junk Stall
 Vendors.Tech_Junk_EP1:
@@ -1384,3 +1595,4 @@ Vendors.Tech_Junk_EP1:
     - !append Vendors.PAFS_VendorItem_PerkShard
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
+    - !append Vendors.PAFS_VendorItem_CWCapacityShard
