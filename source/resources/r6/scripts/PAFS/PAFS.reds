@@ -89,7 +89,7 @@ public class PAFSSettings extends ScriptableSystem {
     @runtimeProperty("ModSettings.category", "Item Availability")
     @runtimeProperty("ModSettings.category.order", "3")
     @runtimeProperty("ModSettings.displayName", "Cyberware Capacity Shards")
-    @runtimeProperty("ModSettings.description", "Allow Cyberware Capacity Shards to appear in enabled vendor shops.")
+    @runtimeProperty("ModSettings.description", "Allow Cyberware Capacity Shards to appear in shops. Note: Game hard-caps Cyberware Capacity at 450; vendors stop selling once reached.")
     public let enableCWCapacityShards: Bool = true;
 
     @runtimeProperty("ModSettings.mod", "PAFS - Perks & Attributes for Sale")
@@ -105,7 +105,7 @@ public class PAFSSettings extends ScriptableSystem {
     @runtimeProperty("ModSettings.category", "Item Availability")
     @runtimeProperty("ModSettings.category.order", "3")
     @runtimeProperty("ModSettings.displayName", "Capacity Bonus per Shard")
-    @runtimeProperty("ModSettings.description", "Permanent Cyberware Capacity granted per shard consumed.")
+    @runtimeProperty("ModSettings.description", "Permanent Cyberware Capacity granted per shard consumed (clamped to game's 450 maximum capacity cap).")
     @runtimeProperty("ModSettings.step", "1")
     @runtimeProperty("ModSettings.min", "1")
     @runtimeProperty("ModSettings.max", "25")
@@ -272,9 +272,19 @@ public class PAFSSettings extends ScriptableSystem {
         return this.IsVendorTypeEnabled(type);
     }
 
-    public func IsCWCapacityVendorAllowed(vendorID: TweakDBID, vendorType: gamedataVendorType) -> Bool {
+    public func IsCWCapacityVendorAllowed(vendorID: TweakDBID, vendorType: gamedataVendorType, gi: GameInstance) -> Bool {
         if !this.enableCWCapacityShards {
             return false;
+        }
+        let player: ref<PlayerPuppet> = GetPlayer(gi);
+        if IsDefined(player) {
+            let statsSys: ref<StatsSystem> = GameInstance.GetStatsSystem(gi);
+            if IsDefined(statsSys) {
+                let capacity: Float = statsSys.GetStatValue(Cast<StatsObjectID>(player.GetEntityID()), gamedataStatType.Humanity);
+                if capacity >= 450.0 {
+                    return false; // Hard cap reached: Stop selling Cyberware Capacity Shards!
+                }
+            }
         }
         let vendorEnabled: Bool = this.IsVendorRecordEnabled(vendorID, vendorType);
         if !vendorEnabled {
@@ -339,7 +349,7 @@ private func EnsurePAFSStock(settings: ref<PAFSSettings>) -> Void {
     let allowPerk: Bool = vendorEnabled && settings.enablePerkShards;
     let allowAttr: Bool = vendorEnabled && settings.enableAttributeShards;
     let allowFood: Bool = vendorEnabled && settings.enableHealthFood;
-    let allowCW: Bool = settings.IsCWCapacityVendorAllowed(vendorID, vendorType);
+    let allowCW: Bool = settings.IsCWCapacityVendorAllowed(vendorID, vendorType, this.m_gameInstance);
 
     let transSystem: ref<TransactionSystem> = GameInstance.GetTransactionSystem(this.m_gameInstance);
 
@@ -575,7 +585,7 @@ public func GetItemsForSale(checkPlayerCanBuy: Bool) -> array<SItemStack> {
     let allowPerk: Bool = vendorEnabled && settings.enablePerkShards;
     let allowAttr: Bool = vendorEnabled && settings.enableAttributeShards;
     let allowFood: Bool = vendorEnabled && settings.enableHealthFood;
-    let allowCW: Bool = settings.IsCWCapacityVendorAllowed(vendorID, vendorType);
+    let allowCW: Bool = settings.IsCWCapacityVendorAllowed(vendorID, vendorType, this.m_gameInstance);
 
     if allowPerk && allowAttr && allowFood && allowCW {
         return items;
@@ -664,13 +674,23 @@ protected cb func OnItemAddedToInventory(evt: ref<ItemAddedEvent>) -> Bool {
                 bonusPerShard = Cast<Float>(settings.cwCapacityBonus);
             }
 
-            if bonusPerShard > 0.0 {
+            let statsSystem: ref<StatsSystem> = GameInstance.GetStatsSystem(this.GetGame());
+            let currentCap: Float = 0.0;
+            if IsDefined(statsSystem) {
+                currentCap = statsSystem.GetStatValue(Cast<StatsObjectID>(this.GetEntityID()), gamedataStatType.Humanity);
+            }
+
+            if bonusPerShard > 0.0 && currentCap < 450.0 {
                 let totalBonus: Float = bonusPerShard * Cast<Float>(count);
+                if (currentCap + totalBonus) > 450.0 {
+                    totalBonus = 450.0 - currentCap;
+                }
+
                 let modifier: ref<gameConstantStatModifierData> = new gameConstantStatModifierData();
                 modifier.modifierType = gameStatModifierType.Additive;
                 modifier.statType = gamedataStatType.Humanity;
                 modifier.value = totalBonus;
-                GameInstance.GetStatsSystem(this.GetGame()).AddSavedModifier(Cast<StatsObjectID>(this.GetEntityID()), modifier);
+                statsSystem.AddSavedModifier(Cast<StatsObjectID>(this.GetEntityID()), modifier);
 
                 let bonusInt: Int32 = Cast<Int32>(totalBonus);
                 let shardName: String = GetLocalizedTextByKey(TweakDBInterface.GetItemRecord(tdbID).DisplayName());
@@ -678,6 +698,16 @@ protected cb func OnItemAddedToInventory(evt: ref<ItemAddedEvent>) -> Bool {
                     shardName = "Cyberware Capacity Shard";
                 }
                 let notification_Message: String = shardName + "\n+" + ToString(bonusInt) + " Cyberware Capacity";
+                if (currentCap + totalBonus) >= 450.0 {
+                    notification_Message = notification_Message + " (Max 450 Reached)";
+                }
+                this.SetWarningMessage(notification_Message, SimpleMessageType.Neutral);
+            } else if currentCap >= 450.0 {
+                let shardName: String = GetLocalizedTextByKey(TweakDBInterface.GetItemRecord(tdbID).DisplayName());
+                if StrLen(shardName) == 0 {
+                    shardName = "Cyberware Capacity Shard";
+                }
+                let notification_Message: String = shardName + "\nMaximum Cyberware Capacity (450) Reached";
                 this.SetWarningMessage(notification_Message, SimpleMessageType.Neutral);
             }
         }
