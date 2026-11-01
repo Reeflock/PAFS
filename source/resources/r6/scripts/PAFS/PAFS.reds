@@ -5,6 +5,11 @@ public enum PAFSPricePreset {
     Custom = 3
 }
 
+public enum PAFSCWDistribution {
+    RipperdocsOnly = 0,
+    AllVendors = 1
+}
+
 public class PAFSSettings extends ScriptableSystem {
     // -------------------------------------------------------------
     // Category 1: Quick Presets
@@ -14,9 +19,9 @@ public class PAFSSettings extends ScriptableSystem {
     @runtimeProperty("ModSettings.category.order", "1")
     @runtimeProperty("ModSettings.displayName", "Price Preset")
     @runtimeProperty("ModSettings.description", "Quick pricing preset. Select 'Custom' to use the individual sliders under Advanced.")
-    @runtimeProperty("ModSettings.displayValues.Casual", "Casual (3,500 / 5,000 E$)")
-    @runtimeProperty("ModSettings.displayValues.Balanced", "Balanced (20,000 / 30,000 E$)")
-    @runtimeProperty("ModSettings.displayValues.Expensive", "Expensive (50,000 / 65,000 E$)")
+    @runtimeProperty("ModSettings.displayValues.Casual", "Casual (3.5k / 5k / 4k / 2.5k E$)")
+    @runtimeProperty("ModSettings.displayValues.Balanced", "Balanced (20k / 30k / 25k / 10k E$)")
+    @runtimeProperty("ModSettings.displayValues.Expensive", "Expensive (50k / 65k / 55k / 30k E$)")
     @runtimeProperty("ModSettings.displayValues.Custom", "Custom (Use Advanced Sliders)")
     public let pricePreset: PAFSPricePreset = PAFSPricePreset.Balanced;
 
@@ -46,6 +51,16 @@ public class PAFSSettings extends ScriptableSystem {
     @runtimeProperty("ModSettings.mod", "PAFS - Perks & Attributes for Sale")
     @runtimeProperty("ModSettings.category", "Advanced Prices")
     @runtimeProperty("ModSettings.category.order", "2")
+    @runtimeProperty("ModSettings.displayName", "Capacity Shard Price")
+    @runtimeProperty("ModSettings.description", "Price in E$ to buy Cyberware Capacity Shards (Active when preset is Custom)")
+    @runtimeProperty("ModSettings.step", "500")
+    @runtimeProperty("ModSettings.min", "0")
+    @runtimeProperty("ModSettings.max", "100000")
+    public let cwCapacityShardPrice: Int32 = 25000;
+
+    @runtimeProperty("ModSettings.mod", "PAFS - Perks & Attributes for Sale")
+    @runtimeProperty("ModSettings.category", "Advanced Prices")
+    @runtimeProperty("ModSettings.category.order", "2")
     @runtimeProperty("ModSettings.displayName", "Health Food Price")
     @runtimeProperty("ModSettings.description", "Price in E$ to buy Permanent Health Food (Active when preset is Custom)")
     @runtimeProperty("ModSettings.step", "500")
@@ -69,6 +84,32 @@ public class PAFSSettings extends ScriptableSystem {
     @runtimeProperty("ModSettings.displayName", "Attribute Point Shards")
     @runtimeProperty("ModSettings.description", "Allow Attribute Point Shards to appear in enabled vendor shops.")
     public let enableAttributeShards: Bool = true;
+
+    @runtimeProperty("ModSettings.mod", "PAFS - Perks & Attributes for Sale")
+    @runtimeProperty("ModSettings.category", "Item Availability")
+    @runtimeProperty("ModSettings.category.order", "3")
+    @runtimeProperty("ModSettings.displayName", "Cyberware Capacity Shards")
+    @runtimeProperty("ModSettings.description", "Allow Cyberware Capacity Shards to appear in shops. Note: Game hard-caps Cyberware Capacity at 450; vendors stop selling once reached.")
+    public let enableCWCapacityShards: Bool = true;
+
+    @runtimeProperty("ModSettings.mod", "PAFS - Perks & Attributes for Sale")
+    @runtimeProperty("ModSettings.category", "Item Availability")
+    @runtimeProperty("ModSettings.category.order", "3")
+    @runtimeProperty("ModSettings.displayName", "Capacity Shard Distribution")
+    @runtimeProperty("ModSettings.description", "Choose whether Cyberware Capacity Shards are exclusive to Ripperdocs or sold at all vendors enabled in Category 4.")
+    @runtimeProperty("ModSettings.displayValues.RipperdocsOnly", "Ripperdocs Only (Recommended)")
+    @runtimeProperty("ModSettings.displayValues.AllVendors", "All Enabled PAFS Vendors")
+    public let cwDistribution: PAFSCWDistribution = PAFSCWDistribution.RipperdocsOnly;
+
+    @runtimeProperty("ModSettings.mod", "PAFS - Perks & Attributes for Sale")
+    @runtimeProperty("ModSettings.category", "Item Availability")
+    @runtimeProperty("ModSettings.category.order", "3")
+    @runtimeProperty("ModSettings.displayName", "Capacity Bonus per Shard")
+    @runtimeProperty("ModSettings.description", "Permanent Cyberware Capacity granted per shard consumed (clamped to game's 450 maximum capacity cap).")
+    @runtimeProperty("ModSettings.step", "1")
+    @runtimeProperty("ModSettings.min", "1")
+    @runtimeProperty("ModSettings.max", "25")
+    public let cwCapacityBonus: Int32 = 5;
 
     @runtimeProperty("ModSettings.mod", "PAFS - Perks & Attributes for Sale")
     @runtimeProperty("ModSettings.category", "Item Availability")
@@ -161,6 +202,22 @@ public class PAFSSettings extends ScriptableSystem {
         return 30000;
     }
 
+    public func GetCWCapacityShardPrice() -> Int32 {
+        if Equals(this.pricePreset, PAFSPricePreset.Casual) {
+            return 4000;
+        }
+        if Equals(this.pricePreset, PAFSPricePreset.Balanced) {
+            return 25000;
+        }
+        if Equals(this.pricePreset, PAFSPricePreset.Expensive) {
+            return 55000;
+        }
+        if Equals(this.pricePreset, PAFSPricePreset.Custom) {
+            return this.cwCapacityShardPrice;
+        }
+        return 25000;
+    }
+
     public func GetHealthFoodPrice() -> Int32 {
         if Equals(this.pricePreset, PAFSPricePreset.Casual) {
             return 2500;
@@ -215,6 +272,33 @@ public class PAFSSettings extends ScriptableSystem {
         return this.IsVendorTypeEnabled(type);
     }
 
+    public func IsCWCapacityVendorAllowed(vendorID: TweakDBID, vendorType: gamedataVendorType, gi: GameInstance) -> Bool {
+        if !this.enableCWCapacityShards {
+            return false;
+        }
+        let player: ref<PlayerPuppet> = GetPlayer(gi);
+        if IsDefined(player) {
+            let statsSys: ref<StatsSystem> = GameInstance.GetStatsSystem(gi);
+            if IsDefined(statsSys) {
+                let capacity: Float = statsSys.GetStatValue(Cast<StatsObjectID>(player.GetEntityID()), gamedataStatType.Humanity);
+                if capacity >= 450.0 {
+                    return false; // Hard cap reached: Stop selling Cyberware Capacity Shards!
+                }
+            }
+        }
+        let vendorEnabled: Bool = this.IsVendorRecordEnabled(vendorID, vendorType);
+        if !vendorEnabled {
+            return false;
+        }
+        if Equals(this.cwDistribution, PAFSCWDistribution.AllVendors) {
+            return true;
+        }
+        if Equals(vendorType, gamedataVendorType.RipperDoc) || vendorID == t"Vendors.cz_stadium_junk_01_michal_k" {
+            return true;
+        }
+        return false;
+    }
+
     public static func Get(gi: GameInstance) -> ref<PAFSSettings> {
         return GameInstance.GetScriptableSystemsContainer(gi).Get(n"PAFSSettings") as PAFSSettings;
     }
@@ -260,16 +344,19 @@ private func EnsurePAFSStock(settings: ref<PAFSSettings>) -> Void {
     let perkTDB: TweakDBID = t"Items.PAFS_PerkShard";
     let attrTDB: TweakDBID = t"Items.PAFS_AttributeShard";
     let foodTDB: TweakDBID = t"Items.PAFS_HealthFood";
+    let cwTDB: TweakDBID = t"Items.PAFS_CyberwareCapacityShard";
 
     let allowPerk: Bool = vendorEnabled && settings.enablePerkShards;
     let allowAttr: Bool = vendorEnabled && settings.enableAttributeShards;
     let allowFood: Bool = vendorEnabled && settings.enableHealthFood;
+    let allowCW: Bool = settings.IsCWCapacityVendorAllowed(vendorID, vendorType, this.m_gameInstance);
 
     let transSystem: ref<TransactionSystem> = GameInstance.GetTransactionSystem(this.m_gameInstance);
 
     let perkIndex: Int32 = -1;
     let attrIndex: Int32 = -1;
     let foodIndex: Int32 = -1;
+    let cwIndex: Int32 = -1;
     let currentTDB: TweakDBID;
     let i: Int32 = 0;
 
@@ -302,6 +389,17 @@ private func EnsurePAFSStock(settings: ref<PAFSSettings>) -> Void {
             if allowFood {
                 if foodIndex < 0 {
                     foodIndex = i;
+                    i += 1;
+                } else {
+                    ArrayErase(this.m_stock, i);
+                }
+            } else {
+                ArrayErase(this.m_stock, i);
+            }
+        } else if currentTDB == cwTDB {
+            if allowCW {
+                if cwIndex < 0 {
+                    cwIndex = i;
                     i += 1;
                 } else {
                     ArrayErase(this.m_stock, i);
@@ -426,6 +524,43 @@ private func EnsurePAFSStock(settings: ref<PAFSSettings>) -> Void {
             transSystem.RemoveItem(this.m_vendorObject, foodItemID, fQty);
         }
     }
+
+    // 4. Cyberware Capacity Shard
+    if allowCW {
+        if cwIndex >= 0 {
+            if this.m_stock[cwIndex].quantity < 5 {
+                this.m_stock[cwIndex].quantity = 60;
+                this.m_stock[cwIndex].isAvailable = true;
+            }
+        } else {
+            let cwStack: SItemStack;
+            cwStack.itemID = ItemID.FromTDBID(cwTDB);
+            cwStack.quantity = 60;
+            cwStack.isAvailable = true;
+            ArrayPush(this.m_stock, cwStack);
+            if !ArrayContains(this.m_newItems, cwTDB) {
+                ArrayPush(this.m_newItems, cwTDB);
+            }
+        }
+        if IsDefined(transSystem) {
+            let cwItemID: ItemID = ItemID.FromTDBID(cwTDB);
+            let cQty: Int32 = transSystem.GetItemQuantity(this.m_vendorObject, cwItemID);
+            if cQty < 5 {
+                let cRecord: ref<Item_Record> = TweakDBInterface.GetItemRecord(cwTDB);
+                if IsDefined(cRecord) {
+                    transSystem.GiveItem(this.m_vendorObject, cwItemID, 60 - cQty, cRecord.Tags());
+                } else {
+                    transSystem.GiveItem(this.m_vendorObject, cwItemID, 60 - cQty);
+                }
+            }
+        }
+    } else if IsDefined(transSystem) {
+        let cwItemID: ItemID = ItemID.FromTDBID(cwTDB);
+        let cQty: Int32 = transSystem.GetItemQuantity(this.m_vendorObject, cwItemID);
+        if cQty > 0 {
+            transSystem.RemoveItem(this.m_vendorObject, cwItemID, cQty);
+        }
+    }
 }
 
 // -----------------------------------------------------------------
@@ -445,12 +580,14 @@ public func GetItemsForSale(checkPlayerCanBuy: Bool) -> array<SItemStack> {
     }
 
     let vendorID: TweakDBID = this.GetVendorTweakID();
-    let vendorEnabled: Bool = settings.IsVendorRecordEnabled(vendorID, this.GetVendorType());
+    let vendorType: gamedataVendorType = this.GetVendorType();
+    let vendorEnabled: Bool = settings.IsVendorRecordEnabled(vendorID, vendorType);
     let allowPerk: Bool = vendorEnabled && settings.enablePerkShards;
     let allowAttr: Bool = vendorEnabled && settings.enableAttributeShards;
     let allowFood: Bool = vendorEnabled && settings.enableHealthFood;
+    let allowCW: Bool = settings.IsCWCapacityVendorAllowed(vendorID, vendorType, this.m_gameInstance);
 
-    if allowPerk && allowAttr && allowFood {
+    if allowPerk && allowAttr && allowFood && allowCW {
         return items;
     }
 
@@ -458,6 +595,7 @@ public func GetItemsForSale(checkPlayerCanBuy: Bool) -> array<SItemStack> {
     let perkTDB: TweakDBID = t"Items.PAFS_PerkShard";
     let attrTDB: TweakDBID = t"Items.PAFS_AttributeShard";
     let foodTDB: TweakDBID = t"Items.PAFS_HealthFood";
+    let cwTDB: TweakDBID = t"Items.PAFS_CyberwareCapacityShard";
     let itemTDB: TweakDBID;
 
     for stack in items {
@@ -472,6 +610,10 @@ public func GetItemsForSale(checkPlayerCanBuy: Bool) -> array<SItemStack> {
             }
         } else if itemTDB == foodTDB {
             if allowFood {
+                ArrayPush(filtered, stack);
+            }
+        } else if itemTDB == cwTDB {
+            if allowCW {
                 ArrayPush(filtered, stack);
             }
         } else if itemTDB == t"Items.Custom_Infinite_PerkShard" || itemTDB == t"Items.Custom_Infinite_AttributeShard" || itemTDB == t"Items.Custom_Infinite_HealthFood" {
@@ -499,6 +641,9 @@ public static func GetBuyPrice(vendorObject: wref<GameObject>, itemID: ItemID) -
             if tdbID == t"Items.PAFS_AttributeShard" {
                 return settings.GetAttributeShardPrice();
             }
+            if tdbID == t"Items.PAFS_CyberwareCapacityShard" {
+                return settings.GetCWCapacityShardPrice();
+            }
             if tdbID == t"Items.PAFS_HealthFood" {
                 return settings.GetHealthFoodPrice();
             }
@@ -513,11 +658,63 @@ public static func GetBuyPrice(vendorObject: wref<GameObject>, itemID: ItemID) -
 // -----------------------------------------------------------------
 @wrapMethod(PlayerPuppet)
 protected cb func OnItemAddedToInventory(evt: ref<ItemAddedEvent>) -> Bool {
-    let result: Bool = wrappedMethod(evt);
-
     let tdbID: TweakDBID = ItemID.GetTDBID(evt.itemID);
 
-    // 1. Permanent Health Food Multi-Consumption
+    // 1. Cyberware Capacity Shard Multi-Consumption
+    // Handled BEFORE wrappedMethod to prevent vanilla's hardcoded +6 world-drop effector from firing on the first item!
+    if tdbID == t"Items.PAFS_CyberwareCapacityShard" {
+        let transSystem: ref<TransactionSystem> = GameInstance.GetTransactionSystem(this.GetGame());
+        let count: Int32 = transSystem.GetItemQuantity(this, evt.itemID);
+        if count > 0 {
+            transSystem.RemoveItem(this, evt.itemID, count);
+
+            let settings: ref<PAFSSettings> = PAFSSettings.Get(this.GetGame());
+            let bonusPerShard: Float = 5.0;
+            if IsDefined(settings) {
+                bonusPerShard = Cast<Float>(settings.cwCapacityBonus);
+            }
+
+            let statsSystem: ref<StatsSystem> = GameInstance.GetStatsSystem(this.GetGame());
+            let currentCap: Float = 0.0;
+            if IsDefined(statsSystem) {
+                currentCap = statsSystem.GetStatValue(Cast<StatsObjectID>(this.GetEntityID()), gamedataStatType.Humanity);
+            }
+
+            if bonusPerShard > 0.0 && currentCap < 450.0 {
+                let totalBonus: Float = bonusPerShard * Cast<Float>(count);
+                if (currentCap + totalBonus) > 450.0 {
+                    totalBonus = 450.0 - currentCap;
+                }
+
+                let modifier: ref<gameConstantStatModifierData> = new gameConstantStatModifierData();
+                modifier.modifierType = gameStatModifierType.Additive;
+                modifier.statType = gamedataStatType.Humanity;
+                modifier.value = totalBonus;
+                statsSystem.AddSavedModifier(Cast<StatsObjectID>(this.GetEntityID()), modifier);
+
+                let bonusInt: Int32 = Cast<Int32>(totalBonus);
+                let shardName: String = GetLocalizedTextByKey(TweakDBInterface.GetItemRecord(tdbID).DisplayName());
+                if StrLen(shardName) == 0 {
+                    shardName = "Cyberware Capacity Shard";
+                }
+                let notification_Message: String = shardName + "\n+" + ToString(bonusInt) + " Cyberware Capacity";
+                if (currentCap + totalBonus) >= 450.0 {
+                    notification_Message = notification_Message + " (Max 450 Reached)";
+                }
+                this.SetWarningMessage(notification_Message, SimpleMessageType.Neutral);
+            } else if currentCap >= 450.0 {
+                let shardName: String = GetLocalizedTextByKey(TweakDBInterface.GetItemRecord(tdbID).DisplayName());
+                if StrLen(shardName) == 0 {
+                    shardName = "Cyberware Capacity Shard";
+                }
+                let notification_Message: String = shardName + "\nMaximum Cyberware Capacity (450) Reached";
+                this.SetWarningMessage(notification_Message, SimpleMessageType.Neutral);
+            }
+        }
+        return true;
+    }
+
+    // 2. Permanent Health Food Multi-Consumption
     if tdbID == t"Items.PAFS_HealthFood" {
         let transSystem: ref<TransactionSystem> = GameInstance.GetTransactionSystem(this.GetGame());
         let count: Int32 = transSystem.GetItemQuantity(this, evt.itemID);
@@ -534,10 +731,12 @@ protected cb func OnItemAddedToInventory(evt: ref<ItemAddedEvent>) -> Bool {
             let notification_Message: String = (GetLocalizedText("LocKey#93104") + "\n") + GetLocalizedText("LocKey#93725");
             this.SetWarningMessage(notification_Message, SimpleMessageType.Neutral);
         }
-        return result;
+        return true;
     }
 
-    // 2. Skillbook / Perk & Attribute Shard Multi-Consumption
+    let result: Bool = wrappedMethod(evt);
+
+    // 3. Skillbook / Perk & Attribute Shard Multi-Consumption
     let itemRecord: ref<Item_Record> = TweakDBInterface.GetItemRecord(tdbID);
     if IsDefined(itemRecord) && Equals(itemRecord.ItemType().Type(), gamedataItemType.Con_Skillbook) {
         let transSystem: ref<TransactionSystem> = GameInstance.GetTransactionSystem(this.GetGame());
