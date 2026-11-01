@@ -260,9 +260,6 @@ private func EnsurePAFSStock(settings: ref<PAFSSettings>) -> Void {
     let perkTDB: TweakDBID = t"Items.PAFS_PerkShard";
     let attrTDB: TweakDBID = t"Items.PAFS_AttributeShard";
     let foodTDB: TweakDBID = t"Items.PAFS_HealthFood";
-    let legacyPerkTDB: TweakDBID = t"Items.Custom_Infinite_PerkShard";
-    let legacyAttrTDB: TweakDBID = t"Items.Custom_Infinite_AttributeShard";
-    let legacyFoodTDB: TweakDBID = t"Items.Custom_Infinite_HealthFood";
 
     let allowPerk: Bool = vendorEnabled && settings.enablePerkShards;
     let allowAttr: Bool = vendorEnabled && settings.enableAttributeShards;
@@ -276,10 +273,10 @@ private func EnsurePAFSStock(settings: ref<PAFSSettings>) -> Void {
     let currentTDB: TweakDBID;
     let i: Int32 = 0;
 
-    // Scan existing m_stock: deduplicate, keep valid enabled items, remove disabled ones
+    // Scan existing m_stock: deduplicate, keep valid enabled items, remove disabled/obsolete ones
     while i < ArraySize(this.m_stock) {
         currentTDB = ItemID.GetTDBID(this.m_stock[i].itemID);
-        if currentTDB == perkTDB || currentTDB == legacyPerkTDB {
+        if currentTDB == perkTDB {
             if allowPerk {
                 if perkIndex < 0 {
                     perkIndex = i;
@@ -290,7 +287,7 @@ private func EnsurePAFSStock(settings: ref<PAFSSettings>) -> Void {
             } else {
                 ArrayErase(this.m_stock, i);
             }
-        } else if currentTDB == attrTDB || currentTDB == legacyAttrTDB {
+        } else if currentTDB == attrTDB {
             if allowAttr {
                 if attrIndex < 0 {
                     attrIndex = i;
@@ -301,7 +298,7 @@ private func EnsurePAFSStock(settings: ref<PAFSSettings>) -> Void {
             } else {
                 ArrayErase(this.m_stock, i);
             }
-        } else if currentTDB == foodTDB || currentTDB == legacyFoodTDB {
+        } else if currentTDB == foodTDB {
             if allowFood {
                 if foodIndex < 0 {
                     foodIndex = i;
@@ -312,6 +309,8 @@ private func EnsurePAFSStock(settings: ref<PAFSSettings>) -> Void {
             } else {
                 ArrayErase(this.m_stock, i);
             }
+        } else if currentTDB == t"Items.Custom_Infinite_PerkShard" || currentTDB == t"Items.Custom_Infinite_AttributeShard" || currentTDB == t"Items.Custom_Infinite_HealthFood" {
+            ArrayErase(this.m_stock, i);
         } else {
             i += 1;
         }
@@ -459,25 +458,24 @@ public func GetItemsForSale(checkPlayerCanBuy: Bool) -> array<SItemStack> {
     let perkTDB: TweakDBID = t"Items.PAFS_PerkShard";
     let attrTDB: TweakDBID = t"Items.PAFS_AttributeShard";
     let foodTDB: TweakDBID = t"Items.PAFS_HealthFood";
-    let legacyPerkTDB: TweakDBID = t"Items.Custom_Infinite_PerkShard";
-    let legacyAttrTDB: TweakDBID = t"Items.Custom_Infinite_AttributeShard";
-    let legacyFoodTDB: TweakDBID = t"Items.Custom_Infinite_HealthFood";
     let itemTDB: TweakDBID;
 
     for stack in items {
         itemTDB = ItemID.GetTDBID(stack.itemID);
-        if itemTDB == perkTDB || itemTDB == legacyPerkTDB {
+        if itemTDB == perkTDB {
             if allowPerk {
                 ArrayPush(filtered, stack);
             }
-        } else if itemTDB == attrTDB || itemTDB == legacyAttrTDB {
+        } else if itemTDB == attrTDB {
             if allowAttr {
                 ArrayPush(filtered, stack);
             }
-        } else if itemTDB == foodTDB || itemTDB == legacyFoodTDB {
+        } else if itemTDB == foodTDB {
             if allowFood {
                 ArrayPush(filtered, stack);
             }
+        } else if itemTDB == t"Items.Custom_Infinite_PerkShard" || itemTDB == t"Items.Custom_Infinite_AttributeShard" || itemTDB == t"Items.Custom_Infinite_HealthFood" {
+            // Drop obsolete clone items
         } else {
             ArrayPush(filtered, stack);
         }
@@ -495,13 +493,13 @@ public static func GetBuyPrice(vendorObject: wref<GameObject>, itemID: ItemID) -
         let tdbID: TweakDBID = ItemID.GetTDBID(itemID);
         let settings: ref<PAFSSettings> = PAFSSettings.Get(vendorObject.GetGame());
         if IsDefined(settings) {
-            if tdbID == t"Items.PAFS_PerkShard" || tdbID == t"Items.Custom_Infinite_PerkShard" {
+            if tdbID == t"Items.PAFS_PerkShard" {
                 return settings.GetPerkShardPrice();
             }
-            if tdbID == t"Items.PAFS_AttributeShard" || tdbID == t"Items.Custom_Infinite_AttributeShard" {
+            if tdbID == t"Items.PAFS_AttributeShard" {
                 return settings.GetAttributeShardPrice();
             }
-            if tdbID == t"Items.PAFS_HealthFood" || tdbID == t"Items.Custom_Infinite_HealthFood" {
+            if tdbID == t"Items.PAFS_HealthFood" {
                 return settings.GetHealthFoodPrice();
             }
         }
@@ -511,13 +509,36 @@ public static func GetBuyPrice(vendorObject: wref<GameObject>, itemID: ItemID) -
 }
 
 // -----------------------------------------------------------------
-// Multi-Consumption Hook
+// Multi-Consumption Hook (On Item Pickup / Vendor Purchase)
 // -----------------------------------------------------------------
 @wrapMethod(PlayerPuppet)
 protected cb func OnItemAddedToInventory(evt: ref<ItemAddedEvent>) -> Bool {
     let result: Bool = wrappedMethod(evt);
 
-    let itemRecord: ref<Item_Record> = TweakDBInterface.GetItemRecord(ItemID.GetTDBID(evt.itemID));
+    let tdbID: TweakDBID = ItemID.GetTDBID(evt.itemID);
+
+    // 1. Permanent Health Food Multi-Consumption
+    if tdbID == t"Items.PAFS_HealthFood" {
+        let transSystem: ref<TransactionSystem> = GameInstance.GetTransactionSystem(this.GetGame());
+        let count: Int32 = transSystem.GetItemQuantity(this, evt.itemID);
+        if count > 0 {
+            transSystem.RemoveItem(this, evt.itemID, count);
+
+            let totalBonus: Float = 5.0 * Cast<Float>(count);
+            let modifier: ref<gameConstantStatModifierData> = new gameConstantStatModifierData();
+            modifier.modifierType = gameStatModifierType.Additive;
+            modifier.statType = gamedataStatType.Health;
+            modifier.value = totalBonus;
+            GameInstance.GetStatsSystem(this.GetGame()).AddSavedModifier(Cast<StatsObjectID>(this.GetEntityID()), modifier);
+
+            let notification_Message: String = (GetLocalizedText("LocKey#93104") + "\n") + GetLocalizedText("LocKey#93725");
+            this.SetWarningMessage(notification_Message, SimpleMessageType.Neutral);
+        }
+        return result;
+    }
+
+    // 2. Skillbook / Perk & Attribute Shard Multi-Consumption
+    let itemRecord: ref<Item_Record> = TweakDBInterface.GetItemRecord(tdbID);
     if IsDefined(itemRecord) && Equals(itemRecord.ItemType().Type(), gamedataItemType.Con_Skillbook) {
         let transSystem: ref<TransactionSystem> = GameInstance.GetTransactionSystem(this.GetGame());
         let remaining: Int32 = transSystem.GetItemQuantity(this, evt.itemID);
@@ -533,4 +554,27 @@ protected cb func OnItemAddedToInventory(evt: ref<ItemAddedEvent>) -> Bool {
     }
 
     return result;
+}
+
+// -----------------------------------------------------------------
+// Manual Consumption Hook (Backpack Item Action)
+// -----------------------------------------------------------------
+@wrapMethod(ConsumeAction)
+public func CompleteAction(gameInstance: GameInstance) -> Void {
+    wrappedMethod(gameInstance);
+
+    let tdbID: TweakDBID = ItemID.GetTDBID(this.GetItemData().GetID());
+    if tdbID == t"Items.PAFS_HealthFood" {
+        let player: ref<PlayerPuppet> = GetPlayer(gameInstance);
+        if IsDefined(player) {
+            let modifier: ref<gameConstantStatModifierData> = new gameConstantStatModifierData();
+            modifier.modifierType = gameStatModifierType.Additive;
+            modifier.statType = gamedataStatType.Health;
+            modifier.value = 5.0;
+            GameInstance.GetStatsSystem(gameInstance).AddSavedModifier(Cast<StatsObjectID>(player.GetEntityID()), modifier);
+
+            let notification_Message: String = (GetLocalizedText("LocKey#93104") + "\n") + GetLocalizedText("LocKey#93725");
+            player.SetWarningMessage(notification_Message, SimpleMessageType.Neutral);
+        }
+    }
 }
