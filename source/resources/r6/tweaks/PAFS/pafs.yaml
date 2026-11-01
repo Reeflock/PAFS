@@ -9,13 +9,6 @@ Vendors.PAFS_StockModifier:
   modifierType: Additive
   value: 60
 
-# Backward compatibility alias for existing saves
-Vendors.MyStackOf200:
-  $base: Vendors.Always_Present
-  $type: gamedataConstantStatModifier_Record
-  modifierType: Additive
-  value: 60
-
 # 2. Custom Perk Shard
 Items.PAFS_PerkShard:
   $base: Items.IKPerkPointSkillbook
@@ -31,10 +24,6 @@ Items.PAFS_PerkShard:
     - DontShowLooted
     - PerkSkillbook
     - LargeSkillbook
-
-# Backward compatibility alias
-Items.Custom_Infinite_PerkShard:
-  $base: Items.PAFS_PerkShard
 
 # 3. Custom Attribute Shard
 Items.PAFS_AttributeShard:
@@ -52,10 +41,6 @@ Items.PAFS_AttributeShard:
     - PerkSkillbook
     - LargeSkillbook
 
-# Backward compatibility alias
-Items.Custom_Infinite_AttributeShard:
-  $base: Items.PAFS_AttributeShard
-
 # 4. Custom Permanent Health Food
 Items.PAFS_HealthFood:
   $base: Items.PermanentHealthFood
@@ -68,10 +53,6 @@ Items.PAFS_HealthFood:
     - Food
     - SkipActivityLog
     - DontShowLooted
-
-# Backward compatibility alias
-Items.Custom_Infinite_HealthFood:
-  $base: Items.PAFS_HealthFood
 
 # 5. Shared Vendor Items
 Vendors.PAFS_VendorItem_PerkShard:
@@ -88,14 +69,6 @@ Vendors.PAFS_VendorItem_HealthFood:
   $type: VendorItem
   item: Items.PAFS_HealthFood
   quantity: [ Vendors.PAFS_StockModifier ]
-
-# Backward compatibility aliases for vendor stubs
-Vendors.Custom_VendorItem_PerkShard:
-  $base: Vendors.PAFS_VendorItem_PerkShard
-Vendors.Custom_VendorItem_AttributeShard:
-  $base: Vendors.PAFS_VendorItem_AttributeShard
-Vendors.Custom_VendorItem_HealthFood:
-  $base: Vendors.PAFS_VendorItem_HealthFood
 
 # Weapon Vendors (Gunsmiths)
 # -------------------------------------------------------------
