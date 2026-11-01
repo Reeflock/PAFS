@@ -648,31 +648,10 @@ public static func GetBuyPrice(vendorObject: wref<GameObject>, itemID: ItemID) -
 // -----------------------------------------------------------------
 @wrapMethod(PlayerPuppet)
 protected cb func OnItemAddedToInventory(evt: ref<ItemAddedEvent>) -> Bool {
-    let result: Bool = wrappedMethod(evt);
-
     let tdbID: TweakDBID = ItemID.GetTDBID(evt.itemID);
 
-    // 1. Permanent Health Food Multi-Consumption
-    if tdbID == t"Items.PAFS_HealthFood" {
-        let transSystem: ref<TransactionSystem> = GameInstance.GetTransactionSystem(this.GetGame());
-        let count: Int32 = transSystem.GetItemQuantity(this, evt.itemID);
-        if count > 0 {
-            transSystem.RemoveItem(this, evt.itemID, count);
-
-            let totalBonus: Float = 5.0 * Cast<Float>(count);
-            let modifier: ref<gameConstantStatModifierData> = new gameConstantStatModifierData();
-            modifier.modifierType = gameStatModifierType.Additive;
-            modifier.statType = gamedataStatType.Health;
-            modifier.value = totalBonus;
-            GameInstance.GetStatsSystem(this.GetGame()).AddSavedModifier(Cast<StatsObjectID>(this.GetEntityID()), modifier);
-
-            let notification_Message: String = (GetLocalizedText("LocKey#93104") + "\n") + GetLocalizedText("LocKey#93725");
-            this.SetWarningMessage(notification_Message, SimpleMessageType.Neutral);
-        }
-        return result;
-    }
-
-    // 2. Cyberware Capacity Shard Multi-Consumption
+    // 1. Cyberware Capacity Shard Multi-Consumption
+    // Handled BEFORE wrappedMethod to prevent vanilla's hardcoded +6 world-drop effector from firing on the first item!
     if tdbID == t"Items.PAFS_CyberwareCapacityShard" {
         let transSystem: ref<TransactionSystem> = GameInstance.GetTransactionSystem(this.GetGame());
         let count: Int32 = transSystem.GetItemQuantity(this, evt.itemID);
@@ -702,8 +681,30 @@ protected cb func OnItemAddedToInventory(evt: ref<ItemAddedEvent>) -> Bool {
                 this.SetWarningMessage(notification_Message, SimpleMessageType.Neutral);
             }
         }
-        return result;
+        return true;
     }
+
+    // 2. Permanent Health Food Multi-Consumption
+    if tdbID == t"Items.PAFS_HealthFood" {
+        let transSystem: ref<TransactionSystem> = GameInstance.GetTransactionSystem(this.GetGame());
+        let count: Int32 = transSystem.GetItemQuantity(this, evt.itemID);
+        if count > 0 {
+            transSystem.RemoveItem(this, evt.itemID, count);
+
+            let totalBonus: Float = 5.0 * Cast<Float>(count);
+            let modifier: ref<gameConstantStatModifierData> = new gameConstantStatModifierData();
+            modifier.modifierType = gameStatModifierType.Additive;
+            modifier.statType = gamedataStatType.Health;
+            modifier.value = totalBonus;
+            GameInstance.GetStatsSystem(this.GetGame()).AddSavedModifier(Cast<StatsObjectID>(this.GetEntityID()), modifier);
+
+            let notification_Message: String = (GetLocalizedText("LocKey#93104") + "\n") + GetLocalizedText("LocKey#93725");
+            this.SetWarningMessage(notification_Message, SimpleMessageType.Neutral);
+        }
+        return true;
+    }
+
+    let result: Bool = wrappedMethod(evt);
 
     // 3. Skillbook / Perk & Attribute Shard Multi-Consumption
     let itemRecord: ref<Item_Record> = TweakDBInterface.GetItemRecord(tdbID);

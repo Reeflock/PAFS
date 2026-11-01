@@ -59,6 +59,12 @@ Items.PAFS_CyberwareCapacityShard:
   $base: Items.CWCapacityPermaReward_Legendary
   isSingleInstance: True
   quality: Quality.Legendary
+  OnEquip: []
+  OnAttach: []
+  OnLooted: []
+  objectActions: []
+  effectors: []
+  statModifiers: []
   statModifierGroups: []
   tags:
     - Preload
