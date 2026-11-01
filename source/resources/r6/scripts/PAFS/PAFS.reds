@@ -205,6 +205,16 @@ public class PAFSSettings extends ScriptableSystem {
         return true;
     }
 
+    public func IsVendorRecordEnabled(vendorID: TweakDBID, type: gamedataVendorType) -> Bool {
+        // Dogtown Stadium Skill Shard Vendor (Michał Kiciński) is classified as Junkshop_HUB in TweakDB,
+        // but acts as the primary skill shard / skillbook vendor in Phantom Liberty.
+        // Enable him if either Netrunners & Trainers OR Junk Shops are enabled!
+        if vendorID == t"Vendors.cz_stadium_junk_01_michal_k" {
+            return this.enableNetrunners || this.enableJunk;
+        }
+        return this.IsVendorTypeEnabled(type);
+    }
+
     public static func Get(gi: GameInstance) -> ref<PAFSSettings> {
         return GameInstance.GetScriptableSystemsContainer(gi).Get(n"PAFSSettings") as PAFSSettings;
     }
@@ -227,18 +237,216 @@ public class PAFSSettings extends ScriptableSystem {
 }
 
 // -----------------------------------------------------------------
+// Vendor Dynamic Stock & Stock Management
+// -----------------------------------------------------------------
+@addMethod(Vendor)
+private func EnsurePAFSStock(settings: ref<PAFSSettings>) -> Void {
+    if !IsDefined(this.m_vendorObject) {
+        return;
+    }
+
+    let vendorType: gamedataVendorType = this.GetVendorType();
+    if Equals(vendorType, gamedataVendorType.DropPoint) || Equals(vendorType, gamedataVendorType.VendingMachine) {
+        return;
+    }
+
+    // Ensure baseline stock and inventory are initialized before modifying
+    this.LazyInitStock();
+    this.FillVendorInventory(true);
+
+    let vendorID: TweakDBID = this.GetVendorTweakID();
+    let vendorEnabled: Bool = settings.IsVendorRecordEnabled(vendorID, vendorType);
+
+    let perkTDB: TweakDBID = t"Items.PAFS_PerkShard";
+    let attrTDB: TweakDBID = t"Items.PAFS_AttributeShard";
+    let foodTDB: TweakDBID = t"Items.PAFS_HealthFood";
+    let legacyPerkTDB: TweakDBID = t"Items.Custom_Infinite_PerkShard";
+    let legacyAttrTDB: TweakDBID = t"Items.Custom_Infinite_AttributeShard";
+    let legacyFoodTDB: TweakDBID = t"Items.Custom_Infinite_HealthFood";
+
+    let allowPerk: Bool = vendorEnabled && settings.enablePerkShards;
+    let allowAttr: Bool = vendorEnabled && settings.enableAttributeShards;
+    let allowFood: Bool = vendorEnabled && settings.enableHealthFood;
+
+    let transSystem: ref<TransactionSystem> = GameInstance.GetTransactionSystem(this.m_gameInstance);
+
+    let perkIndex: Int32 = -1;
+    let attrIndex: Int32 = -1;
+    let foodIndex: Int32 = -1;
+    let currentTDB: TweakDBID;
+    let i: Int32 = 0;
+
+    // Scan existing m_stock: deduplicate, keep valid enabled items, remove disabled ones
+    while i < ArraySize(this.m_stock) {
+        currentTDB = ItemID.GetTDBID(this.m_stock[i].itemID);
+        if currentTDB == perkTDB || currentTDB == legacyPerkTDB {
+            if allowPerk {
+                if perkIndex < 0 {
+                    perkIndex = i;
+                    i += 1;
+                } else {
+                    ArrayErase(this.m_stock, i);
+                }
+            } else {
+                ArrayErase(this.m_stock, i);
+            }
+        } else if currentTDB == attrTDB || currentTDB == legacyAttrTDB {
+            if allowAttr {
+                if attrIndex < 0 {
+                    attrIndex = i;
+                    i += 1;
+                } else {
+                    ArrayErase(this.m_stock, i);
+                }
+            } else {
+                ArrayErase(this.m_stock, i);
+            }
+        } else if currentTDB == foodTDB || currentTDB == legacyFoodTDB {
+            if allowFood {
+                if foodIndex < 0 {
+                    foodIndex = i;
+                    i += 1;
+                } else {
+                    ArrayErase(this.m_stock, i);
+                }
+            } else {
+                ArrayErase(this.m_stock, i);
+            }
+        } else {
+            i += 1;
+        }
+    }
+
+    // 1. Perk Point Shard
+    if allowPerk {
+        if perkIndex >= 0 {
+            if this.m_stock[perkIndex].quantity < 5 {
+                this.m_stock[perkIndex].quantity = 60;
+                this.m_stock[perkIndex].isAvailable = true;
+            }
+        } else {
+            let perkStack: SItemStack;
+            perkStack.itemID = ItemID.FromTDBID(perkTDB);
+            perkStack.quantity = 60;
+            perkStack.isAvailable = true;
+            ArrayPush(this.m_stock, perkStack);
+            if !ArrayContains(this.m_newItems, perkTDB) {
+                ArrayPush(this.m_newItems, perkTDB);
+            }
+        }
+        if IsDefined(transSystem) {
+            let perkItemID: ItemID = ItemID.FromTDBID(perkTDB);
+            let pQty: Int32 = transSystem.GetItemQuantity(this.m_vendorObject, perkItemID);
+            if pQty < 5 {
+                let pRecord: ref<Item_Record> = TweakDBInterface.GetItemRecord(perkTDB);
+                if IsDefined(pRecord) {
+                    transSystem.GiveItem(this.m_vendorObject, perkItemID, 60 - pQty, pRecord.Tags());
+                } else {
+                    transSystem.GiveItem(this.m_vendorObject, perkItemID, 60 - pQty);
+                }
+            }
+        }
+    } else if IsDefined(transSystem) {
+        let perkItemID: ItemID = ItemID.FromTDBID(perkTDB);
+        let pQty: Int32 = transSystem.GetItemQuantity(this.m_vendorObject, perkItemID);
+        if pQty > 0 {
+            transSystem.RemoveItem(this.m_vendorObject, perkItemID, pQty);
+        }
+    }
+
+    // 2. Attribute Point Shard
+    if allowAttr {
+        if attrIndex >= 0 {
+            if this.m_stock[attrIndex].quantity < 5 {
+                this.m_stock[attrIndex].quantity = 60;
+                this.m_stock[attrIndex].isAvailable = true;
+            }
+        } else {
+            let attrStack: SItemStack;
+            attrStack.itemID = ItemID.FromTDBID(attrTDB);
+            attrStack.quantity = 60;
+            attrStack.isAvailable = true;
+            ArrayPush(this.m_stock, attrStack);
+            if !ArrayContains(this.m_newItems, attrTDB) {
+                ArrayPush(this.m_newItems, attrTDB);
+            }
+        }
+        if IsDefined(transSystem) {
+            let attrItemID: ItemID = ItemID.FromTDBID(attrTDB);
+            let aQty: Int32 = transSystem.GetItemQuantity(this.m_vendorObject, attrItemID);
+            if aQty < 5 {
+                let aRecord: ref<Item_Record> = TweakDBInterface.GetItemRecord(attrTDB);
+                if IsDefined(aRecord) {
+                    transSystem.GiveItem(this.m_vendorObject, attrItemID, 60 - aQty, aRecord.Tags());
+                } else {
+                    transSystem.GiveItem(this.m_vendorObject, attrItemID, 60 - aQty);
+                }
+            }
+        }
+    } else if IsDefined(transSystem) {
+        let attrItemID: ItemID = ItemID.FromTDBID(attrTDB);
+        let aQty: Int32 = transSystem.GetItemQuantity(this.m_vendorObject, attrItemID);
+        if aQty > 0 {
+            transSystem.RemoveItem(this.m_vendorObject, attrItemID, aQty);
+        }
+    }
+
+    // 3. Permanent Health Food
+    if allowFood {
+        if foodIndex >= 0 {
+            if this.m_stock[foodIndex].quantity < 5 {
+                this.m_stock[foodIndex].quantity = 60;
+                this.m_stock[foodIndex].isAvailable = true;
+            }
+        } else {
+            let foodStack: SItemStack;
+            foodStack.itemID = ItemID.FromTDBID(foodTDB);
+            foodStack.quantity = 60;
+            foodStack.isAvailable = true;
+            ArrayPush(this.m_stock, foodStack);
+            if !ArrayContains(this.m_newItems, foodTDB) {
+                ArrayPush(this.m_newItems, foodTDB);
+            }
+        }
+        if IsDefined(transSystem) {
+            let foodItemID: ItemID = ItemID.FromTDBID(foodTDB);
+            let fQty: Int32 = transSystem.GetItemQuantity(this.m_vendorObject, foodItemID);
+            if fQty < 5 {
+                let fRecord: ref<Item_Record> = TweakDBInterface.GetItemRecord(foodTDB);
+                if IsDefined(fRecord) {
+                    transSystem.GiveItem(this.m_vendorObject, foodItemID, 60 - fQty, fRecord.Tags());
+                } else {
+                    transSystem.GiveItem(this.m_vendorObject, foodItemID, 60 - fQty);
+                }
+            }
+        }
+    } else if IsDefined(transSystem) {
+        let foodItemID: ItemID = ItemID.FromTDBID(foodTDB);
+        let fQty: Int32 = transSystem.GetItemQuantity(this.m_vendorObject, foodItemID);
+        if fQty > 0 {
+            transSystem.RemoveItem(this.m_vendorObject, foodItemID, fQty);
+        }
+    }
+}
+
+// -----------------------------------------------------------------
 // Vendor Display Filter Hook
 // -----------------------------------------------------------------
 @wrapMethod(Vendor)
 public func GetItemsForSale(checkPlayerCanBuy: Bool) -> array<SItemStack> {
+    let settings: ref<PAFSSettings> = PAFSSettings.Get(this.m_gameInstance);
+    if IsDefined(settings) {
+        this.EnsurePAFSStock(settings);
+    }
+
     let items: array<SItemStack> = wrappedMethod(checkPlayerCanBuy);
 
-    let settings: ref<PAFSSettings> = PAFSSettings.Get(this.m_gameInstance);
     if !IsDefined(settings) {
         return items;
     }
 
-    let vendorEnabled: Bool = settings.IsVendorTypeEnabled(this.GetVendorType());
+    let vendorID: TweakDBID = this.GetVendorTweakID();
+    let vendorEnabled: Bool = settings.IsVendorRecordEnabled(vendorID, this.GetVendorType());
     let allowPerk: Bool = vendorEnabled && settings.enablePerkShards;
     let allowAttr: Bool = vendorEnabled && settings.enableAttributeShards;
     let allowFood: Bool = vendorEnabled && settings.enableHealthFood;
@@ -248,25 +456,25 @@ public func GetItemsForSale(checkPlayerCanBuy: Bool) -> array<SItemStack> {
     }
 
     let filtered: array<SItemStack>;
-    let perkID: ItemID = ItemID.FromTDBID(t"Items.PAFS_PerkShard");
-    let attrID: ItemID = ItemID.FromTDBID(t"Items.PAFS_AttributeShard");
-    let foodID: ItemID = ItemID.FromTDBID(t"Items.PAFS_HealthFood");
-    let legacyPerkID: ItemID = ItemID.FromTDBID(t"Items.Custom_Infinite_PerkShard");
-    let legacyAttrID: ItemID = ItemID.FromTDBID(t"Items.Custom_Infinite_AttributeShard");
-    let legacyFoodID: ItemID = ItemID.FromTDBID(t"Items.Custom_Infinite_HealthFood");
-    let currentID: ItemID;
+    let perkTDB: TweakDBID = t"Items.PAFS_PerkShard";
+    let attrTDB: TweakDBID = t"Items.PAFS_AttributeShard";
+    let foodTDB: TweakDBID = t"Items.PAFS_HealthFood";
+    let legacyPerkTDB: TweakDBID = t"Items.Custom_Infinite_PerkShard";
+    let legacyAttrTDB: TweakDBID = t"Items.Custom_Infinite_AttributeShard";
+    let legacyFoodTDB: TweakDBID = t"Items.Custom_Infinite_HealthFood";
+    let itemTDB: TweakDBID;
 
     for stack in items {
-        currentID = stack.itemID;
-        if currentID == perkID || currentID == legacyPerkID {
+        itemTDB = ItemID.GetTDBID(stack.itemID);
+        if itemTDB == perkTDB || itemTDB == legacyPerkTDB {
             if allowPerk {
                 ArrayPush(filtered, stack);
             }
-        } else if currentID == attrID || currentID == legacyAttrID {
+        } else if itemTDB == attrTDB || itemTDB == legacyAttrTDB {
             if allowAttr {
                 ArrayPush(filtered, stack);
             }
-        } else if currentID == foodID || currentID == legacyFoodID {
+        } else if itemTDB == foodTDB || itemTDB == legacyFoodTDB {
             if allowFood {
                 ArrayPush(filtered, stack);
             }
