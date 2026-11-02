@@ -77,8 +77,9 @@ Items.PAFS_CyberwareCapacityShard:
 # 6. Custom Skill Progression Shards
 Items.PAFS_SoloShard:
   $base: Items.BodySkill_Skillbook
-  displayName: LocKey#93848
-  localizedDescription: LocKey#93849
+  displayName: LocKey#93273
+  localizedDescription: LocKey#93274
+  iconPath: brawling_skillbook
   isSingleInstance: True
   quality: Quality.Legendary
   OnEquip: []
@@ -98,8 +99,9 @@ Items.PAFS_SoloShard:
 
 Items.PAFS_ShinobiShard:
   $base: Items.ReflexesSkill_Skillbook
-  displayName: LocKey#93850
-  localizedDescription: LocKey#93851
+  displayName: LocKey#93276
+  localizedDescription: LocKey#93275
+  iconPath: kenjutsu_skillbook
   isSingleInstance: True
   quality: Quality.Legendary
   OnEquip: []
@@ -119,8 +121,9 @@ Items.PAFS_ShinobiShard:
 
 Items.PAFS_EngineerShard:
   $base: Items.TechnicalAbilitySkill_Skillbook
-  displayName: LocKey#93852
-  localizedDescription: LocKey#93853
+  displayName: LocKey#51169
+  localizedDescription: LocKey#51170
+  iconPath: engineering_skillbook
   isSingleInstance: True
   quality: Quality.Legendary
   OnEquip: []
@@ -140,8 +143,9 @@ Items.PAFS_EngineerShard:
 
 Items.PAFS_NetrunnerShard:
   $base: Items.IntelligenceSkill_Skillbook_Reward
-  displayName: LocKey#93854
-  localizedDescription: LocKey#93855
+  displayName: LocKey#93277
+  localizedDescription: LocKey#93278
+  iconPath: hacking_skillbook
   isSingleInstance: True
   quality: Quality.Legendary
   OnEquip: []
@@ -161,8 +165,9 @@ Items.PAFS_NetrunnerShard:
 
 Items.PAFS_HeadhunterShard:
   $base: Items.CoolSkill_Skillbook
-  displayName: LocKey#93856
-  localizedDescription: LocKey#93857
+  displayName: LocKey#93279
+  localizedDescription: LocKey#93280
+  iconPath: stealth_skillbook
   isSingleInstance: True
   quality: Quality.Legendary
   OnEquip: []
