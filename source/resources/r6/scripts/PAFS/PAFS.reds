@@ -685,16 +685,38 @@ public class PAFSSettings extends ScriptableSystem {
 // Vendor Dynamic Stock & Stock Management
 // -----------------------------------------------------------------
 @addMethod(Vendor)
-private func SyncPAFSItemStock(tdbID: TweakDBID, allowed: Bool, existingIndex: Int32, transSystem: ref<TransactionSystem>) -> Void {
-    if allowed {
-        if existingIndex >= 0 {
-            if this.m_stock[existingIndex].quantity < 5 {
-                this.m_stock[existingIndex].quantity = 60;
-                this.m_stock[existingIndex].isAvailable = true;
+private func SyncPAFSItemStock(tdbID: TweakDBID, allowed: Bool, transSystem: ref<TransactionSystem>) -> Void {
+    let itemID: ItemID = ItemID.FromTDBID(tdbID);
+    let foundIndex: Int32 = -1;
+    let i: Int32 = 0;
+
+    // Scan m_stock for tdbID: keep the first instance, eliminate any duplicate stacks
+    while i < ArraySize(this.m_stock) {
+        if ItemID.GetTDBID(this.m_stock[i].itemID) == tdbID {
+            if allowed {
+                if foundIndex < 0 {
+                    foundIndex = i;
+                    this.m_stock[i].quantity = 60;
+                    this.m_stock[i].isAvailable = true;
+                    i += 1;
+                } else {
+                    // Duplicate stack detected in m_stock; erase it
+                    ArrayErase(this.m_stock, i);
+                }
+            } else {
+                // Not allowed; erase all stacks of this item
+                ArrayErase(this.m_stock, i);
             }
         } else {
+            i += 1;
+        }
+    }
+
+    if allowed {
+        // If not present in m_stock at all, add a single stack of 60
+        if foundIndex < 0 {
             let stack: SItemStack;
-            stack.itemID = ItemID.FromTDBID(tdbID);
+            stack.itemID = itemID;
             stack.quantity = 60;
             stack.isAvailable = true;
             ArrayPush(this.m_stock, stack);
@@ -702,10 +724,14 @@ private func SyncPAFSItemStock(tdbID: TweakDBID, allowed: Bool, existingIndex: I
                 ArrayPush(this.m_newItems, tdbID);
             }
         }
+
+        // Sync with TransactionSystem: enforce hard clamp at exactly 60
         if IsDefined(transSystem) {
-            let itemID: ItemID = ItemID.FromTDBID(tdbID);
             let qty: Int32 = transSystem.GetItemQuantity(this.m_vendorObject, itemID);
-            if qty < 5 {
+            if qty > 60 {
+                // Remove excess units if restock or duplicate stacks added extra items
+                transSystem.RemoveItem(this.m_vendorObject, itemID, qty - 60);
+            } else if qty < 5 {
                 let record: ref<Item_Record> = TweakDBInterface.GetItemRecord(tdbID);
                 if IsDefined(record) {
                     transSystem.GiveItem(this.m_vendorObject, itemID, 60 - qty, record.Tags());
@@ -715,7 +741,7 @@ private func SyncPAFSItemStock(tdbID: TweakDBID, allowed: Bool, existingIndex: I
             }
         }
     } else if IsDefined(transSystem) {
-        let itemID: ItemID = ItemID.FromTDBID(tdbID);
+        // If disabled or cap reached, purge all units from vendor's inventory
         let qty: Int32 = transSystem.GetItemQuantity(this.m_vendorObject, itemID);
         if qty > 0 {
             transSystem.RemoveItem(this.m_vendorObject, itemID, qty);
@@ -734,9 +760,8 @@ private func EnsurePAFSStock(settings: ref<PAFSSettings>) -> Void {
         return;
     }
 
-    // Ensure baseline stock and inventory are initialized before modifying
+    // Ensure baseline stock array is initialized before synchronizing
     this.LazyInitStock();
-    this.FillVendorInventory(true);
 
     let vendorID: TweakDBID = this.GetVendorTweakID();
     let vendorEnabled: Bool = settings.IsVendorRecordEnabled(vendorID, vendorType);
@@ -763,59 +788,25 @@ private func EnsurePAFSStock(settings: ref<PAFSSettings>) -> Void {
 
     let transSystem: ref<TransactionSystem> = GameInstance.GetTransactionSystem(this.m_gameInstance);
 
-    let perkIndex: Int32 = -1;
-    let attrIndex: Int32 = -1;
-    let foodIndex: Int32 = -1;
-    let cwIndex: Int32 = -1;
-    let soloIndex: Int32 = -1;
-    let shinoIndex: Int32 = -1;
-    let engIndex: Int32 = -1;
-    let netIndex: Int32 = -1;
-    let headIndex: Int32 = -1;
-    let currentTDB: TweakDBID;
+    // 1. Purge obsolete skill shard tiers and legacy clone items
     let i: Int32 = 0;
-
-    // Scan existing m_stock: deduplicate, track valid enabled items, remove disabled/obsolete ones
+    let curTDB: TweakDBID;
     while i < ArraySize(this.m_stock) {
-        currentTDB = ItemID.GetTDBID(this.m_stock[i].itemID);
-        if currentTDB == perkTDB {
-            if allowPerk {
-                if perkIndex < 0 { perkIndex = i; i += 1; } else { ArrayErase(this.m_stock, i); }
-            } else { ArrayErase(this.m_stock, i); }
-        } else if currentTDB == attrTDB {
-            if allowAttr {
-                if attrIndex < 0 { attrIndex = i; i += 1; } else { ArrayErase(this.m_stock, i); }
-            } else { ArrayErase(this.m_stock, i); }
-        } else if currentTDB == foodTDB {
-            if allowFood {
-                if foodIndex < 0 { foodIndex = i; i += 1; } else { ArrayErase(this.m_stock, i); }
-            } else { ArrayErase(this.m_stock, i); }
-        } else if currentTDB == cwTDB {
-            if allowCW {
-                if cwIndex < 0 { cwIndex = i; i += 1; } else { ArrayErase(this.m_stock, i); }
-            } else { ArrayErase(this.m_stock, i); }
-        } else if currentTDB == soloTDB {
-            if allowSolo {
-                if soloIndex < 0 { soloIndex = i; i += 1; } else { ArrayErase(this.m_stock, i); }
-            } else { ArrayErase(this.m_stock, i); }
-        } else if currentTDB == shinoTDB {
-            if allowShino {
-                if shinoIndex < 0 { shinoIndex = i; i += 1; } else { ArrayErase(this.m_stock, i); }
-            } else { ArrayErase(this.m_stock, i); }
-        } else if currentTDB == engTDB {
-            if allowEng {
-                if engIndex < 0 { engIndex = i; i += 1; } else { ArrayErase(this.m_stock, i); }
-            } else { ArrayErase(this.m_stock, i); }
-        } else if currentTDB == netTDB {
-            if allowNet {
-                if netIndex < 0 { netIndex = i; i += 1; } else { ArrayErase(this.m_stock, i); }
-            } else { ArrayErase(this.m_stock, i); }
-        } else if currentTDB == headTDB {
-            if allowHead {
-                if headIndex < 0 { headIndex = i; i += 1; } else { ArrayErase(this.m_stock, i); }
-            } else { ArrayErase(this.m_stock, i); }
-        } else if PAFSSettings.IsPAFSSkillShard(currentTDB) {
-            // Purge inactive/obsolete tier shards from vendor inventory
+        curTDB = ItemID.GetTDBID(this.m_stock[i].itemID);
+        if PAFSSettings.IsPAFSSkillShard(curTDB) {
+            // Remove shards that don't match the active selected tier
+            if curTDB != soloTDB && curTDB != shinoTDB && curTDB != engTDB && curTDB != netTDB && curTDB != headTDB {
+                if IsDefined(transSystem) {
+                    let inactiveQty: Int32 = transSystem.GetItemQuantity(this.m_vendorObject, this.m_stock[i].itemID);
+                    if inactiveQty > 0 {
+                        transSystem.RemoveItem(this.m_vendorObject, this.m_stock[i].itemID, inactiveQty);
+                    }
+                }
+                ArrayErase(this.m_stock, i);
+            } else {
+                i += 1;
+            }
+        } else if curTDB == t"Items.Custom_Infinite_PerkShard" || curTDB == t"Items.Custom_Infinite_AttributeShard" || curTDB == t"Items.Custom_Infinite_HealthFood" {
             if IsDefined(transSystem) {
                 let inactiveQty: Int32 = transSystem.GetItemQuantity(this.m_vendorObject, this.m_stock[i].itemID);
                 if inactiveQty > 0 {
@@ -823,23 +814,21 @@ private func EnsurePAFSStock(settings: ref<PAFSSettings>) -> Void {
                 }
             }
             ArrayErase(this.m_stock, i);
-        } else if currentTDB == t"Items.Custom_Infinite_PerkShard" || currentTDB == t"Items.Custom_Infinite_AttributeShard" || currentTDB == t"Items.Custom_Infinite_HealthFood" {
-            ArrayErase(this.m_stock, i);
         } else {
             i += 1;
         }
     }
 
-    // Sync all PAFS items to vendor stock and inventory
-    this.SyncPAFSItemStock(perkTDB, allowPerk, perkIndex, transSystem);
-    this.SyncPAFSItemStock(attrTDB, allowAttr, attrIndex, transSystem);
-    this.SyncPAFSItemStock(foodTDB, allowFood, foodIndex, transSystem);
-    this.SyncPAFSItemStock(cwTDB, allowCW, cwIndex, transSystem);
-    this.SyncPAFSItemStock(soloTDB, allowSolo, soloIndex, transSystem);
-    this.SyncPAFSItemStock(shinoTDB, allowShino, shinoIndex, transSystem);
-    this.SyncPAFSItemStock(engTDB, allowEng, engIndex, transSystem);
-    this.SyncPAFSItemStock(netTDB, allowNet, netIndex, transSystem);
-    this.SyncPAFSItemStock(headTDB, allowHead, headIndex, transSystem);
+    // 2. Synchronize all PAFS items to vendor stock and TransactionSystem
+    this.SyncPAFSItemStock(perkTDB, allowPerk, transSystem);
+    this.SyncPAFSItemStock(attrTDB, allowAttr, transSystem);
+    this.SyncPAFSItemStock(foodTDB, allowFood, transSystem);
+    this.SyncPAFSItemStock(cwTDB, allowCW, transSystem);
+    this.SyncPAFSItemStock(soloTDB, allowSolo, transSystem);
+    this.SyncPAFSItemStock(shinoTDB, allowShino, transSystem);
+    this.SyncPAFSItemStock(engTDB, allowEng, transSystem);
+    this.SyncPAFSItemStock(netTDB, allowNet, transSystem);
+    this.SyncPAFSItemStock(headTDB, allowHead, transSystem);
 }
 
 // -----------------------------------------------------------------
@@ -883,26 +872,36 @@ public func GetItemsForSale(checkPlayerCanBuy: Bool) -> array<SItemStack> {
     let headTDB: TweakDBID = settings.GetActiveSkillShardTDB(gamedataProficiencyType.CoolSkill);
     let itemTDB: TweakDBID;
 
+    let addedPerk: Bool = false;
+    let addedAttr: Bool = false;
+    let addedFood: Bool = false;
+    let addedCW: Bool = false;
+    let addedSolo: Bool = false;
+    let addedShino: Bool = false;
+    let addedEng: Bool = false;
+    let addedNet: Bool = false;
+    let addedHead: Bool = false;
+
     for stack in items {
         itemTDB = ItemID.GetTDBID(stack.itemID);
         if itemTDB == perkTDB {
-            if allowPerk { ArrayPush(filtered, stack); }
+            if allowPerk && !addedPerk { ArrayPush(filtered, stack); addedPerk = true; }
         } else if itemTDB == attrTDB {
-            if allowAttr { ArrayPush(filtered, stack); }
+            if allowAttr && !addedAttr { ArrayPush(filtered, stack); addedAttr = true; }
         } else if itemTDB == foodTDB {
-            if allowFood { ArrayPush(filtered, stack); }
+            if allowFood && !addedFood { ArrayPush(filtered, stack); addedFood = true; }
         } else if itemTDB == cwTDB {
-            if allowCW { ArrayPush(filtered, stack); }
+            if allowCW && !addedCW { ArrayPush(filtered, stack); addedCW = true; }
         } else if itemTDB == soloTDB {
-            if allowSolo { ArrayPush(filtered, stack); }
+            if allowSolo && !addedSolo { ArrayPush(filtered, stack); addedSolo = true; }
         } else if itemTDB == shinoTDB {
-            if allowShino { ArrayPush(filtered, stack); }
+            if allowShino && !addedShino { ArrayPush(filtered, stack); addedShino = true; }
         } else if itemTDB == engTDB {
-            if allowEng { ArrayPush(filtered, stack); }
+            if allowEng && !addedEng { ArrayPush(filtered, stack); addedEng = true; }
         } else if itemTDB == netTDB {
-            if allowNet { ArrayPush(filtered, stack); }
+            if allowNet && !addedNet { ArrayPush(filtered, stack); addedNet = true; }
         } else if itemTDB == headTDB {
-            if allowHead { ArrayPush(filtered, stack); }
+            if allowHead && !addedHead { ArrayPush(filtered, stack); addedHead = true; }
         } else if PAFSSettings.IsPAFSSkillShard(itemTDB) {
             // Drop inactive / obsolete tier shards
         } else if itemTDB == t"Items.Custom_Infinite_PerkShard" || itemTDB == t"Items.Custom_Infinite_AttributeShard" || itemTDB == t"Items.Custom_Infinite_HealthFood" {
