@@ -37,7 +37,7 @@ public class PAFSSettings extends ScriptableSystem {
     @runtimeProperty("ModSettings.category", "Quick Presets")
     @runtimeProperty("ModSettings.category.order", "1")
     @runtimeProperty("ModSettings.displayName", "Price Preset")
-    @runtimeProperty("ModSettings.description", "Quick pricing preset across all items. Skill shard prices scale with chosen Tier. Select 'Custom' to use the individual sliders under Category 2.\n• Casual: Perk 3.5k | Attr 5k | CW 4k | Skill 1.5k–12k E$\n• Balanced (Default): Perk 20k | Attr 30k | CW 25k | Skill 6k–50k E$\n• Expensive: Perk 50k | Attr 65k | CW 55k | Skill 15k–75k E$\n• Custom: Uses your custom slider values.")
+    @runtimeProperty("ModSettings.description", "Quick economy scale (Casual, Balanced, Expensive). Select 'Custom' to use sliders below.")
     @runtimeProperty("ModSettings.displayValues.Casual", "Casual Preset")
     @runtimeProperty("ModSettings.displayValues.Balanced", "Balanced Preset (Default)")
     @runtimeProperty("ModSettings.displayValues.Expensive", "Expensive Preset")
@@ -51,7 +51,7 @@ public class PAFSSettings extends ScriptableSystem {
     @runtimeProperty("ModSettings.category", "Advanced Prices")
     @runtimeProperty("ModSettings.category.order", "2")
     @runtimeProperty("ModSettings.displayName", "Perk Shard Price")
-    @runtimeProperty("ModSettings.description", "Price in Eurodollars (E$) to buy Perk Point Shards (+1 Perk Point). Only active when Price Preset is set to Custom.")
+    @runtimeProperty("ModSettings.description", "Price in E$ for +1 Perk Point shard. (Custom preset only)")
     @runtimeProperty("ModSettings.step", "500")
     @runtimeProperty("ModSettings.min", "0")
     @runtimeProperty("ModSettings.max", "100000")
@@ -61,7 +61,7 @@ public class PAFSSettings extends ScriptableSystem {
     @runtimeProperty("ModSettings.category", "Advanced Prices")
     @runtimeProperty("ModSettings.category.order", "2")
     @runtimeProperty("ModSettings.displayName", "Attribute Shard Price")
-    @runtimeProperty("ModSettings.description", "Price in Eurodollars (E$) to buy Attribute Point Shards (+1 Attribute Point). Only active when Price Preset is set to Custom.")
+    @runtimeProperty("ModSettings.description", "Price in E$ for +1 Attribute Point shard. (Custom preset only)")
     @runtimeProperty("ModSettings.step", "500")
     @runtimeProperty("ModSettings.min", "0")
     @runtimeProperty("ModSettings.max", "100000")
@@ -71,7 +71,7 @@ public class PAFSSettings extends ScriptableSystem {
     @runtimeProperty("ModSettings.category", "Advanced Prices")
     @runtimeProperty("ModSettings.category.order", "2")
     @runtimeProperty("ModSettings.displayName", "Capacity Shard Price")
-    @runtimeProperty("ModSettings.description", "Price in Eurodollars (E$) to buy Cyberware Capacity Shards. Only active when Price Preset is set to Custom.")
+    @runtimeProperty("ModSettings.description", "Price in E$ for Cyberware Capacity shard. (Custom preset only)")
     @runtimeProperty("ModSettings.step", "500")
     @runtimeProperty("ModSettings.min", "0")
     @runtimeProperty("ModSettings.max", "100000")
@@ -81,7 +81,7 @@ public class PAFSSettings extends ScriptableSystem {
     @runtimeProperty("ModSettings.category", "Advanced Prices")
     @runtimeProperty("ModSettings.category.order", "2")
     @runtimeProperty("ModSettings.displayName", "Skill Shard Price")
-    @runtimeProperty("ModSettings.description", "Flat price in Eurodollars (E$) to buy Skill Progression Shards across all tiers. Only active when Price Preset is set to Custom.")
+    @runtimeProperty("ModSettings.description", "Flat price in E$ for Skill Progression shards. (Custom preset only)")
     @runtimeProperty("ModSettings.step", "500")
     @runtimeProperty("ModSettings.min", "0")
     @runtimeProperty("ModSettings.max", "100000")
@@ -91,7 +91,7 @@ public class PAFSSettings extends ScriptableSystem {
     @runtimeProperty("ModSettings.category", "Advanced Prices")
     @runtimeProperty("ModSettings.category.order", "2")
     @runtimeProperty("ModSettings.displayName", "Health Food Price")
-    @runtimeProperty("ModSettings.description", "Price in Eurodollars (E$) to buy Permanent Health Food (+5 Max Health). Only active when Price Preset is set to Custom.")
+    @runtimeProperty("ModSettings.description", "Price in E$ for Permanent Health Food (+5 HP). (Custom preset only)")
     @runtimeProperty("ModSettings.step", "500")
     @runtimeProperty("ModSettings.min", "0")
     @runtimeProperty("ModSettings.max", "100000")
@@ -104,28 +104,28 @@ public class PAFSSettings extends ScriptableSystem {
     @runtimeProperty("ModSettings.category", "Item Availability")
     @runtimeProperty("ModSettings.category.order", "3")
     @runtimeProperty("ModSettings.displayName", "Perk Point Shards")
-    @runtimeProperty("ModSettings.description", "Allow Perk Point Shards (+1 Perk Point) to appear in enabled shops. Shards are instantly learned upon purchase.")
+    @runtimeProperty("ModSettings.description", "Stock +1 Perk Point shards in shops. Learned instantly upon purchase.")
     public let enablePerkShards: Bool = true;
 
     @runtimeProperty("ModSettings.mod", "PAFS - Perks & Attributes for Sale")
     @runtimeProperty("ModSettings.category", "Item Availability")
     @runtimeProperty("ModSettings.category.order", "3")
     @runtimeProperty("ModSettings.displayName", "Attribute Point Shards")
-    @runtimeProperty("ModSettings.description", "Allow Attribute Point Shards (+1 Attribute Point) to appear in enabled shops. Shards are instantly learned upon purchase.")
+    @runtimeProperty("ModSettings.description", "Stock +1 Attribute Point shards in shops. Learned instantly upon purchase.")
     public let enableAttributeShards: Bool = true;
 
     @runtimeProperty("ModSettings.mod", "PAFS - Perks & Attributes for Sale")
     @runtimeProperty("ModSettings.category", "Item Availability")
     @runtimeProperty("ModSettings.category.order", "3")
     @runtimeProperty("ModSettings.displayName", "Cyberware Capacity Shards")
-    @runtimeProperty("ModSettings.description", "Allow Cyberware Capacity Shards to appear in shops. Permanently increases cyberware capacity up to the game's hard cap of 450. Vendors automatically stop selling them once 450 capacity is reached.")
+    @runtimeProperty("ModSettings.description", "Stock Cyberware Capacity shards in shops. Stops selling when 450 cap is reached.")
     public let enableCWCapacityShards: Bool = true;
 
     @runtimeProperty("ModSettings.mod", "PAFS - Perks & Attributes for Sale")
     @runtimeProperty("ModSettings.category", "Item Availability")
     @runtimeProperty("ModSettings.category.order", "3")
     @runtimeProperty("ModSettings.displayName", "Capacity Shard Distribution")
-    @runtimeProperty("ModSettings.description", "Where to buy Cyberware Capacity Shards:\n• Ripperdocs Only (Recommended): Sold exclusively at ripperdoc clinics (Viktor, Fingers, Cassius, etc.) and Michał Kiciński in Dogtown Stadium.\n• All Enabled Vendors: Sold at every shop category enabled under Category 5.")
+    @runtimeProperty("ModSettings.description", "Ripperdocs Only restricts shards to clinics & Dogtown Stadium. All Vendors sells everywhere.")
     @runtimeProperty("ModSettings.displayValues.RipperdocsOnly", "Ripperdocs Only (Recommended)")
     @runtimeProperty("ModSettings.displayValues.AllVendors", "All Enabled PAFS Vendors")
     public let cwDistribution: PAFSCWDistribution = PAFSCWDistribution.RipperdocsOnly;
@@ -134,7 +134,7 @@ public class PAFSSettings extends ScriptableSystem {
     @runtimeProperty("ModSettings.category", "Item Availability")
     @runtimeProperty("ModSettings.category.order", "3")
     @runtimeProperty("ModSettings.displayName", "Capacity Bonus per Shard")
-    @runtimeProperty("ModSettings.description", "Permanent Cyberware Capacity granted per shard purchased (+1 to +25). Automatically clamped to the game's maximum capacity cap (450).")
+    @runtimeProperty("ModSettings.description", "Capacity granted per shard (+1 to +25). Clamped at 450 cap.")
     @runtimeProperty("ModSettings.step", "1")
     @runtimeProperty("ModSettings.min", "1")
     @runtimeProperty("ModSettings.max", "25")
@@ -144,7 +144,7 @@ public class PAFSSettings extends ScriptableSystem {
     @runtimeProperty("ModSettings.category", "Item Availability")
     @runtimeProperty("ModSettings.category.order", "3")
     @runtimeProperty("ModSettings.displayName", "Permanent Health Food")
-    @runtimeProperty("ModSettings.description", "Allow Permanent Health Food (+5 Max Health upon consumption) to appear in enabled food stalls, diners, and bars.")
+    @runtimeProperty("ModSettings.description", "Stock Permanent Health Food (+5 Max Health) at diners and food stalls.")
     public let enableHealthFood: Bool = false;
 
     // -------------------------------------------------------------
@@ -154,14 +154,14 @@ public class PAFSSettings extends ScriptableSystem {
     @runtimeProperty("ModSettings.category", "Skill Progression Shards")
     @runtimeProperty("ModSettings.category.order", "4")
     @runtimeProperty("ModSettings.displayName", "Skill Progression Shards")
-    @runtimeProperty("ModSettings.description", "Allow custom Skill Progression Shards (Solo, Shinobi, Engineer, Netrunner, Headhunter) to appear in shops. Shards auto-consume immediately upon purchase to grant XP. Vendors automatically stop selling any skill once you reach the Level 60 cap.")
+    @runtimeProperty("ModSettings.description", "Stock custom skill shards (Solo, Shinobi, etc.). Stops selling capped skills (Lvl 60).")
     public let enableSkillShards: Bool = true;
 
     @runtimeProperty("ModSettings.mod", "PAFS - Perks & Attributes for Sale")
     @runtimeProperty("ModSettings.category", "Skill Progression Shards")
     @runtimeProperty("ModSettings.category.order", "4")
     @runtimeProperty("ModSettings.displayName", "Skill Shard Tier")
-    @runtimeProperty("ModSettings.description", "Visual tier quality, colored frame, and XP granted per shard:\n• Tier 1: Common (White, 1 dot) -> +500 XP\n• Tier 2: Uncommon (Green, 2 dots) -> +1,000 XP [Balanced Default]\n• Tier 3: Rare (Blue, 3 dots) -> +2,000 XP\n• Tier 4: Epic (Purple, 4 dots) -> +3,500 XP\n• Tier 5: Legendary (Gold, 5 dots) -> +5,000 XP")
+    @runtimeProperty("ModSettings.description", "Shard quality & XP: T1 (+500), T2 (+1k), T3 (+2k), T4 (+3.5k), T5 (+5k XP).")
     @runtimeProperty("ModSettings.displayValues.Tier1", "Tier 1: Basic (+500 XP)")
     @runtimeProperty("ModSettings.displayValues.Tier2", "Tier 2: Balanced (+1,000 XP) [Default]")
     @runtimeProperty("ModSettings.displayValues.Tier3", "Tier 3: Advanced (+2,000 XP)")
@@ -173,7 +173,7 @@ public class PAFSSettings extends ScriptableSystem {
     @runtimeProperty("ModSettings.category", "Skill Progression Shards")
     @runtimeProperty("ModSettings.category.order", "4")
     @runtimeProperty("ModSettings.displayName", "Skill Shard Distribution")
-    @runtimeProperty("ModSettings.description", "Where to find Skill Progression Shards in Night City:\n• Specialized Vendors (Lore-Friendly):\n  - Solo & Shinobi: Weapon Vendors (Wilson, 2nd Amendment) & Ripperdocs (Viktor, Fingers)\n  - Netrunner: Netrunner shops (Yoko in Kabuki market, Nix) & Tech Trainers\n  - Engineer: Tech shops, Gunsmiths & Junk vendors\n  - Headhunter: Gunsmiths, Ripperdocs & Skill Trainers\n  - Dogtown Stadium: Black Market dealer Michał Kiciński stocks all 5 skills!\n• Ripperdocs & Netrunners Only: Centralizes shards at medical clinics and netrunner specialists.\n• All Enabled Vendors: Every vendor category enabled in Category 5 stocks all 5 skill shards.")
+    @runtimeProperty("ModSettings.description", "Specialized: Solo/Shinobi at Guns & Rippers; Netrunner at Runners; Engineer at Tech; all 5 in Dogtown Stadium.")
     @runtimeProperty("ModSettings.displayValues.Specialized", "Specialized Vendors (Lore-Friendly)")
     @runtimeProperty("ModSettings.displayValues.RipperdocsAndNetrunners", "Ripperdocs & Netrunners Only")
     @runtimeProperty("ModSettings.displayValues.AllVendors", "All Enabled PAFS Vendors")
@@ -186,49 +186,49 @@ public class PAFSSettings extends ScriptableSystem {
     @runtimeProperty("ModSettings.category", "Vendor Availability")
     @runtimeProperty("ModSettings.category.order", "5")
     @runtimeProperty("ModSettings.displayName", "Weapon Vendors")
-    @runtimeProperty("ModSettings.description", "Stock enabled PAFS items at firearms, melee weapons, and gunsmith shops (e.g. Wilson / 2nd Amendment, Arroyo firearms, Coach Fred).")
+    @runtimeProperty("ModSettings.description", "Firearms, melee weapon shops, and gunsmiths (e.g. Wilson, Arroyo, Coach Fred).")
     public let enableWeapons: Bool = true;
 
     @runtimeProperty("ModSettings.mod", "PAFS - Perks & Attributes for Sale")
     @runtimeProperty("ModSettings.category", "Vendor Availability")
     @runtimeProperty("ModSettings.category.order", "5")
     @runtimeProperty("ModSettings.displayName", "Ripperdocs")
-    @runtimeProperty("ModSettings.description", "Stock enabled PAFS items at all Ripperdoc clinics across Night City and Dogtown (e.g. Viktor Vector, Cassius Ryder, Fingers, Kraviz, Robert Rainwater).")
+    @runtimeProperty("ModSettings.description", "Cyberware clinics across NC & Dogtown (e.g. Viktor, Fingers, Cassius, Farida).")
     public let enableRipperdocs: Bool = true;
 
     @runtimeProperty("ModSettings.mod", "PAFS - Perks & Attributes for Sale")
     @runtimeProperty("ModSettings.category", "Vendor Availability")
     @runtimeProperty("ModSettings.category.order", "5")
     @runtimeProperty("ModSettings.displayName", "Netrunners & Trainers")
-    @runtimeProperty("ModSettings.description", "Stock enabled PAFS items at Netrunner specialists, daemon shops, and skill trainers (e.g. Yoko in Kabuki market, Nix, Pacifica runners).")
+    @runtimeProperty("ModSettings.description", "Netrunner daemon specialists, tech stores, and trainers (e.g. Yoko, Nix, Pacifica).")
     public let enableNetrunners: Bool = true;
 
     @runtimeProperty("ModSettings.mod", "PAFS - Perks & Attributes for Sale")
     @runtimeProperty("ModSettings.category", "Vendor Availability")
     @runtimeProperty("ModSettings.category.order", "5")
     @runtimeProperty("ModSettings.displayName", "Junk Shops & Kiosks")
-    @runtimeProperty("ModSettings.description", "Stock enabled PAFS items at junk shops, pawnbrokers, street market traders, and kiosks (including Dogtown Stadium black market dealer Michał Kiciński).")
+    @runtimeProperty("ModSettings.description", "Pawnbrokers, kiosks, and black market dealers (e.g. Michał Kiciński in Dogtown Stadium).")
     public let enableJunk: Bool = false;
 
     @runtimeProperty("ModSettings.mod", "PAFS - Perks & Attributes for Sale")
     @runtimeProperty("ModSettings.category", "Vendor Availability")
     @runtimeProperty("ModSettings.category.order", "5")
     @runtimeProperty("ModSettings.displayName", "Pharmacies / Medpoints")
-    @runtimeProperty("ModSettings.description", "Stock enabled PAFS items at neighborhood pharmacies, medpoints, and medical clinics (e.g. Doc Ryder, Med-Vend kiosks).")
+    @runtimeProperty("ModSettings.description", "Neighborhood drugstores, med vendors, and medical clinics.")
     public let enableMedical: Bool = false;
 
     @runtimeProperty("ModSettings.mod", "PAFS - Perks & Attributes for Sale")
     @runtimeProperty("ModSettings.category", "Vendor Availability")
     @runtimeProperty("ModSettings.category.order", "5")
     @runtimeProperty("ModSettings.displayName", "Food & Bars")
-    @runtimeProperty("ModSettings.description", "Stock enabled PAFS items (such as Permanent Health Food) at diners, street food stalls, noodle shops, and nightlife bars (e.g. Afterlife, El Coyote Cojo).")
+    @runtimeProperty("ModSettings.description", "Diners, street noodles, and nightlife bars (e.g. Afterlife, El Coyote Cojo).")
     public let enableFood: Bool = false;
 
     @runtimeProperty("ModSettings.mod", "PAFS - Perks & Attributes for Sale")
     @runtimeProperty("ModSettings.category", "Vendor Availability")
     @runtimeProperty("ModSettings.category.order", "5")
     @runtimeProperty("ModSettings.displayName", "Clothing Stores")
-    @runtimeProperty("ModSettings.description", "Stock enabled PAFS items at clothing, apparel boutiques, and thread shops (e.g. Jinguji in City Center, Stylishly, Ded-Zep).")
+    @runtimeProperty("ModSettings.description", "Apparel boutiques and thread shops (e.g. Jinguji, Stylishly).")
     public let enableClothing: Bool = false;
 
     public func GetPerkShardPrice() -> Int32 {
@@ -354,6 +354,44 @@ public class PAFSSettings extends ScriptableSystem {
         return this.GetSkillShardPriceForTier(tier);
     }
 
+    public static func IsNetrunnerVendor(vendorID: TweakDBID, vendorType: gamedataVendorType) -> Bool {
+        if Equals(vendorType, gamedataVendorType.TechJunk) {
+            return true;
+        }
+        if vendorID == t"Vendors.wat_kab_netrunner_01" ||
+           vendorID == t"Vendors.wat_lch_netrunner_01" ||
+           vendorID == t"Vendors.wbr_jpn_netrunner_01" ||
+           vendorID == t"Vendors.wbr_jpn_netrunner_02" ||
+           vendorID == t"Vendors.hey_rey_netrunner_01" ||
+           vendorID == t"Vendors.pac_cvi_techstore_01" ||
+           vendorID == t"Vendors.NetrunnerTrainer" ||
+           vendorID == t"Vendors.cz_stadium_netrunner_01" ||
+           vendorID == t"Vendors.cz_con_netrunner_01" ||
+           vendorID == t"Vendors.wat_kab_techstore_01" ||
+           vendorID == t"Vendors.wbr_jpn_techstore_01" ||
+           vendorID == t"Vendors.std_arr_techstore_01" ||
+           vendorID == t"Vendors.std_rcr_techstore_01" ||
+           vendorID == t"Vendors.Tech_Junk" ||
+           vendorID == t"Vendors.Tech_Junk_EP1" {
+            return true;
+        }
+        return false;
+    }
+
+    public static func IsMeleeTrainerVendor(vendorID: TweakDBID) -> Bool {
+        if vendorID == t"Vendors.MeleeTrainer" ||
+           vendorID == t"Vendors.wat_lch_melee_01" ||
+           vendorID == t"Vendors.wat_lch_melee_02" ||
+           vendorID == t"Vendors.wbr_jpn_melee_01" ||
+           vendorID == t"Vendors.std_arr_melee_01" ||
+           vendorID == t"Vendors.pac_cvi_melee_01" ||
+           vendorID == t"Vendors.pac_wwd_melee_01" ||
+           vendorID == t"Vendors.bls_ina_se5_melee_01" {
+            return true;
+        }
+        return false;
+    }
+
     public func IsVendorTypeEnabled(type: gamedataVendorType) -> Bool {
         if Equals(type, gamedataVendorType.Gunsmith) {
             return this.enableWeapons;
@@ -361,7 +399,7 @@ public class PAFSSettings extends ScriptableSystem {
         if Equals(type, gamedataVendorType.RipperDoc) {
             return this.enableRipperdocs;
         }
-        if Equals(type, gamedataVendorType.SkillTrainer) || Equals(type, gamedataVendorType.Tech) || Equals(type, gamedataVendorType.Cyberware) {
+        if Equals(type, gamedataVendorType.SkillTrainer) {
             return this.enableNetrunners;
         }
         if Equals(type, gamedataVendorType.Junk) || Equals(type, gamedataVendorType.TechJunk) || Equals(type, gamedataVendorType.Kiosk) || Equals(type, gamedataVendorType.Market) {
@@ -373,10 +411,10 @@ public class PAFSSettings extends ScriptableSystem {
         if Equals(type, gamedataVendorType.Food) || Equals(type, gamedataVendorType.Drinks) || Equals(type, gamedataVendorType.GrilledFood) || Equals(type, gamedataVendorType.PackedFood) {
             return this.enableFood;
         }
-        if Equals(type, gamedataVendorType.Clothing) || Equals(type, gamedataVendorType.Clothes) || Equals(type, gamedataVendorType.Armorsmith) {
+        if Equals(type, gamedataVendorType.Clothes) || Equals(type, gamedataVendorType.Armorsmith) {
             return this.enableClothing;
         }
-        if Equals(type, gamedataVendorType.DropPoint) || Equals(type, gamedataVendorType.VendingMachine) {
+        if Equals(type, gamedataVendorType.VendingMachine) {
             return false;
         }
         return true;
@@ -388,6 +426,14 @@ public class PAFSSettings extends ScriptableSystem {
         // Enable him if either Netrunners & Trainers OR Junk Shops are enabled!
         if vendorID == t"Vendors.cz_stadium_junk_01_michal_k" {
             return this.enableNetrunners || this.enableJunk;
+        }
+        // Specific Netrunner & Tech shops belong to Netrunners & Trainers
+        if PAFSSettings.IsNetrunnerVendor(vendorID, type) {
+            return this.enableNetrunners;
+        }
+        // Melee weapon vendors & boxing trainers (Coach Fred) belong to Weapon Vendors
+        if PAFSSettings.IsMeleeTrainerVendor(vendorID) {
+            return this.enableWeapons;
         }
         return this.IsVendorTypeEnabled(type);
     }
@@ -450,32 +496,42 @@ public class PAFSSettings extends ScriptableSystem {
         if Equals(this.skillDistribution, PAFSSkillDistribution.AllVendors) {
             return true;
         }
+
+        let isRipper: Bool = Equals(vendorType, gamedataVendorType.RipperDoc);
+        let isNetrunner: Bool = PAFSSettings.IsNetrunnerVendor(vendorID, vendorType) || Equals(vendorType, gamedataVendorType.SkillTrainer);
+        let isGunsmith: Bool = Equals(vendorType, gamedataVendorType.Gunsmith);
+        let isMelee: Bool = PAFSSettings.IsMeleeTrainerVendor(vendorID);
+        let isJunk: Bool = Equals(vendorType, gamedataVendorType.Junk) || Equals(vendorType, gamedataVendorType.Market) || Equals(vendorType, gamedataVendorType.Kiosk);
+
         if Equals(this.skillDistribution, PAFSSkillDistribution.RipperdocsAndNetrunners) {
-            return Equals(vendorType, gamedataVendorType.RipperDoc) || Equals(vendorType, gamedataVendorType.SkillTrainer) || Equals(vendorType, gamedataVendorType.Tech) || Equals(vendorType, gamedataVendorType.Cyberware);
+            return isRipper || isNetrunner;
         }
+
         if Equals(this.skillDistribution, PAFSSkillDistribution.Specialized) {
+            // Solo: Weapon Vendors, Ripperdocs, and Melee Trainers (Coach Fred)
             if Equals(skillProf, gamedataProficiencyType.StrengthSkill) {
-                // Solo: Gunsmiths & Ripperdocs
-                return Equals(vendorType, gamedataVendorType.Gunsmith) || Equals(vendorType, gamedataVendorType.RipperDoc);
+                return isGunsmith || isRipper || isMelee;
             }
+            // Shinobi: Weapon Vendors, Ripperdocs, and Melee/Blade Trainers
             if Equals(skillProf, gamedataProficiencyType.ReflexesSkill) {
-                // Shinobi: Gunsmiths & Ripperdocs
-                return Equals(vendorType, gamedataVendorType.Gunsmith) || Equals(vendorType, gamedataVendorType.RipperDoc);
+                return isGunsmith || isRipper || isMelee;
             }
+            // Engineer: Gunsmiths, Techstores / Netrunner shops, and Junk vendors
             if Equals(skillProf, gamedataProficiencyType.TechnicalAbilitySkill) {
-                // Engineer: Tech/Trainers, Gunsmiths, Junk
-                return Equals(vendorType, gamedataVendorType.Tech) || Equals(vendorType, gamedataVendorType.SkillTrainer) || Equals(vendorType, gamedataVendorType.Gunsmith);
+                return isGunsmith || isNetrunner || isJunk;
             }
+            // Netrunner: Netrunner shops and Techstores
             if Equals(skillProf, gamedataProficiencyType.IntelligenceSkill) {
-                // Netrunner: Netrunner shops & Skill Trainers
-                return Equals(vendorType, gamedataVendorType.SkillTrainer) || Equals(vendorType, gamedataVendorType.Tech) || Equals(vendorType, gamedataVendorType.Cyberware);
+                return isNetrunner;
             }
+            // Headhunter: Gunsmiths, Ripperdocs, and Melee/Skill Trainers
             if Equals(skillProf, gamedataProficiencyType.CoolSkill) {
-                // Headhunter: Gunsmiths, Ripperdocs, Skill Trainers
-                return Equals(vendorType, gamedataVendorType.Gunsmith) || Equals(vendorType, gamedataVendorType.RipperDoc) || Equals(vendorType, gamedataVendorType.SkillTrainer);
+                return isGunsmith || isRipper || isMelee;
             }
+            return false;
         }
-        return true;
+
+        return false;
     }
 
     public static func GetSkillShardTDB(prof: gamedataProficiencyType, tier: PAFSSkillShardTier) -> TweakDBID {
