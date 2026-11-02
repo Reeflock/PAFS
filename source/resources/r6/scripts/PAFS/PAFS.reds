@@ -514,7 +514,8 @@ public class PAFSSettings extends ScriptableSystem {
             if Equals(tier, PAFSSkillShardTier.Tier4) { return t"Items.PAFS_HeadhunterShard_T4"; }
             if Equals(tier, PAFSSkillShardTier.Tier5) { return t"Items.PAFS_HeadhunterShard_T5"; }
         }
-        return TDBID.undefined();
+        let fallbackID: TweakDBID;
+        return fallbackID;
     }
 
     public func GetActiveSkillShardTDB(prof: gamedataProficiencyType) -> TweakDBID {
