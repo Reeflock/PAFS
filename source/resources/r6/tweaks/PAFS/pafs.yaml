@@ -75,6 +75,8 @@ Items.PAFS_CyberwareCapacityShard:
     - LargeSkillbook
 
 # 6. Custom Skill Progression Shards
+# -------------------------------------------------------------
+# Base Templates
 Items.PAFS_SoloShard:
   $base: Items.BodySkill_Skillbook
   displayName: LocKey#93273
@@ -96,6 +98,26 @@ Items.PAFS_SoloShard:
     - SkipActivityLogOnRemove
     - DontShowLooted
     - LargeSkillbook
+
+Items.PAFS_SoloShard_T1:
+  $base: Items.PAFS_SoloShard
+  quality: Quality.Common
+
+Items.PAFS_SoloShard_T2:
+  $base: Items.PAFS_SoloShard
+  quality: Quality.Uncommon
+
+Items.PAFS_SoloShard_T3:
+  $base: Items.PAFS_SoloShard
+  quality: Quality.Rare
+
+Items.PAFS_SoloShard_T4:
+  $base: Items.PAFS_SoloShard
+  quality: Quality.Epic
+
+Items.PAFS_SoloShard_T5:
+  $base: Items.PAFS_SoloShard
+  quality: Quality.Legendary
 
 Items.PAFS_ShinobiShard:
   $base: Items.ReflexesSkill_Skillbook
@@ -119,6 +141,26 @@ Items.PAFS_ShinobiShard:
     - DontShowLooted
     - LargeSkillbook
 
+Items.PAFS_ShinobiShard_T1:
+  $base: Items.PAFS_ShinobiShard
+  quality: Quality.Common
+
+Items.PAFS_ShinobiShard_T2:
+  $base: Items.PAFS_ShinobiShard
+  quality: Quality.Uncommon
+
+Items.PAFS_ShinobiShard_T3:
+  $base: Items.PAFS_ShinobiShard
+  quality: Quality.Rare
+
+Items.PAFS_ShinobiShard_T4:
+  $base: Items.PAFS_ShinobiShard
+  quality: Quality.Epic
+
+Items.PAFS_ShinobiShard_T5:
+  $base: Items.PAFS_ShinobiShard
+  quality: Quality.Legendary
+
 Items.PAFS_EngineerShard:
   $base: Items.TechnicalAbilitySkill_Skillbook
   displayName: LocKey#51169
@@ -140,6 +182,26 @@ Items.PAFS_EngineerShard:
     - SkipActivityLogOnRemove
     - DontShowLooted
     - LargeSkillbook
+
+Items.PAFS_EngineerShard_T1:
+  $base: Items.PAFS_EngineerShard
+  quality: Quality.Common
+
+Items.PAFS_EngineerShard_T2:
+  $base: Items.PAFS_EngineerShard
+  quality: Quality.Uncommon
+
+Items.PAFS_EngineerShard_T3:
+  $base: Items.PAFS_EngineerShard
+  quality: Quality.Rare
+
+Items.PAFS_EngineerShard_T4:
+  $base: Items.PAFS_EngineerShard
+  quality: Quality.Epic
+
+Items.PAFS_EngineerShard_T5:
+  $base: Items.PAFS_EngineerShard
+  quality: Quality.Legendary
 
 Items.PAFS_NetrunnerShard:
   $base: Items.IntelligenceSkill_Skillbook_Reward
@@ -163,6 +225,26 @@ Items.PAFS_NetrunnerShard:
     - DontShowLooted
     - LargeSkillbook
 
+Items.PAFS_NetrunnerShard_T1:
+  $base: Items.PAFS_NetrunnerShard
+  quality: Quality.Common
+
+Items.PAFS_NetrunnerShard_T2:
+  $base: Items.PAFS_NetrunnerShard
+  quality: Quality.Uncommon
+
+Items.PAFS_NetrunnerShard_T3:
+  $base: Items.PAFS_NetrunnerShard
+  quality: Quality.Rare
+
+Items.PAFS_NetrunnerShard_T4:
+  $base: Items.PAFS_NetrunnerShard
+  quality: Quality.Epic
+
+Items.PAFS_NetrunnerShard_T5:
+  $base: Items.PAFS_NetrunnerShard
+  quality: Quality.Legendary
+
 Items.PAFS_HeadhunterShard:
   $base: Items.CoolSkill_Skillbook
   displayName: LocKey#93279
@@ -184,6 +266,26 @@ Items.PAFS_HeadhunterShard:
     - SkipActivityLogOnRemove
     - DontShowLooted
     - LargeSkillbook
+
+Items.PAFS_HeadhunterShard_T1:
+  $base: Items.PAFS_HeadhunterShard
+  quality: Quality.Common
+
+Items.PAFS_HeadhunterShard_T2:
+  $base: Items.PAFS_HeadhunterShard
+  quality: Quality.Uncommon
+
+Items.PAFS_HeadhunterShard_T3:
+  $base: Items.PAFS_HeadhunterShard
+  quality: Quality.Rare
+
+Items.PAFS_HeadhunterShard_T4:
+  $base: Items.PAFS_HeadhunterShard
+  quality: Quality.Epic
+
+Items.PAFS_HeadhunterShard_T5:
+  $base: Items.PAFS_HeadhunterShard
+  quality: Quality.Legendary
 
 # 7. Shared Vendor Items
 Vendors.PAFS_VendorItem_PerkShard:
@@ -208,27 +310,27 @@ Vendors.PAFS_VendorItem_CWCapacityShard:
 
 Vendors.PAFS_VendorItem_SoloShard:
   $type: VendorItem
-  item: Items.PAFS_SoloShard
+  item: Items.PAFS_SoloShard_T2
   quantity: [ Vendors.PAFS_StockModifier ]
 
 Vendors.PAFS_VendorItem_ShinobiShard:
   $type: VendorItem
-  item: Items.PAFS_ShinobiShard
+  item: Items.PAFS_ShinobiShard_T2
   quantity: [ Vendors.PAFS_StockModifier ]
 
 Vendors.PAFS_VendorItem_EngineerShard:
   $type: VendorItem
-  item: Items.PAFS_EngineerShard
+  item: Items.PAFS_EngineerShard_T2
   quantity: [ Vendors.PAFS_StockModifier ]
 
 Vendors.PAFS_VendorItem_NetrunnerShard:
   $type: VendorItem
-  item: Items.PAFS_NetrunnerShard
+  item: Items.PAFS_NetrunnerShard_T2
   quantity: [ Vendors.PAFS_StockModifier ]
 
 Vendors.PAFS_VendorItem_HeadhunterShard:
   $type: VendorItem
-  item: Items.PAFS_HeadhunterShard
+  item: Items.PAFS_HeadhunterShard_T2
   quantity: [ Vendors.PAFS_StockModifier ]
 
 

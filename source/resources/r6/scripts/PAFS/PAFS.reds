@@ -314,35 +314,44 @@ public class PAFSSettings extends ScriptableSystem {
         return 1000;
     }
 
-    public func GetSkillShardPrice() -> Int32 {
+    public func GetSkillShardPriceForTier(tier: PAFSSkillShardTier) -> Int32 {
         if Equals(this.pricePreset, PAFSPricePreset.Custom) {
             return this.skillShardPrice;
         }
         if Equals(this.pricePreset, PAFSPricePreset.Casual) {
-            if Equals(this.skillTier, PAFSSkillShardTier.Tier1) { return 1500; }
-            if Equals(this.skillTier, PAFSSkillShardTier.Tier2) { return 3000; }
-            if Equals(this.skillTier, PAFSSkillShardTier.Tier3) { return 5500; }
-            if Equals(this.skillTier, PAFSSkillShardTier.Tier4) { return 8500; }
-            if Equals(this.skillTier, PAFSSkillShardTier.Tier5) { return 12000; }
+            if Equals(tier, PAFSSkillShardTier.Tier1) { return 1500; }
+            if Equals(tier, PAFSSkillShardTier.Tier2) { return 3000; }
+            if Equals(tier, PAFSSkillShardTier.Tier3) { return 5500; }
+            if Equals(tier, PAFSSkillShardTier.Tier4) { return 8500; }
+            if Equals(tier, PAFSSkillShardTier.Tier5) { return 12000; }
             return 3000;
         }
         if Equals(this.pricePreset, PAFSPricePreset.Balanced) {
-            if Equals(this.skillTier, PAFSSkillShardTier.Tier1) { return 6000; }
-            if Equals(this.skillTier, PAFSSkillShardTier.Tier2) { return 12000; }
-            if Equals(this.skillTier, PAFSSkillShardTier.Tier3) { return 22000; }
-            if Equals(this.skillTier, PAFSSkillShardTier.Tier4) { return 35000; }
-            if Equals(this.skillTier, PAFSSkillShardTier.Tier5) { return 50000; }
+            if Equals(tier, PAFSSkillShardTier.Tier1) { return 6000; }
+            if Equals(tier, PAFSSkillShardTier.Tier2) { return 12000; }
+            if Equals(tier, PAFSSkillShardTier.Tier3) { return 22000; }
+            if Equals(tier, PAFSSkillShardTier.Tier4) { return 35000; }
+            if Equals(tier, PAFSSkillShardTier.Tier5) { return 50000; }
             return 12000;
         }
         if Equals(this.pricePreset, PAFSPricePreset.Expensive) {
-            if Equals(this.skillTier, PAFSSkillShardTier.Tier1) { return 15000; }
-            if Equals(this.skillTier, PAFSSkillShardTier.Tier2) { return 28000; }
-            if Equals(this.skillTier, PAFSSkillShardTier.Tier3) { return 45000; }
-            if Equals(this.skillTier, PAFSSkillShardTier.Tier4) { return 60000; }
-            if Equals(this.skillTier, PAFSSkillShardTier.Tier5) { return 75000; }
+            if Equals(tier, PAFSSkillShardTier.Tier1) { return 15000; }
+            if Equals(tier, PAFSSkillShardTier.Tier2) { return 28000; }
+            if Equals(tier, PAFSSkillShardTier.Tier3) { return 45000; }
+            if Equals(tier, PAFSSkillShardTier.Tier4) { return 60000; }
+            if Equals(tier, PAFSSkillShardTier.Tier5) { return 75000; }
             return 28000;
         }
         return 12000;
+    }
+
+    public func GetSkillShardPrice() -> Int32 {
+        return this.GetSkillShardPriceForTier(this.skillTier);
+    }
+
+    public func GetSkillShardPriceByTDB(tdbID: TweakDBID) -> Int32 {
+        let tier: PAFSSkillShardTier = PAFSSettings.GetSkillShardTier(tdbID, this.skillTier);
+        return this.GetSkillShardPriceForTier(tier);
     }
 
     public func IsVendorTypeEnabled(type: gamedataVendorType) -> Bool {
@@ -469,6 +478,131 @@ public class PAFSSettings extends ScriptableSystem {
         return true;
     }
 
+    public static func GetSkillShardTDB(prof: gamedataProficiencyType, tier: PAFSSkillShardTier) -> TweakDBID {
+        if Equals(prof, gamedataProficiencyType.StrengthSkill) {
+            if Equals(tier, PAFSSkillShardTier.Tier1) { return t"Items.PAFS_SoloShard_T1"; }
+            if Equals(tier, PAFSSkillShardTier.Tier2) { return t"Items.PAFS_SoloShard_T2"; }
+            if Equals(tier, PAFSSkillShardTier.Tier3) { return t"Items.PAFS_SoloShard_T3"; }
+            if Equals(tier, PAFSSkillShardTier.Tier4) { return t"Items.PAFS_SoloShard_T4"; }
+            if Equals(tier, PAFSSkillShardTier.Tier5) { return t"Items.PAFS_SoloShard_T5"; }
+        }
+        if Equals(prof, gamedataProficiencyType.ReflexesSkill) {
+            if Equals(tier, PAFSSkillShardTier.Tier1) { return t"Items.PAFS_ShinobiShard_T1"; }
+            if Equals(tier, PAFSSkillShardTier.Tier2) { return t"Items.PAFS_ShinobiShard_T2"; }
+            if Equals(tier, PAFSSkillShardTier.Tier3) { return t"Items.PAFS_ShinobiShard_T3"; }
+            if Equals(tier, PAFSSkillShardTier.Tier4) { return t"Items.PAFS_ShinobiShard_T4"; }
+            if Equals(tier, PAFSSkillShardTier.Tier5) { return t"Items.PAFS_ShinobiShard_T5"; }
+        }
+        if Equals(prof, gamedataProficiencyType.TechnicalAbilitySkill) {
+            if Equals(tier, PAFSSkillShardTier.Tier1) { return t"Items.PAFS_EngineerShard_T1"; }
+            if Equals(tier, PAFSSkillShardTier.Tier2) { return t"Items.PAFS_EngineerShard_T2"; }
+            if Equals(tier, PAFSSkillShardTier.Tier3) { return t"Items.PAFS_EngineerShard_T3"; }
+            if Equals(tier, PAFSSkillShardTier.Tier4) { return t"Items.PAFS_EngineerShard_T4"; }
+            if Equals(tier, PAFSSkillShardTier.Tier5) { return t"Items.PAFS_EngineerShard_T5"; }
+        }
+        if Equals(prof, gamedataProficiencyType.IntelligenceSkill) {
+            if Equals(tier, PAFSSkillShardTier.Tier1) { return t"Items.PAFS_NetrunnerShard_T1"; }
+            if Equals(tier, PAFSSkillShardTier.Tier2) { return t"Items.PAFS_NetrunnerShard_T2"; }
+            if Equals(tier, PAFSSkillShardTier.Tier3) { return t"Items.PAFS_NetrunnerShard_T3"; }
+            if Equals(tier, PAFSSkillShardTier.Tier4) { return t"Items.PAFS_NetrunnerShard_T4"; }
+            if Equals(tier, PAFSSkillShardTier.Tier5) { return t"Items.PAFS_NetrunnerShard_T5"; }
+        }
+        if Equals(prof, gamedataProficiencyType.CoolSkill) {
+            if Equals(tier, PAFSSkillShardTier.Tier1) { return t"Items.PAFS_HeadhunterShard_T1"; }
+            if Equals(tier, PAFSSkillShardTier.Tier2) { return t"Items.PAFS_HeadhunterShard_T2"; }
+            if Equals(tier, PAFSSkillShardTier.Tier3) { return t"Items.PAFS_HeadhunterShard_T3"; }
+            if Equals(tier, PAFSSkillShardTier.Tier4) { return t"Items.PAFS_HeadhunterShard_T4"; }
+            if Equals(tier, PAFSSkillShardTier.Tier5) { return t"Items.PAFS_HeadhunterShard_T5"; }
+        }
+        return TDBID.undefined();
+    }
+
+    public func GetActiveSkillShardTDB(prof: gamedataProficiencyType) -> TweakDBID {
+        return PAFSSettings.GetSkillShardTDB(prof, this.skillTier);
+    }
+
+    public static func IsPAFSSkillShard(tdbID: TweakDBID) -> Bool {
+        if tdbID == t"Items.PAFS_SoloShard" || tdbID == t"Items.PAFS_SoloShard_T1" || tdbID == t"Items.PAFS_SoloShard_T2" || tdbID == t"Items.PAFS_SoloShard_T3" || tdbID == t"Items.PAFS_SoloShard_T4" || tdbID == t"Items.PAFS_SoloShard_T5" {
+            return true;
+        }
+        if tdbID == t"Items.PAFS_ShinobiShard" || tdbID == t"Items.PAFS_ShinobiShard_T1" || tdbID == t"Items.PAFS_ShinobiShard_T2" || tdbID == t"Items.PAFS_ShinobiShard_T3" || tdbID == t"Items.PAFS_ShinobiShard_T4" || tdbID == t"Items.PAFS_ShinobiShard_T5" {
+            return true;
+        }
+        if tdbID == t"Items.PAFS_EngineerShard" || tdbID == t"Items.PAFS_EngineerShard_T1" || tdbID == t"Items.PAFS_EngineerShard_T2" || tdbID == t"Items.PAFS_EngineerShard_T3" || tdbID == t"Items.PAFS_EngineerShard_T4" || tdbID == t"Items.PAFS_EngineerShard_T5" {
+            return true;
+        }
+        if tdbID == t"Items.PAFS_NetrunnerShard" || tdbID == t"Items.PAFS_NetrunnerShard_T1" || tdbID == t"Items.PAFS_NetrunnerShard_T2" || tdbID == t"Items.PAFS_NetrunnerShard_T3" || tdbID == t"Items.PAFS_NetrunnerShard_T4" || tdbID == t"Items.PAFS_NetrunnerShard_T5" {
+            return true;
+        }
+        if tdbID == t"Items.PAFS_HeadhunterShard" || tdbID == t"Items.PAFS_HeadhunterShard_T1" || tdbID == t"Items.PAFS_HeadhunterShard_T2" || tdbID == t"Items.PAFS_HeadhunterShard_T3" || tdbID == t"Items.PAFS_HeadhunterShard_T4" || tdbID == t"Items.PAFS_HeadhunterShard_T5" {
+            return true;
+        }
+        return false;
+    }
+
+    public static func GetSkillShardTier(tdbID: TweakDBID, fallbackTier: PAFSSkillShardTier) -> PAFSSkillShardTier {
+        if tdbID == t"Items.PAFS_SoloShard_T1" || tdbID == t"Items.PAFS_ShinobiShard_T1" || tdbID == t"Items.PAFS_EngineerShard_T1" || tdbID == t"Items.PAFS_NetrunnerShard_T1" || tdbID == t"Items.PAFS_HeadhunterShard_T1" {
+            return PAFSSkillShardTier.Tier1;
+        }
+        if tdbID == t"Items.PAFS_SoloShard_T2" || tdbID == t"Items.PAFS_ShinobiShard_T2" || tdbID == t"Items.PAFS_EngineerShard_T2" || tdbID == t"Items.PAFS_NetrunnerShard_T2" || tdbID == t"Items.PAFS_HeadhunterShard_T2" {
+            return PAFSSkillShardTier.Tier2;
+        }
+        if tdbID == t"Items.PAFS_SoloShard_T3" || tdbID == t"Items.PAFS_ShinobiShard_T3" || tdbID == t"Items.PAFS_EngineerShard_T3" || tdbID == t"Items.PAFS_NetrunnerShard_T3" || tdbID == t"Items.PAFS_HeadhunterShard_T3" {
+            return PAFSSkillShardTier.Tier3;
+        }
+        if tdbID == t"Items.PAFS_SoloShard_T4" || tdbID == t"Items.PAFS_ShinobiShard_T4" || tdbID == t"Items.PAFS_EngineerShard_T4" || tdbID == t"Items.PAFS_NetrunnerShard_T4" || tdbID == t"Items.PAFS_HeadhunterShard_T4" {
+            return PAFSSkillShardTier.Tier4;
+        }
+        if tdbID == t"Items.PAFS_SoloShard_T5" || tdbID == t"Items.PAFS_ShinobiShard_T5" || tdbID == t"Items.PAFS_EngineerShard_T5" || tdbID == t"Items.PAFS_NetrunnerShard_T5" || tdbID == t"Items.PAFS_HeadhunterShard_T5" {
+            return PAFSSkillShardTier.Tier5;
+        }
+        return fallbackTier;
+    }
+
+    public static func GetSkillShardData(tdbID: TweakDBID, out prof: gamedataProficiencyType, out skillName: String, out xp: Int32) -> Bool {
+        // Solo
+        if tdbID == t"Items.PAFS_SoloShard_T1" { prof = gamedataProficiencyType.StrengthSkill; skillName = "Solo"; xp = 500; return true; }
+        if tdbID == t"Items.PAFS_SoloShard_T2" { prof = gamedataProficiencyType.StrengthSkill; skillName = "Solo"; xp = 1000; return true; }
+        if tdbID == t"Items.PAFS_SoloShard_T3" { prof = gamedataProficiencyType.StrengthSkill; skillName = "Solo"; xp = 2000; return true; }
+        if tdbID == t"Items.PAFS_SoloShard_T4" { prof = gamedataProficiencyType.StrengthSkill; skillName = "Solo"; xp = 3500; return true; }
+        if tdbID == t"Items.PAFS_SoloShard_T5" { prof = gamedataProficiencyType.StrengthSkill; skillName = "Solo"; xp = 5000; return true; }
+        if tdbID == t"Items.PAFS_SoloShard" { prof = gamedataProficiencyType.StrengthSkill; skillName = "Solo"; xp = 1000; return true; }
+
+        // Shinobi
+        if tdbID == t"Items.PAFS_ShinobiShard_T1" { prof = gamedataProficiencyType.ReflexesSkill; skillName = "Shinobi"; xp = 500; return true; }
+        if tdbID == t"Items.PAFS_ShinobiShard_T2" { prof = gamedataProficiencyType.ReflexesSkill; skillName = "Shinobi"; xp = 1000; return true; }
+        if tdbID == t"Items.PAFS_ShinobiShard_T3" { prof = gamedataProficiencyType.ReflexesSkill; skillName = "Shinobi"; xp = 2000; return true; }
+        if tdbID == t"Items.PAFS_ShinobiShard_T4" { prof = gamedataProficiencyType.ReflexesSkill; skillName = "Shinobi"; xp = 3500; return true; }
+        if tdbID == t"Items.PAFS_ShinobiShard_T5" { prof = gamedataProficiencyType.ReflexesSkill; skillName = "Shinobi"; xp = 5000; return true; }
+        if tdbID == t"Items.PAFS_ShinobiShard" { prof = gamedataProficiencyType.ReflexesSkill; skillName = "Shinobi"; xp = 1000; return true; }
+
+        // Engineer
+        if tdbID == t"Items.PAFS_EngineerShard_T1" { prof = gamedataProficiencyType.TechnicalAbilitySkill; skillName = "Engineer"; xp = 500; return true; }
+        if tdbID == t"Items.PAFS_EngineerShard_T2" { prof = gamedataProficiencyType.TechnicalAbilitySkill; skillName = "Engineer"; xp = 1000; return true; }
+        if tdbID == t"Items.PAFS_EngineerShard_T3" { prof = gamedataProficiencyType.TechnicalAbilitySkill; skillName = "Engineer"; xp = 2000; return true; }
+        if tdbID == t"Items.PAFS_EngineerShard_T4" { prof = gamedataProficiencyType.TechnicalAbilitySkill; skillName = "Engineer"; xp = 3500; return true; }
+        if tdbID == t"Items.PAFS_EngineerShard_T5" { prof = gamedataProficiencyType.TechnicalAbilitySkill; skillName = "Engineer"; xp = 5000; return true; }
+        if tdbID == t"Items.PAFS_EngineerShard" { prof = gamedataProficiencyType.TechnicalAbilitySkill; skillName = "Engineer"; xp = 1000; return true; }
+
+        // Netrunner
+        if tdbID == t"Items.PAFS_NetrunnerShard_T1" { prof = gamedataProficiencyType.IntelligenceSkill; skillName = "Netrunner"; xp = 500; return true; }
+        if tdbID == t"Items.PAFS_NetrunnerShard_T2" { prof = gamedataProficiencyType.IntelligenceSkill; skillName = "Netrunner"; xp = 1000; return true; }
+        if tdbID == t"Items.PAFS_NetrunnerShard_T3" { prof = gamedataProficiencyType.IntelligenceSkill; skillName = "Netrunner"; xp = 2000; return true; }
+        if tdbID == t"Items.PAFS_NetrunnerShard_T4" { prof = gamedataProficiencyType.IntelligenceSkill; skillName = "Netrunner"; xp = 3500; return true; }
+        if tdbID == t"Items.PAFS_NetrunnerShard_T5" { prof = gamedataProficiencyType.IntelligenceSkill; skillName = "Netrunner"; xp = 5000; return true; }
+        if tdbID == t"Items.PAFS_NetrunnerShard" { prof = gamedataProficiencyType.IntelligenceSkill; skillName = "Netrunner"; xp = 1000; return true; }
+
+        // Headhunter
+        if tdbID == t"Items.PAFS_HeadhunterShard_T1" { prof = gamedataProficiencyType.CoolSkill; skillName = "Headhunter"; xp = 500; return true; }
+        if tdbID == t"Items.PAFS_HeadhunterShard_T2" { prof = gamedataProficiencyType.CoolSkill; skillName = "Headhunter"; xp = 1000; return true; }
+        if tdbID == t"Items.PAFS_HeadhunterShard_T3" { prof = gamedataProficiencyType.CoolSkill; skillName = "Headhunter"; xp = 2000; return true; }
+        if tdbID == t"Items.PAFS_HeadhunterShard_T4" { prof = gamedataProficiencyType.CoolSkill; skillName = "Headhunter"; xp = 3500; return true; }
+        if tdbID == t"Items.PAFS_HeadhunterShard_T5" { prof = gamedataProficiencyType.CoolSkill; skillName = "Headhunter"; xp = 5000; return true; }
+        if tdbID == t"Items.PAFS_HeadhunterShard" { prof = gamedataProficiencyType.CoolSkill; skillName = "Headhunter"; xp = 1000; return true; }
+
+        return false;
+    }
+
     public static func Get(gi: GameInstance) -> ref<PAFSSettings> {
         return GameInstance.GetScriptableSystemsContainer(gi).Get(n"PAFSSettings") as PAFSSettings;
     }
@@ -554,11 +688,11 @@ private func EnsurePAFSStock(settings: ref<PAFSSettings>) -> Void {
     let attrTDB: TweakDBID = t"Items.PAFS_AttributeShard";
     let foodTDB: TweakDBID = t"Items.PAFS_HealthFood";
     let cwTDB: TweakDBID = t"Items.PAFS_CyberwareCapacityShard";
-    let soloTDB: TweakDBID = t"Items.PAFS_SoloShard";
-    let shinoTDB: TweakDBID = t"Items.PAFS_ShinobiShard";
-    let engTDB: TweakDBID = t"Items.PAFS_EngineerShard";
-    let netTDB: TweakDBID = t"Items.PAFS_NetrunnerShard";
-    let headTDB: TweakDBID = t"Items.PAFS_HeadhunterShard";
+    let soloTDB: TweakDBID = settings.GetActiveSkillShardTDB(gamedataProficiencyType.StrengthSkill);
+    let shinoTDB: TweakDBID = settings.GetActiveSkillShardTDB(gamedataProficiencyType.ReflexesSkill);
+    let engTDB: TweakDBID = settings.GetActiveSkillShardTDB(gamedataProficiencyType.TechnicalAbilitySkill);
+    let netTDB: TweakDBID = settings.GetActiveSkillShardTDB(gamedataProficiencyType.IntelligenceSkill);
+    let headTDB: TweakDBID = settings.GetActiveSkillShardTDB(gamedataProficiencyType.CoolSkill);
 
     let allowPerk: Bool = vendorEnabled && settings.enablePerkShards;
     let allowAttr: Bool = vendorEnabled && settings.enableAttributeShards;
@@ -623,6 +757,15 @@ private func EnsurePAFSStock(settings: ref<PAFSSettings>) -> Void {
             if allowHead {
                 if headIndex < 0 { headIndex = i; i += 1; } else { ArrayErase(this.m_stock, i); }
             } else { ArrayErase(this.m_stock, i); }
+        } else if PAFSSettings.IsPAFSSkillShard(currentTDB) {
+            // Purge inactive/obsolete tier shards from vendor inventory
+            if IsDefined(transSystem) {
+                let inactiveQty: Int32 = transSystem.GetItemQuantity(this.m_vendorObject, this.m_stock[i].itemID);
+                if inactiveQty > 0 {
+                    transSystem.RemoveItem(this.m_vendorObject, this.m_stock[i].itemID, inactiveQty);
+                }
+            }
+            ArrayErase(this.m_stock, i);
         } else if currentTDB == t"Items.Custom_Infinite_PerkShard" || currentTDB == t"Items.Custom_Infinite_AttributeShard" || currentTDB == t"Items.Custom_Infinite_HealthFood" {
             ArrayErase(this.m_stock, i);
         } else {
@@ -671,20 +814,16 @@ public func GetItemsForSale(checkPlayerCanBuy: Bool) -> array<SItemStack> {
     let allowNet: Bool = settings.IsSkillShardVendorAllowed(vendorID, vendorType, gamedataProficiencyType.IntelligenceSkill, this.m_gameInstance);
     let allowHead: Bool = settings.IsSkillShardVendorAllowed(vendorID, vendorType, gamedataProficiencyType.CoolSkill, this.m_gameInstance);
 
-    if allowPerk && allowAttr && allowFood && allowCW && allowSolo && allowShino && allowEng && allowNet && allowHead {
-        return items;
-    }
-
     let filtered: array<SItemStack>;
     let perkTDB: TweakDBID = t"Items.PAFS_PerkShard";
     let attrTDB: TweakDBID = t"Items.PAFS_AttributeShard";
     let foodTDB: TweakDBID = t"Items.PAFS_HealthFood";
     let cwTDB: TweakDBID = t"Items.PAFS_CyberwareCapacityShard";
-    let soloTDB: TweakDBID = t"Items.PAFS_SoloShard";
-    let shinoTDB: TweakDBID = t"Items.PAFS_ShinobiShard";
-    let engTDB: TweakDBID = t"Items.PAFS_EngineerShard";
-    let netTDB: TweakDBID = t"Items.PAFS_NetrunnerShard";
-    let headTDB: TweakDBID = t"Items.PAFS_HeadhunterShard";
+    let soloTDB: TweakDBID = settings.GetActiveSkillShardTDB(gamedataProficiencyType.StrengthSkill);
+    let shinoTDB: TweakDBID = settings.GetActiveSkillShardTDB(gamedataProficiencyType.ReflexesSkill);
+    let engTDB: TweakDBID = settings.GetActiveSkillShardTDB(gamedataProficiencyType.TechnicalAbilitySkill);
+    let netTDB: TweakDBID = settings.GetActiveSkillShardTDB(gamedataProficiencyType.IntelligenceSkill);
+    let headTDB: TweakDBID = settings.GetActiveSkillShardTDB(gamedataProficiencyType.CoolSkill);
     let itemTDB: TweakDBID;
 
     for stack in items {
@@ -707,6 +846,8 @@ public func GetItemsForSale(checkPlayerCanBuy: Bool) -> array<SItemStack> {
             if allowNet { ArrayPush(filtered, stack); }
         } else if itemTDB == headTDB {
             if allowHead { ArrayPush(filtered, stack); }
+        } else if PAFSSettings.IsPAFSSkillShard(itemTDB) {
+            // Drop inactive / obsolete tier shards
         } else if itemTDB == t"Items.Custom_Infinite_PerkShard" || itemTDB == t"Items.Custom_Infinite_AttributeShard" || itemTDB == t"Items.Custom_Infinite_HealthFood" {
             // Drop obsolete clone items
         } else {
@@ -738,8 +879,8 @@ public static func GetBuyPrice(vendorObject: wref<GameObject>, itemID: ItemID) -
             if tdbID == t"Items.PAFS_HealthFood" {
                 return settings.GetHealthFoodPrice();
             }
-            if tdbID == t"Items.PAFS_SoloShard" || tdbID == t"Items.PAFS_ShinobiShard" || tdbID == t"Items.PAFS_EngineerShard" || tdbID == t"Items.PAFS_NetrunnerShard" || tdbID == t"Items.PAFS_HeadhunterShard" {
-                return settings.GetSkillShardPrice();
+            if PAFSSettings.IsPAFSSkillShard(tdbID) {
+                return settings.GetSkillShardPriceByTDB(tdbID);
             }
         }
     }
@@ -829,36 +970,21 @@ protected cb func OnItemAddedToInventory(evt: ref<ItemAddedEvent>) -> Bool {
     }
 
     // 3. Skill Progression Shards Multi-Consumption
-    if tdbID == t"Items.PAFS_SoloShard" || tdbID == t"Items.PAFS_ShinobiShard" || tdbID == t"Items.PAFS_EngineerShard" || tdbID == t"Items.PAFS_NetrunnerShard" || tdbID == t"Items.PAFS_HeadhunterShard" {
+    if PAFSSettings.IsPAFSSkillShard(tdbID) {
         let transSystem: ref<TransactionSystem> = GameInstance.GetTransactionSystem(this.GetGame());
         let count: Int32 = transSystem.GetItemQuantity(this, evt.itemID);
         if count > 0 {
             transSystem.RemoveItem(this, evt.itemID, count);
 
-            let settings: ref<PAFSSettings> = PAFSSettings.Get(this.GetGame());
-            let xpPerShard: Int32 = 1000;
-            if IsDefined(settings) {
-                xpPerShard = settings.GetSkillShardXP();
-            }
-
             let profType: gamedataProficiencyType = gamedataProficiencyType.StrengthSkill;
             let skillName: String = "Solo";
+            let xpPerShard: Int32 = 1000;
 
-            if tdbID == t"Items.PAFS_SoloShard" {
-                profType = gamedataProficiencyType.StrengthSkill;
-                skillName = "Solo";
-            } else if tdbID == t"Items.PAFS_ShinobiShard" {
-                profType = gamedataProficiencyType.ReflexesSkill;
-                skillName = "Shinobi";
-            } else if tdbID == t"Items.PAFS_EngineerShard" {
-                profType = gamedataProficiencyType.TechnicalAbilitySkill;
-                skillName = "Engineer";
-            } else if tdbID == t"Items.PAFS_NetrunnerShard" {
-                profType = gamedataProficiencyType.IntelligenceSkill;
-                skillName = "Netrunner";
-            } else if tdbID == t"Items.PAFS_HeadhunterShard" {
-                profType = gamedataProficiencyType.CoolSkill;
-                skillName = "Headhunter";
+            if !PAFSSettings.GetSkillShardData(tdbID, profType, skillName, xpPerShard) {
+                let settings: ref<PAFSSettings> = PAFSSettings.Get(this.GetGame());
+                if IsDefined(settings) {
+                    xpPerShard = settings.GetSkillShardXP();
+                }
             }
 
             let pds: ref<PlayerDevelopmentSystem> = GameInstance.GetScriptableSystemsContainer(this.GetGame()).Get(n"PlayerDevelopmentSystem") as PlayerDevelopmentSystem;
