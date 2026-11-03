@@ -173,7 +173,7 @@ public class PAFSSettings extends ScriptableSystem {
     @runtimeProperty("ModSettings.category", "Skill Progression Shards")
     @runtimeProperty("ModSettings.category.order", "4")
     @runtimeProperty("ModSettings.displayName", "Skill Shard Distribution")
-    @runtimeProperty("ModSettings.description", "Specialized: Solo/Shinobi at Guns & Rippers; Netrunner at Runners; Engineer at Tech; all 5 in Dogtown Stadium.")
+    @runtimeProperty("ModSettings.description", "Specialized: Guns & Melee stock combat; Rippers chrome; Netrunners hacks; Meds stims; all 5 in Dogtown.")
     @runtimeProperty("ModSettings.displayValues.Specialized", "Specialized Vendors (Lore-Friendly)")
     @runtimeProperty("ModSettings.displayValues.RipperdocsAndNetrunners", "Ripperdocs & Netrunners Only")
     @runtimeProperty("ModSettings.displayValues.AllVendors", "All Enabled PAFS Vendors")
@@ -498,9 +498,10 @@ public class PAFSSettings extends ScriptableSystem {
         }
 
         let isRipper: Bool = Equals(vendorType, gamedataVendorType.RipperDoc);
-        let isNetrunner: Bool = PAFSSettings.IsNetrunnerVendor(vendorID, vendorType) || Equals(vendorType, gamedataVendorType.SkillTrainer);
-        let isGunsmith: Bool = Equals(vendorType, gamedataVendorType.Gunsmith);
         let isMelee: Bool = PAFSSettings.IsMeleeTrainerVendor(vendorID);
+        let isNetrunner: Bool = (PAFSSettings.IsNetrunnerVendor(vendorID, vendorType) || Equals(vendorType, gamedataVendorType.SkillTrainer)) && !isMelee;
+        let isGunsmith: Bool = Equals(vendorType, gamedataVendorType.Gunsmith);
+        let isMedical: Bool = Equals(vendorType, gamedataVendorType.Medical);
         let isJunk: Bool = Equals(vendorType, gamedataVendorType.Junk) || Equals(vendorType, gamedataVendorType.Market) || Equals(vendorType, gamedataVendorType.Kiosk);
 
         if Equals(this.skillDistribution, PAFSSkillDistribution.RipperdocsAndNetrunners) {
@@ -508,15 +509,15 @@ public class PAFSSettings extends ScriptableSystem {
         }
 
         if Equals(this.skillDistribution, PAFSSkillDistribution.Specialized) {
-            // Solo: Weapon Vendors, Ripperdocs, and Melee Trainers (Coach Fred)
+            // Solo: Gunsmiths (Shotguns/LMGs), Ripperdocs (Body chrome), Melee Trainers (Brawling), Pharmacies (Steroid stims)
             if Equals(skillProf, gamedataProficiencyType.StrengthSkill) {
-                return isGunsmith || isRipper || isMelee;
+                return isGunsmith || isRipper || isMelee || isMedical;
             }
-            // Shinobi: Weapon Vendors, Ripperdocs, and Melee/Blade Trainers
+            // Shinobi: Gunsmiths (Rifles/SMGs), Ripperdocs (Reflex/Sande chrome), Melee Trainers (Katanas/Blades)
             if Equals(skillProf, gamedataProficiencyType.ReflexesSkill) {
                 return isGunsmith || isRipper || isMelee;
             }
-            // Engineer: Gunsmiths, Techstores / Netrunner shops, and Junk vendors
+            // Engineer: Gunsmiths (Tech weapons/Mods), Techstores / Netrunner shops, Junk/Scrap vendors
             if Equals(skillProf, gamedataProficiencyType.TechnicalAbilitySkill) {
                 return isGunsmith || isNetrunner || isJunk;
             }
@@ -524,9 +525,9 @@ public class PAFSSettings extends ScriptableSystem {
             if Equals(skillProf, gamedataProficiencyType.IntelligenceSkill) {
                 return isNetrunner;
             }
-            // Headhunter: Gunsmiths, Ripperdocs, and Melee/Skill Trainers
+            // Headhunter: Gunsmiths (Pistols/Snipers), Ripperdocs (Stealth chrome), Melee Trainers (Throwing knives), Pharmacies (Focus stims)
             if Equals(skillProf, gamedataProficiencyType.CoolSkill) {
-                return isGunsmith || isRipper || isMelee;
+                return isGunsmith || isRipper || isMelee || isMedical;
             }
             return false;
         }
