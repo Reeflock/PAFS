@@ -37,7 +37,7 @@ public class PAFSSettings extends ScriptableSystem {
     @runtimeProperty("ModSettings.category", "Quick Presets")
     @runtimeProperty("ModSettings.category.order", "1")
     @runtimeProperty("ModSettings.displayName", "Price Preset")
-    @runtimeProperty("ModSettings.description", "Quick economy scale (Casual, Balanced, Expensive). Select 'Custom' to use sliders below.")
+    @runtimeProperty("ModSettings.description", "Quick economy scale (Casual, Balanced, Expensive) . Select 'Custom' to use sliders below.")
     @runtimeProperty("ModSettings.displayValues.Casual", "Casual Preset")
     @runtimeProperty("ModSettings.displayValues.Balanced", "Balanced Preset (Default)")
     @runtimeProperty("ModSettings.displayValues.Expensive", "Expensive Preset")
@@ -161,7 +161,7 @@ public class PAFSSettings extends ScriptableSystem {
     @runtimeProperty("ModSettings.category", "Skill Progression Shards")
     @runtimeProperty("ModSettings.category.order", "4")
     @runtimeProperty("ModSettings.displayName", "Skill Shard Tier")
-    @runtimeProperty("ModSettings.description", "Shard quality & XP: T1 (+500), T2 (+1k), T3 (+2k), T4 (+3.5k), T5 (+5k XP).")
+    @runtimeProperty("ModSettings.description", "Shard quality & XP: T1 (+500) | T2 (+1k) | T3 (+2k) | T4 (+3.5k) | T5 (+5k XP).")
     @runtimeProperty("ModSettings.displayValues.Tier1", "Tier 1: Basic (+500 XP)")
     @runtimeProperty("ModSettings.displayValues.Tier2", "Tier 2: Balanced (+1,000 XP) [Default]")
     @runtimeProperty("ModSettings.displayValues.Tier3", "Tier 3: Advanced (+2,000 XP)")
@@ -173,7 +173,7 @@ public class PAFSSettings extends ScriptableSystem {
     @runtimeProperty("ModSettings.category", "Skill Progression Shards")
     @runtimeProperty("ModSettings.category.order", "4")
     @runtimeProperty("ModSettings.displayName", "Skill Shard Distribution")
-    @runtimeProperty("ModSettings.description", "Specialized: Guns & Melee stock combat; Rippers chrome; Netrunners hacks; Meds stims; all 5 in Dogtown.")
+    @runtimeProperty("ModSettings.description", "Specialized: Guns & Melee vendors stock combat skills | Rippers : chrome | Netrunners : hacks | Meds : stims | All 5 in Dogtown.")
     @runtimeProperty("ModSettings.displayValues.Specialized", "Specialized Vendors (Lore-Friendly)")
     @runtimeProperty("ModSettings.displayValues.RipperdocsAndNetrunners", "Ripperdocs & Netrunners Only")
     @runtimeProperty("ModSettings.displayValues.AllVendors", "All Enabled PAFS Vendors")
@@ -208,7 +208,7 @@ public class PAFSSettings extends ScriptableSystem {
     @runtimeProperty("ModSettings.category.order", "5")
     @runtimeProperty("ModSettings.displayName", "Junk Shops & Kiosks")
     @runtimeProperty("ModSettings.description", "Pawnbrokers, kiosks, and black market dealers (e.g. Michał Kiciński in Dogtown Stadium).")
-    public let enableJunk: Bool = false;
+    public let enableJunk: Bool = true;
 
     @runtimeProperty("ModSettings.mod", "PAFS - Perks & Attributes for Sale")
     @runtimeProperty("ModSettings.category", "Vendor Availability")
