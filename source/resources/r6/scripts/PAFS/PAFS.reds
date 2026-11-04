@@ -1,3 +1,8 @@
+// =================================================================
+// PAFS - Perks & Attributes for Sale
+// Real-Time Dynamic In-Game Mod Settings & Safe Native Transaction Core
+// =================================================================
+
 public enum PAFSPricePreset {
     Casual = 0,
     Balanced = 1,
@@ -10,6 +15,20 @@ public enum PAFSCWDistribution {
     AllVendors = 1
 }
 
+public enum PAFSSkillShardTier {
+    Tier1 = 0,
+    Tier2 = 1,
+    Tier3 = 2,
+    Tier4 = 3,
+    Tier5 = 4
+}
+
+public enum PAFSSkillDistribution {
+    Specialized = 0,
+    RipperdocsAndNetrunners = 1,
+    AllVendors = 2
+}
+
 public class PAFSSettings extends ScriptableSystem {
     // -------------------------------------------------------------
     // Category 1: Quick Presets
@@ -18,10 +37,10 @@ public class PAFSSettings extends ScriptableSystem {
     @runtimeProperty("ModSettings.category", "Quick Presets")
     @runtimeProperty("ModSettings.category.order", "1")
     @runtimeProperty("ModSettings.displayName", "Price Preset")
-    @runtimeProperty("ModSettings.description", "Quick pricing preset. Select 'Custom' to use the individual sliders under Advanced.")
-    @runtimeProperty("ModSettings.displayValues.Casual", "Casual (3.5k / 5k / 4k / 2.5k E$)")
-    @runtimeProperty("ModSettings.displayValues.Balanced", "Balanced (20k / 30k / 25k / 10k E$)")
-    @runtimeProperty("ModSettings.displayValues.Expensive", "Expensive (50k / 65k / 55k / 30k E$)")
+    @runtimeProperty("ModSettings.description", "Quick economy scale (Casual, Balanced, Expensive) . Select 'Custom' to use sliders below.")
+    @runtimeProperty("ModSettings.displayValues.Casual", "Casual Preset")
+    @runtimeProperty("ModSettings.displayValues.Balanced", "Balanced Preset (Default)")
+    @runtimeProperty("ModSettings.displayValues.Expensive", "Expensive Preset")
     @runtimeProperty("ModSettings.displayValues.Custom", "Custom (Use Advanced Sliders)")
     public let pricePreset: PAFSPricePreset = PAFSPricePreset.Balanced;
 
@@ -32,7 +51,7 @@ public class PAFSSettings extends ScriptableSystem {
     @runtimeProperty("ModSettings.category", "Advanced Prices")
     @runtimeProperty("ModSettings.category.order", "2")
     @runtimeProperty("ModSettings.displayName", "Perk Shard Price")
-    @runtimeProperty("ModSettings.description", "Price in E$ to buy Perk Shards (Active when preset is Custom)")
+    @runtimeProperty("ModSettings.description", "Price in E$ for +1 Perk Point shard. (Custom preset only)")
     @runtimeProperty("ModSettings.step", "500")
     @runtimeProperty("ModSettings.min", "0")
     @runtimeProperty("ModSettings.max", "100000")
@@ -42,7 +61,7 @@ public class PAFSSettings extends ScriptableSystem {
     @runtimeProperty("ModSettings.category", "Advanced Prices")
     @runtimeProperty("ModSettings.category.order", "2")
     @runtimeProperty("ModSettings.displayName", "Attribute Shard Price")
-    @runtimeProperty("ModSettings.description", "Price in E$ to buy Attribute Shards (Active when preset is Custom)")
+    @runtimeProperty("ModSettings.description", "Price in E$ for +1 Attribute Point shard. (Custom preset only)")
     @runtimeProperty("ModSettings.step", "500")
     @runtimeProperty("ModSettings.min", "0")
     @runtimeProperty("ModSettings.max", "100000")
@@ -52,7 +71,7 @@ public class PAFSSettings extends ScriptableSystem {
     @runtimeProperty("ModSettings.category", "Advanced Prices")
     @runtimeProperty("ModSettings.category.order", "2")
     @runtimeProperty("ModSettings.displayName", "Capacity Shard Price")
-    @runtimeProperty("ModSettings.description", "Price in E$ to buy Cyberware Capacity Shards (Active when preset is Custom)")
+    @runtimeProperty("ModSettings.description", "Price in E$ for Cyberware Capacity shard. (Custom preset only)")
     @runtimeProperty("ModSettings.step", "500")
     @runtimeProperty("ModSettings.min", "0")
     @runtimeProperty("ModSettings.max", "100000")
@@ -61,8 +80,18 @@ public class PAFSSettings extends ScriptableSystem {
     @runtimeProperty("ModSettings.mod", "PAFS - Perks & Attributes for Sale")
     @runtimeProperty("ModSettings.category", "Advanced Prices")
     @runtimeProperty("ModSettings.category.order", "2")
+    @runtimeProperty("ModSettings.displayName", "Skill Shard Price")
+    @runtimeProperty("ModSettings.description", "Flat price in E$ for Skill Progression shards. (Custom preset only)")
+    @runtimeProperty("ModSettings.step", "500")
+    @runtimeProperty("ModSettings.min", "0")
+    @runtimeProperty("ModSettings.max", "100000")
+    public let skillShardPrice: Int32 = 12000;
+
+    @runtimeProperty("ModSettings.mod", "PAFS - Perks & Attributes for Sale")
+    @runtimeProperty("ModSettings.category", "Advanced Prices")
+    @runtimeProperty("ModSettings.category.order", "2")
     @runtimeProperty("ModSettings.displayName", "Health Food Price")
-    @runtimeProperty("ModSettings.description", "Price in E$ to buy Permanent Health Food (Active when preset is Custom)")
+    @runtimeProperty("ModSettings.description", "Price in E$ for Permanent Health Food (+7 HP). (Custom preset only)")
     @runtimeProperty("ModSettings.step", "500")
     @runtimeProperty("ModSettings.min", "0")
     @runtimeProperty("ModSettings.max", "100000")
@@ -75,28 +104,28 @@ public class PAFSSettings extends ScriptableSystem {
     @runtimeProperty("ModSettings.category", "Item Availability")
     @runtimeProperty("ModSettings.category.order", "3")
     @runtimeProperty("ModSettings.displayName", "Perk Point Shards")
-    @runtimeProperty("ModSettings.description", "Allow Perk Point Shards to appear in enabled vendor shops.")
+    @runtimeProperty("ModSettings.description", "Stock +1 Perk Point shards in shops. Learned instantly upon purchase.")
     public let enablePerkShards: Bool = true;
 
     @runtimeProperty("ModSettings.mod", "PAFS - Perks & Attributes for Sale")
     @runtimeProperty("ModSettings.category", "Item Availability")
     @runtimeProperty("ModSettings.category.order", "3")
     @runtimeProperty("ModSettings.displayName", "Attribute Point Shards")
-    @runtimeProperty("ModSettings.description", "Allow Attribute Point Shards to appear in enabled vendor shops.")
+    @runtimeProperty("ModSettings.description", "Stock +1 Attribute Point shards in shops. Learned instantly upon purchase.")
     public let enableAttributeShards: Bool = true;
 
     @runtimeProperty("ModSettings.mod", "PAFS - Perks & Attributes for Sale")
     @runtimeProperty("ModSettings.category", "Item Availability")
     @runtimeProperty("ModSettings.category.order", "3")
     @runtimeProperty("ModSettings.displayName", "Cyberware Capacity Shards")
-    @runtimeProperty("ModSettings.description", "Allow Cyberware Capacity Shards to appear in shops. Note: Game hard-caps Cyberware Capacity at 450; vendors stop selling once reached.")
+    @runtimeProperty("ModSettings.description", "Stock Cyberware Capacity shards in shops. Stops selling when 450 cap is reached.")
     public let enableCWCapacityShards: Bool = true;
 
     @runtimeProperty("ModSettings.mod", "PAFS - Perks & Attributes for Sale")
     @runtimeProperty("ModSettings.category", "Item Availability")
     @runtimeProperty("ModSettings.category.order", "3")
     @runtimeProperty("ModSettings.displayName", "Capacity Shard Distribution")
-    @runtimeProperty("ModSettings.description", "Choose whether Cyberware Capacity Shards are exclusive to Ripperdocs or sold at all vendors enabled in Category 4.")
+    @runtimeProperty("ModSettings.description", "Ripperdocs Only restricts shards to clinics & Dogtown Stadium. All Vendors sells everywhere.")
     @runtimeProperty("ModSettings.displayValues.RipperdocsOnly", "Ripperdocs Only (Recommended)")
     @runtimeProperty("ModSettings.displayValues.AllVendors", "All Enabled PAFS Vendors")
     public let cwDistribution: PAFSCWDistribution = PAFSCWDistribution.RipperdocsOnly;
@@ -105,7 +134,7 @@ public class PAFSSettings extends ScriptableSystem {
     @runtimeProperty("ModSettings.category", "Item Availability")
     @runtimeProperty("ModSettings.category.order", "3")
     @runtimeProperty("ModSettings.displayName", "Capacity Bonus per Shard")
-    @runtimeProperty("ModSettings.description", "Permanent Cyberware Capacity granted per shard consumed (clamped to game's 450 maximum capacity cap).")
+    @runtimeProperty("ModSettings.description", "Capacity granted per shard (+1 to +25). Clamped at 450 cap.")
     @runtimeProperty("ModSettings.step", "1")
     @runtimeProperty("ModSettings.min", "1")
     @runtimeProperty("ModSettings.max", "25")
@@ -115,59 +144,91 @@ public class PAFSSettings extends ScriptableSystem {
     @runtimeProperty("ModSettings.category", "Item Availability")
     @runtimeProperty("ModSettings.category.order", "3")
     @runtimeProperty("ModSettings.displayName", "Permanent Health Food")
-    @runtimeProperty("ModSettings.description", "Allow Permanent Health Food to appear in enabled vendor shops.")
+    @runtimeProperty("ModSettings.description", "Stock Permanent Health Food (+7 Max Health) at diners and food stalls.")
     public let enableHealthFood: Bool = false;
 
     // -------------------------------------------------------------
-    // Category 4: Vendor Availability
+    // Category 4: Skill Progression Shards
+    // -------------------------------------------------------------
+    @runtimeProperty("ModSettings.mod", "PAFS - Perks & Attributes for Sale")
+    @runtimeProperty("ModSettings.category", "Skill Progression Shards")
+    @runtimeProperty("ModSettings.category.order", "4")
+    @runtimeProperty("ModSettings.displayName", "Skill Progression Shards")
+    @runtimeProperty("ModSettings.description", "Stock custom skill shards (Solo, Shinobi, etc.). Stops selling capped skills (Lvl 60).")
+    public let enableSkillShards: Bool = true;
+
+    @runtimeProperty("ModSettings.mod", "PAFS - Perks & Attributes for Sale")
+    @runtimeProperty("ModSettings.category", "Skill Progression Shards")
+    @runtimeProperty("ModSettings.category.order", "4")
+    @runtimeProperty("ModSettings.displayName", "Skill Shard Tier")
+    @runtimeProperty("ModSettings.description", "Shard quality & XP: T1 (+500) | T2 (+1k) | T3 (+2k) | T4 (+3.5k) | T5 (+5k XP).")
+    @runtimeProperty("ModSettings.displayValues.Tier1", "Tier 1: Basic (+500 XP)")
+    @runtimeProperty("ModSettings.displayValues.Tier2", "Tier 2: Balanced (+1,000 XP) [Default]")
+    @runtimeProperty("ModSettings.displayValues.Tier3", "Tier 3: Advanced (+2,000 XP)")
+    @runtimeProperty("ModSettings.displayValues.Tier4", "Tier 4: Expert (+3,500 XP)")
+    @runtimeProperty("ModSettings.displayValues.Tier5", "Tier 5: Master (+5,000 XP)")
+    public let skillTier: PAFSSkillShardTier = PAFSSkillShardTier.Tier2;
+
+    @runtimeProperty("ModSettings.mod", "PAFS - Perks & Attributes for Sale")
+    @runtimeProperty("ModSettings.category", "Skill Progression Shards")
+    @runtimeProperty("ModSettings.category.order", "4")
+    @runtimeProperty("ModSettings.displayName", "Skill Shard Distribution")
+    @runtimeProperty("ModSettings.description", "Specialized: Guns & Melee vendors stock combat skills | Rippers : chrome | Netrunners : hacks | Meds : stims | All 5 in Dogtown.")
+    @runtimeProperty("ModSettings.displayValues.Specialized", "Specialized Vendors (Lore-Friendly)")
+    @runtimeProperty("ModSettings.displayValues.RipperdocsAndNetrunners", "Ripperdocs & Netrunners Only")
+    @runtimeProperty("ModSettings.displayValues.AllVendors", "All Enabled PAFS Vendors")
+    public let skillDistribution: PAFSSkillDistribution = PAFSSkillDistribution.Specialized;
+
+    // -------------------------------------------------------------
+    // Category 5: Vendor Availability
     // -------------------------------------------------------------
     @runtimeProperty("ModSettings.mod", "PAFS - Perks & Attributes for Sale")
     @runtimeProperty("ModSettings.category", "Vendor Availability")
-    @runtimeProperty("ModSettings.category.order", "4")
+    @runtimeProperty("ModSettings.category.order", "5")
     @runtimeProperty("ModSettings.displayName", "Weapon Vendors")
-    @runtimeProperty("ModSettings.description", "Stock items at gunsmiths and weapon shops (e.g. Wilson, 2nd Amendment).")
+    @runtimeProperty("ModSettings.description", "Firearms, melee weapon shops, and gunsmiths (e.g. Wilson, Arroyo, Coach Fred).")
     public let enableWeapons: Bool = true;
 
     @runtimeProperty("ModSettings.mod", "PAFS - Perks & Attributes for Sale")
     @runtimeProperty("ModSettings.category", "Vendor Availability")
-    @runtimeProperty("ModSettings.category.order", "4")
+    @runtimeProperty("ModSettings.category.order", "5")
     @runtimeProperty("ModSettings.displayName", "Ripperdocs")
-    @runtimeProperty("ModSettings.description", "Stock items at Ripperdoc clinics (e.g. Viktor, Fingers, Cassius).")
+    @runtimeProperty("ModSettings.description", "Cyberware clinics across NC & Dogtown (e.g. Viktor, Fingers, Cassius, Farida).")
     public let enableRipperdocs: Bool = true;
 
     @runtimeProperty("ModSettings.mod", "PAFS - Perks & Attributes for Sale")
     @runtimeProperty("ModSettings.category", "Vendor Availability")
-    @runtimeProperty("ModSettings.category.order", "4")
+    @runtimeProperty("ModSettings.category.order", "5")
     @runtimeProperty("ModSettings.displayName", "Netrunners & Trainers")
-    @runtimeProperty("ModSettings.description", "Stock items at netrunner shops and skill trainers (e.g. Yoko, Coach Fred).")
+    @runtimeProperty("ModSettings.description", "Netrunner daemon specialists, tech stores, and trainers (e.g. Yoko, Nix, Pacifica).")
     public let enableNetrunners: Bool = true;
 
     @runtimeProperty("ModSettings.mod", "PAFS - Perks & Attributes for Sale")
     @runtimeProperty("ModSettings.category", "Vendor Availability")
-    @runtimeProperty("ModSettings.category.order", "4")
+    @runtimeProperty("ModSettings.category.order", "5")
     @runtimeProperty("ModSettings.displayName", "Junk Shops & Kiosks")
-    @runtimeProperty("ModSettings.description", "Stock items at junk shops, pawnbrokers, street markets, and kiosks.")
-    public let enableJunk: Bool = false;
+    @runtimeProperty("ModSettings.description", "Pawnbrokers, kiosks, and black market dealers (e.g. Michał Kiciński in Dogtown Stadium).")
+    public let enableJunk: Bool = true;
 
     @runtimeProperty("ModSettings.mod", "PAFS - Perks & Attributes for Sale")
     @runtimeProperty("ModSettings.category", "Vendor Availability")
-    @runtimeProperty("ModSettings.category.order", "4")
+    @runtimeProperty("ModSettings.category.order", "5")
     @runtimeProperty("ModSettings.displayName", "Pharmacies / Medpoints")
-    @runtimeProperty("ModSettings.description", "Stock items at medical clinics and drugstores.")
+    @runtimeProperty("ModSettings.description", "Neighborhood drugstores, med vendors, and medical clinics.")
     public let enableMedical: Bool = false;
 
     @runtimeProperty("ModSettings.mod", "PAFS - Perks & Attributes for Sale")
     @runtimeProperty("ModSettings.category", "Vendor Availability")
-    @runtimeProperty("ModSettings.category.order", "4")
+    @runtimeProperty("ModSettings.category.order", "5")
     @runtimeProperty("ModSettings.displayName", "Food & Bars")
-    @runtimeProperty("ModSettings.description", "Stock items at diners, food stalls, and bars.")
+    @runtimeProperty("ModSettings.description", "Diners, street noodles, and nightlife bars (e.g. Afterlife, El Coyote Cojo).")
     public let enableFood: Bool = false;
 
     @runtimeProperty("ModSettings.mod", "PAFS - Perks & Attributes for Sale")
     @runtimeProperty("ModSettings.category", "Vendor Availability")
-    @runtimeProperty("ModSettings.category.order", "4")
+    @runtimeProperty("ModSettings.category.order", "5")
     @runtimeProperty("ModSettings.displayName", "Clothing Stores")
-    @runtimeProperty("ModSettings.description", "Stock items at clothing and apparel shops.")
+    @runtimeProperty("ModSettings.description", "Apparel boutiques and thread shops (e.g. Jinguji, Stylishly).")
     public let enableClothing: Bool = false;
 
     public func GetPerkShardPrice() -> Int32 {
@@ -234,6 +295,103 @@ public class PAFSSettings extends ScriptableSystem {
         return 10000;
     }
 
+    public func GetSkillShardXP() -> Int32 {
+        if Equals(this.skillTier, PAFSSkillShardTier.Tier1) {
+            return 500;
+        }
+        if Equals(this.skillTier, PAFSSkillShardTier.Tier2) {
+            return 1000;
+        }
+        if Equals(this.skillTier, PAFSSkillShardTier.Tier3) {
+            return 2000;
+        }
+        if Equals(this.skillTier, PAFSSkillShardTier.Tier4) {
+            return 3500;
+        }
+        if Equals(this.skillTier, PAFSSkillShardTier.Tier5) {
+            return 5000;
+        }
+        return 1000;
+    }
+
+    public func GetSkillShardPriceForTier(tier: PAFSSkillShardTier) -> Int32 {
+        if Equals(this.pricePreset, PAFSPricePreset.Custom) {
+            return this.skillShardPrice;
+        }
+        if Equals(this.pricePreset, PAFSPricePreset.Casual) {
+            if Equals(tier, PAFSSkillShardTier.Tier1) { return 1500; }
+            if Equals(tier, PAFSSkillShardTier.Tier2) { return 3000; }
+            if Equals(tier, PAFSSkillShardTier.Tier3) { return 5500; }
+            if Equals(tier, PAFSSkillShardTier.Tier4) { return 8500; }
+            if Equals(tier, PAFSSkillShardTier.Tier5) { return 12000; }
+            return 3000;
+        }
+        if Equals(this.pricePreset, PAFSPricePreset.Balanced) {
+            if Equals(tier, PAFSSkillShardTier.Tier1) { return 6000; }
+            if Equals(tier, PAFSSkillShardTier.Tier2) { return 12000; }
+            if Equals(tier, PAFSSkillShardTier.Tier3) { return 22000; }
+            if Equals(tier, PAFSSkillShardTier.Tier4) { return 35000; }
+            if Equals(tier, PAFSSkillShardTier.Tier5) { return 50000; }
+            return 12000;
+        }
+        if Equals(this.pricePreset, PAFSPricePreset.Expensive) {
+            if Equals(tier, PAFSSkillShardTier.Tier1) { return 15000; }
+            if Equals(tier, PAFSSkillShardTier.Tier2) { return 28000; }
+            if Equals(tier, PAFSSkillShardTier.Tier3) { return 45000; }
+            if Equals(tier, PAFSSkillShardTier.Tier4) { return 60000; }
+            if Equals(tier, PAFSSkillShardTier.Tier5) { return 75000; }
+            return 28000;
+        }
+        return 12000;
+    }
+
+    public func GetSkillShardPrice() -> Int32 {
+        return this.GetSkillShardPriceForTier(this.skillTier);
+    }
+
+    public func GetSkillShardPriceByTDB(tdbID: TweakDBID) -> Int32 {
+        let tier: PAFSSkillShardTier = PAFSSettings.GetSkillShardTier(tdbID, this.skillTier);
+        return this.GetSkillShardPriceForTier(tier);
+    }
+
+    public static func IsNetrunnerVendor(vendorID: TweakDBID, vendorType: gamedataVendorType) -> Bool {
+        if Equals(vendorType, gamedataVendorType.TechJunk) {
+            return true;
+        }
+        if vendorID == t"Vendors.wat_kab_netrunner_01" ||
+           vendorID == t"Vendors.wat_lch_netrunner_01" ||
+           vendorID == t"Vendors.wbr_jpn_netrunner_01" ||
+           vendorID == t"Vendors.wbr_jpn_netrunner_02" ||
+           vendorID == t"Vendors.hey_rey_netrunner_01" ||
+           vendorID == t"Vendors.pac_cvi_techstore_01" ||
+           vendorID == t"Vendors.NetrunnerTrainer" ||
+           vendorID == t"Vendors.cz_stadium_netrunner_01" ||
+           vendorID == t"Vendors.cz_con_netrunner_01" ||
+           vendorID == t"Vendors.wat_kab_techstore_01" ||
+           vendorID == t"Vendors.wbr_jpn_techstore_01" ||
+           vendorID == t"Vendors.std_arr_techstore_01" ||
+           vendorID == t"Vendors.std_rcr_techstore_01" ||
+           vendorID == t"Vendors.Tech_Junk" ||
+           vendorID == t"Vendors.Tech_Junk_EP1" {
+            return true;
+        }
+        return false;
+    }
+
+    public static func IsMeleeTrainerVendor(vendorID: TweakDBID) -> Bool {
+        if vendorID == t"Vendors.MeleeTrainer" ||
+           vendorID == t"Vendors.wat_lch_melee_01" ||
+           vendorID == t"Vendors.wat_lch_melee_02" ||
+           vendorID == t"Vendors.wbr_jpn_melee_01" ||
+           vendorID == t"Vendors.std_arr_melee_01" ||
+           vendorID == t"Vendors.pac_cvi_melee_01" ||
+           vendorID == t"Vendors.pac_wwd_melee_01" ||
+           vendorID == t"Vendors.bls_ina_se5_melee_01" {
+            return true;
+        }
+        return false;
+    }
+
     public func IsVendorTypeEnabled(type: gamedataVendorType) -> Bool {
         if Equals(type, gamedataVendorType.Gunsmith) {
             return this.enableWeapons;
@@ -269,6 +427,14 @@ public class PAFSSettings extends ScriptableSystem {
         if vendorID == t"Vendors.cz_stadium_junk_01_michal_k" {
             return this.enableNetrunners || this.enableJunk;
         }
+        // Specific Netrunner & Tech shops belong to Netrunners & Trainers
+        if PAFSSettings.IsNetrunnerVendor(vendorID, type) {
+            return this.enableNetrunners;
+        }
+        // Melee weapon vendors & boxing trainers (Coach Fred) belong to Weapon Vendors
+        if PAFSSettings.IsMeleeTrainerVendor(vendorID) {
+            return this.enableWeapons;
+        }
         return this.IsVendorTypeEnabled(type);
     }
 
@@ -299,6 +465,206 @@ public class PAFSSettings extends ScriptableSystem {
         return false;
     }
 
+    public func IsSkillShardVendorAllowed(vendorID: TweakDBID, vendorType: gamedataVendorType, skillProf: gamedataProficiencyType, gi: GameInstance) -> Bool {
+        if !this.enableSkillShards {
+            return false;
+        }
+
+        // 1. Level 60 Cap Protection: If this proficiency is already maxed (>= 60), stop selling!
+        let player: ref<PlayerPuppet> = GetPlayer(gi);
+        if IsDefined(player) {
+            let pds: ref<PlayerDevelopmentSystem> = GameInstance.GetScriptableSystemsContainer(gi).Get(n"PlayerDevelopmentSystem") as PlayerDevelopmentSystem;
+            if IsDefined(pds) {
+                let curLvl: Int32 = pds.GetProficiencyLevel(player, skillProf);
+                if curLvl >= 60 {
+                    return false;
+                }
+            }
+        }
+
+        // 2. Dogtown Stadium Black Market Dealer (Michał Kiciński) stocks all 5 if enabled!
+        if vendorID == t"Vendors.cz_stadium_junk_01_michal_k" {
+            return this.enableNetrunners || this.enableJunk;
+        }
+
+        // 3. General category enabled check
+        if !this.IsVendorRecordEnabled(vendorID, vendorType) {
+            return false;
+        }
+
+        // 4. Distribution check
+        if Equals(this.skillDistribution, PAFSSkillDistribution.AllVendors) {
+            return true;
+        }
+
+        let isRipper: Bool = Equals(vendorType, gamedataVendorType.RipperDoc);
+        let isMelee: Bool = PAFSSettings.IsMeleeTrainerVendor(vendorID);
+        let isNetrunner: Bool = (PAFSSettings.IsNetrunnerVendor(vendorID, vendorType) || Equals(vendorType, gamedataVendorType.SkillTrainer)) && !isMelee;
+        let isGunsmith: Bool = Equals(vendorType, gamedataVendorType.Gunsmith);
+        let isMedical: Bool = Equals(vendorType, gamedataVendorType.Medical);
+        let isJunk: Bool = Equals(vendorType, gamedataVendorType.Junk) || Equals(vendorType, gamedataVendorType.Market) || Equals(vendorType, gamedataVendorType.Kiosk);
+
+        if Equals(this.skillDistribution, PAFSSkillDistribution.RipperdocsAndNetrunners) {
+            return isRipper || isNetrunner;
+        }
+
+        if Equals(this.skillDistribution, PAFSSkillDistribution.Specialized) {
+            // Solo: Gunsmiths (Shotguns/LMGs), Ripperdocs (Body chrome), Melee Trainers (Brawling), Pharmacies (Steroid stims)
+            if Equals(skillProf, gamedataProficiencyType.StrengthSkill) {
+                return isGunsmith || isRipper || isMelee || isMedical;
+            }
+            // Shinobi: Gunsmiths (Rifles/SMGs), Ripperdocs (Reflex/Sande chrome), Melee Trainers (Katanas/Blades)
+            if Equals(skillProf, gamedataProficiencyType.ReflexesSkill) {
+                return isGunsmith || isRipper || isMelee;
+            }
+            // Engineer: Gunsmiths (Tech weapons/Mods), Techstores / Netrunner shops, Junk/Scrap vendors
+            if Equals(skillProf, gamedataProficiencyType.TechnicalAbilitySkill) {
+                return isGunsmith || isNetrunner || isJunk;
+            }
+            // Netrunner: Netrunner shops and Techstores
+            if Equals(skillProf, gamedataProficiencyType.IntelligenceSkill) {
+                return isNetrunner;
+            }
+            // Headhunter: Gunsmiths (Pistols/Snipers), Ripperdocs (Stealth chrome), Melee Trainers (Throwing knives), Pharmacies (Focus stims)
+            if Equals(skillProf, gamedataProficiencyType.CoolSkill) {
+                return isGunsmith || isRipper || isMelee || isMedical;
+            }
+            return false;
+        }
+
+        return false;
+    }
+
+    public static func GetSkillShardTDB(prof: gamedataProficiencyType, tier: PAFSSkillShardTier) -> TweakDBID {
+        if Equals(prof, gamedataProficiencyType.StrengthSkill) {
+            if Equals(tier, PAFSSkillShardTier.Tier1) { return t"Items.PAFS_SoloShard_T1"; }
+            if Equals(tier, PAFSSkillShardTier.Tier2) { return t"Items.PAFS_SoloShard_T2"; }
+            if Equals(tier, PAFSSkillShardTier.Tier3) { return t"Items.PAFS_SoloShard_T3"; }
+            if Equals(tier, PAFSSkillShardTier.Tier4) { return t"Items.PAFS_SoloShard_T4"; }
+            if Equals(tier, PAFSSkillShardTier.Tier5) { return t"Items.PAFS_SoloShard_T5"; }
+        }
+        if Equals(prof, gamedataProficiencyType.ReflexesSkill) {
+            if Equals(tier, PAFSSkillShardTier.Tier1) { return t"Items.PAFS_ShinobiShard_T1"; }
+            if Equals(tier, PAFSSkillShardTier.Tier2) { return t"Items.PAFS_ShinobiShard_T2"; }
+            if Equals(tier, PAFSSkillShardTier.Tier3) { return t"Items.PAFS_ShinobiShard_T3"; }
+            if Equals(tier, PAFSSkillShardTier.Tier4) { return t"Items.PAFS_ShinobiShard_T4"; }
+            if Equals(tier, PAFSSkillShardTier.Tier5) { return t"Items.PAFS_ShinobiShard_T5"; }
+        }
+        if Equals(prof, gamedataProficiencyType.TechnicalAbilitySkill) {
+            if Equals(tier, PAFSSkillShardTier.Tier1) { return t"Items.PAFS_EngineerShard_T1"; }
+            if Equals(tier, PAFSSkillShardTier.Tier2) { return t"Items.PAFS_EngineerShard_T2"; }
+            if Equals(tier, PAFSSkillShardTier.Tier3) { return t"Items.PAFS_EngineerShard_T3"; }
+            if Equals(tier, PAFSSkillShardTier.Tier4) { return t"Items.PAFS_EngineerShard_T4"; }
+            if Equals(tier, PAFSSkillShardTier.Tier5) { return t"Items.PAFS_EngineerShard_T5"; }
+        }
+        if Equals(prof, gamedataProficiencyType.IntelligenceSkill) {
+            if Equals(tier, PAFSSkillShardTier.Tier1) { return t"Items.PAFS_NetrunnerShard_T1"; }
+            if Equals(tier, PAFSSkillShardTier.Tier2) { return t"Items.PAFS_NetrunnerShard_T2"; }
+            if Equals(tier, PAFSSkillShardTier.Tier3) { return t"Items.PAFS_NetrunnerShard_T3"; }
+            if Equals(tier, PAFSSkillShardTier.Tier4) { return t"Items.PAFS_NetrunnerShard_T4"; }
+            if Equals(tier, PAFSSkillShardTier.Tier5) { return t"Items.PAFS_NetrunnerShard_T5"; }
+        }
+        if Equals(prof, gamedataProficiencyType.CoolSkill) {
+            if Equals(tier, PAFSSkillShardTier.Tier1) { return t"Items.PAFS_HeadhunterShard_T1"; }
+            if Equals(tier, PAFSSkillShardTier.Tier2) { return t"Items.PAFS_HeadhunterShard_T2"; }
+            if Equals(tier, PAFSSkillShardTier.Tier3) { return t"Items.PAFS_HeadhunterShard_T3"; }
+            if Equals(tier, PAFSSkillShardTier.Tier4) { return t"Items.PAFS_HeadhunterShard_T4"; }
+            if Equals(tier, PAFSSkillShardTier.Tier5) { return t"Items.PAFS_HeadhunterShard_T5"; }
+        }
+        let fallbackID: TweakDBID;
+        return fallbackID;
+    }
+
+    public func GetActiveSkillShardTDB(prof: gamedataProficiencyType) -> TweakDBID {
+        let tdb: TweakDBID = PAFSSettings.GetSkillShardTDB(prof, this.skillTier);
+        if TDBID.IsValid(tdb) {
+            return tdb;
+        }
+        return PAFSSettings.GetSkillShardTDB(prof, PAFSSkillShardTier.Tier2);
+    }
+
+    public static func IsPAFSSkillShard(tdbID: TweakDBID) -> Bool {
+        if tdbID == t"Items.PAFS_SoloShard" || tdbID == t"Items.PAFS_SoloShard_T1" || tdbID == t"Items.PAFS_SoloShard_T2" || tdbID == t"Items.PAFS_SoloShard_T3" || tdbID == t"Items.PAFS_SoloShard_T4" || tdbID == t"Items.PAFS_SoloShard_T5" {
+            return true;
+        }
+        if tdbID == t"Items.PAFS_ShinobiShard" || tdbID == t"Items.PAFS_ShinobiShard_T1" || tdbID == t"Items.PAFS_ShinobiShard_T2" || tdbID == t"Items.PAFS_ShinobiShard_T3" || tdbID == t"Items.PAFS_ShinobiShard_T4" || tdbID == t"Items.PAFS_ShinobiShard_T5" {
+            return true;
+        }
+        if tdbID == t"Items.PAFS_EngineerShard" || tdbID == t"Items.PAFS_EngineerShard_T1" || tdbID == t"Items.PAFS_EngineerShard_T2" || tdbID == t"Items.PAFS_EngineerShard_T3" || tdbID == t"Items.PAFS_EngineerShard_T4" || tdbID == t"Items.PAFS_EngineerShard_T5" {
+            return true;
+        }
+        if tdbID == t"Items.PAFS_NetrunnerShard" || tdbID == t"Items.PAFS_NetrunnerShard_T1" || tdbID == t"Items.PAFS_NetrunnerShard_T2" || tdbID == t"Items.PAFS_NetrunnerShard_T3" || tdbID == t"Items.PAFS_NetrunnerShard_T4" || tdbID == t"Items.PAFS_NetrunnerShard_T5" {
+            return true;
+        }
+        if tdbID == t"Items.PAFS_HeadhunterShard" || tdbID == t"Items.PAFS_HeadhunterShard_T1" || tdbID == t"Items.PAFS_HeadhunterShard_T2" || tdbID == t"Items.PAFS_HeadhunterShard_T3" || tdbID == t"Items.PAFS_HeadhunterShard_T4" || tdbID == t"Items.PAFS_HeadhunterShard_T5" {
+            return true;
+        }
+        return false;
+    }
+
+    public static func GetSkillShardTier(tdbID: TweakDBID, fallbackTier: PAFSSkillShardTier) -> PAFSSkillShardTier {
+        if tdbID == t"Items.PAFS_SoloShard_T1" || tdbID == t"Items.PAFS_ShinobiShard_T1" || tdbID == t"Items.PAFS_EngineerShard_T1" || tdbID == t"Items.PAFS_NetrunnerShard_T1" || tdbID == t"Items.PAFS_HeadhunterShard_T1" {
+            return PAFSSkillShardTier.Tier1;
+        }
+        if tdbID == t"Items.PAFS_SoloShard_T2" || tdbID == t"Items.PAFS_ShinobiShard_T2" || tdbID == t"Items.PAFS_EngineerShard_T2" || tdbID == t"Items.PAFS_NetrunnerShard_T2" || tdbID == t"Items.PAFS_HeadhunterShard_T2" {
+            return PAFSSkillShardTier.Tier2;
+        }
+        if tdbID == t"Items.PAFS_SoloShard_T3" || tdbID == t"Items.PAFS_ShinobiShard_T3" || tdbID == t"Items.PAFS_EngineerShard_T3" || tdbID == t"Items.PAFS_NetrunnerShard_T3" || tdbID == t"Items.PAFS_HeadhunterShard_T3" {
+            return PAFSSkillShardTier.Tier3;
+        }
+        if tdbID == t"Items.PAFS_SoloShard_T4" || tdbID == t"Items.PAFS_ShinobiShard_T4" || tdbID == t"Items.PAFS_EngineerShard_T4" || tdbID == t"Items.PAFS_NetrunnerShard_T4" || tdbID == t"Items.PAFS_HeadhunterShard_T4" {
+            return PAFSSkillShardTier.Tier4;
+        }
+        if tdbID == t"Items.PAFS_SoloShard_T5" || tdbID == t"Items.PAFS_ShinobiShard_T5" || tdbID == t"Items.PAFS_EngineerShard_T5" || tdbID == t"Items.PAFS_NetrunnerShard_T5" || tdbID == t"Items.PAFS_HeadhunterShard_T5" {
+            return PAFSSkillShardTier.Tier5;
+        }
+        return fallbackTier;
+    }
+
+    public static func GetSkillShardData(tdbID: TweakDBID, out prof: gamedataProficiencyType, out skillName: String, out xp: Int32) -> Bool {
+        // Solo
+        if tdbID == t"Items.PAFS_SoloShard_T1" { prof = gamedataProficiencyType.StrengthSkill; skillName = "Solo"; xp = 500; return true; }
+        if tdbID == t"Items.PAFS_SoloShard_T2" { prof = gamedataProficiencyType.StrengthSkill; skillName = "Solo"; xp = 1000; return true; }
+        if tdbID == t"Items.PAFS_SoloShard_T3" { prof = gamedataProficiencyType.StrengthSkill; skillName = "Solo"; xp = 2000; return true; }
+        if tdbID == t"Items.PAFS_SoloShard_T4" { prof = gamedataProficiencyType.StrengthSkill; skillName = "Solo"; xp = 3500; return true; }
+        if tdbID == t"Items.PAFS_SoloShard_T5" { prof = gamedataProficiencyType.StrengthSkill; skillName = "Solo"; xp = 5000; return true; }
+        if tdbID == t"Items.PAFS_SoloShard" { prof = gamedataProficiencyType.StrengthSkill; skillName = "Solo"; xp = 1000; return true; }
+
+        // Shinobi
+        if tdbID == t"Items.PAFS_ShinobiShard_T1" { prof = gamedataProficiencyType.ReflexesSkill; skillName = "Shinobi"; xp = 500; return true; }
+        if tdbID == t"Items.PAFS_ShinobiShard_T2" { prof = gamedataProficiencyType.ReflexesSkill; skillName = "Shinobi"; xp = 1000; return true; }
+        if tdbID == t"Items.PAFS_ShinobiShard_T3" { prof = gamedataProficiencyType.ReflexesSkill; skillName = "Shinobi"; xp = 2000; return true; }
+        if tdbID == t"Items.PAFS_ShinobiShard_T4" { prof = gamedataProficiencyType.ReflexesSkill; skillName = "Shinobi"; xp = 3500; return true; }
+        if tdbID == t"Items.PAFS_ShinobiShard_T5" { prof = gamedataProficiencyType.ReflexesSkill; skillName = "Shinobi"; xp = 5000; return true; }
+        if tdbID == t"Items.PAFS_ShinobiShard" { prof = gamedataProficiencyType.ReflexesSkill; skillName = "Shinobi"; xp = 1000; return true; }
+
+        // Engineer
+        if tdbID == t"Items.PAFS_EngineerShard_T1" { prof = gamedataProficiencyType.TechnicalAbilitySkill; skillName = "Engineer"; xp = 500; return true; }
+        if tdbID == t"Items.PAFS_EngineerShard_T2" { prof = gamedataProficiencyType.TechnicalAbilitySkill; skillName = "Engineer"; xp = 1000; return true; }
+        if tdbID == t"Items.PAFS_EngineerShard_T3" { prof = gamedataProficiencyType.TechnicalAbilitySkill; skillName = "Engineer"; xp = 2000; return true; }
+        if tdbID == t"Items.PAFS_EngineerShard_T4" { prof = gamedataProficiencyType.TechnicalAbilitySkill; skillName = "Engineer"; xp = 3500; return true; }
+        if tdbID == t"Items.PAFS_EngineerShard_T5" { prof = gamedataProficiencyType.TechnicalAbilitySkill; skillName = "Engineer"; xp = 5000; return true; }
+        if tdbID == t"Items.PAFS_EngineerShard" { prof = gamedataProficiencyType.TechnicalAbilitySkill; skillName = "Engineer"; xp = 1000; return true; }
+
+        // Netrunner
+        if tdbID == t"Items.PAFS_NetrunnerShard_T1" { prof = gamedataProficiencyType.IntelligenceSkill; skillName = "Netrunner"; xp = 500; return true; }
+        if tdbID == t"Items.PAFS_NetrunnerShard_T2" { prof = gamedataProficiencyType.IntelligenceSkill; skillName = "Netrunner"; xp = 1000; return true; }
+        if tdbID == t"Items.PAFS_NetrunnerShard_T3" { prof = gamedataProficiencyType.IntelligenceSkill; skillName = "Netrunner"; xp = 2000; return true; }
+        if tdbID == t"Items.PAFS_NetrunnerShard_T4" { prof = gamedataProficiencyType.IntelligenceSkill; skillName = "Netrunner"; xp = 3500; return true; }
+        if tdbID == t"Items.PAFS_NetrunnerShard_T5" { prof = gamedataProficiencyType.IntelligenceSkill; skillName = "Netrunner"; xp = 5000; return true; }
+        if tdbID == t"Items.PAFS_NetrunnerShard" { prof = gamedataProficiencyType.IntelligenceSkill; skillName = "Netrunner"; xp = 1000; return true; }
+
+        // Headhunter
+        if tdbID == t"Items.PAFS_HeadhunterShard_T1" { prof = gamedataProficiencyType.CoolSkill; skillName = "Headhunter"; xp = 500; return true; }
+        if tdbID == t"Items.PAFS_HeadhunterShard_T2" { prof = gamedataProficiencyType.CoolSkill; skillName = "Headhunter"; xp = 1000; return true; }
+        if tdbID == t"Items.PAFS_HeadhunterShard_T3" { prof = gamedataProficiencyType.CoolSkill; skillName = "Headhunter"; xp = 2000; return true; }
+        if tdbID == t"Items.PAFS_HeadhunterShard_T4" { prof = gamedataProficiencyType.CoolSkill; skillName = "Headhunter"; xp = 3500; return true; }
+        if tdbID == t"Items.PAFS_HeadhunterShard_T5" { prof = gamedataProficiencyType.CoolSkill; skillName = "Headhunter"; xp = 5000; return true; }
+        if tdbID == t"Items.PAFS_HeadhunterShard" { prof = gamedataProficiencyType.CoolSkill; skillName = "Headhunter"; xp = 1000; return true; }
+
+        return false;
+    }
+
     public static func Get(gi: GameInstance) -> ref<PAFSSettings> {
         return GameInstance.GetScriptableSystemsContainer(gi).Get(n"PAFSSettings") as PAFSSettings;
     }
@@ -324,6 +690,75 @@ public class PAFSSettings extends ScriptableSystem {
 // Vendor Dynamic Stock & Stock Management
 // -----------------------------------------------------------------
 @addMethod(Vendor)
+private func SyncPAFSItemStock(tdbID: TweakDBID, allowed: Bool, transSystem: ref<TransactionSystem>) -> Void {
+    if !TDBID.IsValid(tdbID) {
+        return;
+    }
+
+    let itemID: ItemID = ItemID.FromTDBID(tdbID);
+    let foundIndex: Int32 = -1;
+    let i: Int32 = 0;
+
+    // Scan m_stock for tdbID: keep the first instance, eliminate any duplicate stacks
+    while i < ArraySize(this.m_stock) {
+        if ItemID.GetTDBID(this.m_stock[i].itemID) == tdbID {
+            if allowed {
+                if foundIndex < 0 {
+                    foundIndex = i;
+                    this.m_stock[i].quantity = 60;
+                    this.m_stock[i].isAvailable = true;
+                    i += 1;
+                } else {
+                    // Duplicate stack detected in m_stock; erase it
+                    ArrayErase(this.m_stock, i);
+                }
+            } else {
+                // Not allowed; erase all stacks of this item
+                ArrayErase(this.m_stock, i);
+            }
+        } else {
+            i += 1;
+        }
+    }
+
+    if allowed {
+        // If not present in m_stock at all, add a single stack of 60
+        if foundIndex < 0 {
+            let stack: SItemStack;
+            stack.itemID = itemID;
+            stack.quantity = 60;
+            stack.isAvailable = true;
+            ArrayPush(this.m_stock, stack);
+            if !ArrayContains(this.m_newItems, tdbID) {
+                ArrayPush(this.m_newItems, tdbID);
+            }
+        }
+
+        // Sync with TransactionSystem: enforce hard clamp at exactly 60
+        if IsDefined(transSystem) {
+            let qty: Int32 = transSystem.GetItemQuantity(this.m_vendorObject, itemID);
+            if qty > 60 {
+                // Remove excess units if restock or duplicate stacks added extra items
+                transSystem.RemoveItem(this.m_vendorObject, itemID, qty - 60);
+            } else if qty < 5 {
+                let record: ref<Item_Record> = TweakDBInterface.GetItemRecord(tdbID);
+                if IsDefined(record) {
+                    transSystem.GiveItem(this.m_vendorObject, itemID, 60 - qty, record.Tags());
+                } else {
+                    transSystem.GiveItem(this.m_vendorObject, itemID, 60 - qty);
+                }
+            }
+        }
+    } else if IsDefined(transSystem) {
+        // If disabled or cap reached, purge all units from vendor's inventory
+        let qty: Int32 = transSystem.GetItemQuantity(this.m_vendorObject, itemID);
+        if qty > 0 {
+            transSystem.RemoveItem(this.m_vendorObject, itemID, qty);
+        }
+    }
+}
+
+@addMethod(Vendor)
 private func EnsurePAFSStock(settings: ref<PAFSSettings>) -> Void {
     if !IsDefined(this.m_vendorObject) {
         return;
@@ -334,9 +769,8 @@ private func EnsurePAFSStock(settings: ref<PAFSSettings>) -> Void {
         return;
     }
 
-    // Ensure baseline stock and inventory are initialized before modifying
+    // Ensure baseline stock array is initialized before synchronizing
     this.LazyInitStock();
-    this.FillVendorInventory(true);
 
     let vendorID: TweakDBID = this.GetVendorTweakID();
     let vendorEnabled: Bool = settings.IsVendorRecordEnabled(vendorID, vendorType);
@@ -345,222 +779,65 @@ private func EnsurePAFSStock(settings: ref<PAFSSettings>) -> Void {
     let attrTDB: TweakDBID = t"Items.PAFS_AttributeShard";
     let foodTDB: TweakDBID = t"Items.PAFS_HealthFood";
     let cwTDB: TweakDBID = t"Items.PAFS_CyberwareCapacityShard";
+    let soloTDB: TweakDBID = settings.GetActiveSkillShardTDB(gamedataProficiencyType.StrengthSkill);
+    let shinoTDB: TweakDBID = settings.GetActiveSkillShardTDB(gamedataProficiencyType.ReflexesSkill);
+    let engTDB: TweakDBID = settings.GetActiveSkillShardTDB(gamedataProficiencyType.TechnicalAbilitySkill);
+    let netTDB: TweakDBID = settings.GetActiveSkillShardTDB(gamedataProficiencyType.IntelligenceSkill);
+    let headTDB: TweakDBID = settings.GetActiveSkillShardTDB(gamedataProficiencyType.CoolSkill);
 
     let allowPerk: Bool = vendorEnabled && settings.enablePerkShards;
     let allowAttr: Bool = vendorEnabled && settings.enableAttributeShards;
     let allowFood: Bool = vendorEnabled && settings.enableHealthFood;
     let allowCW: Bool = settings.IsCWCapacityVendorAllowed(vendorID, vendorType, this.m_gameInstance);
+    let allowSolo: Bool = settings.IsSkillShardVendorAllowed(vendorID, vendorType, gamedataProficiencyType.StrengthSkill, this.m_gameInstance);
+    let allowShino: Bool = settings.IsSkillShardVendorAllowed(vendorID, vendorType, gamedataProficiencyType.ReflexesSkill, this.m_gameInstance);
+    let allowEng: Bool = settings.IsSkillShardVendorAllowed(vendorID, vendorType, gamedataProficiencyType.TechnicalAbilitySkill, this.m_gameInstance);
+    let allowNet: Bool = settings.IsSkillShardVendorAllowed(vendorID, vendorType, gamedataProficiencyType.IntelligenceSkill, this.m_gameInstance);
+    let allowHead: Bool = settings.IsSkillShardVendorAllowed(vendorID, vendorType, gamedataProficiencyType.CoolSkill, this.m_gameInstance);
 
     let transSystem: ref<TransactionSystem> = GameInstance.GetTransactionSystem(this.m_gameInstance);
 
-    let perkIndex: Int32 = -1;
-    let attrIndex: Int32 = -1;
-    let foodIndex: Int32 = -1;
-    let cwIndex: Int32 = -1;
-    let currentTDB: TweakDBID;
+    // 1. Purge obsolete skill shard tiers and legacy clone items
     let i: Int32 = 0;
-
-    // Scan existing m_stock: deduplicate, keep valid enabled items, remove disabled/obsolete ones
+    let curTDB: TweakDBID;
     while i < ArraySize(this.m_stock) {
-        currentTDB = ItemID.GetTDBID(this.m_stock[i].itemID);
-        if currentTDB == perkTDB {
-            if allowPerk {
-                if perkIndex < 0 {
-                    perkIndex = i;
-                    i += 1;
-                } else {
-                    ArrayErase(this.m_stock, i);
+        curTDB = ItemID.GetTDBID(this.m_stock[i].itemID);
+        if PAFSSettings.IsPAFSSkillShard(curTDB) {
+            // Remove shards that don't match the active selected tier
+            if curTDB != soloTDB && curTDB != shinoTDB && curTDB != engTDB && curTDB != netTDB && curTDB != headTDB {
+                if IsDefined(transSystem) {
+                    let inactiveQty: Int32 = transSystem.GetItemQuantity(this.m_vendorObject, this.m_stock[i].itemID);
+                    if inactiveQty > 0 {
+                        transSystem.RemoveItem(this.m_vendorObject, this.m_stock[i].itemID, inactiveQty);
+                    }
                 }
-            } else {
                 ArrayErase(this.m_stock, i);
+            } else {
+                i += 1;
             }
-        } else if currentTDB == attrTDB {
-            if allowAttr {
-                if attrIndex < 0 {
-                    attrIndex = i;
-                    i += 1;
-                } else {
-                    ArrayErase(this.m_stock, i);
+        } else if curTDB == t"Items.Custom_Infinite_PerkShard" || curTDB == t"Items.Custom_Infinite_AttributeShard" || curTDB == t"Items.Custom_Infinite_HealthFood" {
+            if IsDefined(transSystem) {
+                let inactiveQty: Int32 = transSystem.GetItemQuantity(this.m_vendorObject, this.m_stock[i].itemID);
+                if inactiveQty > 0 {
+                    transSystem.RemoveItem(this.m_vendorObject, this.m_stock[i].itemID, inactiveQty);
                 }
-            } else {
-                ArrayErase(this.m_stock, i);
             }
-        } else if currentTDB == foodTDB {
-            if allowFood {
-                if foodIndex < 0 {
-                    foodIndex = i;
-                    i += 1;
-                } else {
-                    ArrayErase(this.m_stock, i);
-                }
-            } else {
-                ArrayErase(this.m_stock, i);
-            }
-        } else if currentTDB == cwTDB {
-            if allowCW {
-                if cwIndex < 0 {
-                    cwIndex = i;
-                    i += 1;
-                } else {
-                    ArrayErase(this.m_stock, i);
-                }
-            } else {
-                ArrayErase(this.m_stock, i);
-            }
-        } else if currentTDB == t"Items.Custom_Infinite_PerkShard" || currentTDB == t"Items.Custom_Infinite_AttributeShard" || currentTDB == t"Items.Custom_Infinite_HealthFood" {
             ArrayErase(this.m_stock, i);
         } else {
             i += 1;
         }
     }
 
-    // 1. Perk Point Shard
-    if allowPerk {
-        if perkIndex >= 0 {
-            if this.m_stock[perkIndex].quantity < 5 {
-                this.m_stock[perkIndex].quantity = 60;
-                this.m_stock[perkIndex].isAvailable = true;
-            }
-        } else {
-            let perkStack: SItemStack;
-            perkStack.itemID = ItemID.FromTDBID(perkTDB);
-            perkStack.quantity = 60;
-            perkStack.isAvailable = true;
-            ArrayPush(this.m_stock, perkStack);
-            if !ArrayContains(this.m_newItems, perkTDB) {
-                ArrayPush(this.m_newItems, perkTDB);
-            }
-        }
-        if IsDefined(transSystem) {
-            let perkItemID: ItemID = ItemID.FromTDBID(perkTDB);
-            let pQty: Int32 = transSystem.GetItemQuantity(this.m_vendorObject, perkItemID);
-            if pQty < 5 {
-                let pRecord: ref<Item_Record> = TweakDBInterface.GetItemRecord(perkTDB);
-                if IsDefined(pRecord) {
-                    transSystem.GiveItem(this.m_vendorObject, perkItemID, 60 - pQty, pRecord.Tags());
-                } else {
-                    transSystem.GiveItem(this.m_vendorObject, perkItemID, 60 - pQty);
-                }
-            }
-        }
-    } else if IsDefined(transSystem) {
-        let perkItemID: ItemID = ItemID.FromTDBID(perkTDB);
-        let pQty: Int32 = transSystem.GetItemQuantity(this.m_vendorObject, perkItemID);
-        if pQty > 0 {
-            transSystem.RemoveItem(this.m_vendorObject, perkItemID, pQty);
-        }
-    }
-
-    // 2. Attribute Point Shard
-    if allowAttr {
-        if attrIndex >= 0 {
-            if this.m_stock[attrIndex].quantity < 5 {
-                this.m_stock[attrIndex].quantity = 60;
-                this.m_stock[attrIndex].isAvailable = true;
-            }
-        } else {
-            let attrStack: SItemStack;
-            attrStack.itemID = ItemID.FromTDBID(attrTDB);
-            attrStack.quantity = 60;
-            attrStack.isAvailable = true;
-            ArrayPush(this.m_stock, attrStack);
-            if !ArrayContains(this.m_newItems, attrTDB) {
-                ArrayPush(this.m_newItems, attrTDB);
-            }
-        }
-        if IsDefined(transSystem) {
-            let attrItemID: ItemID = ItemID.FromTDBID(attrTDB);
-            let aQty: Int32 = transSystem.GetItemQuantity(this.m_vendorObject, attrItemID);
-            if aQty < 5 {
-                let aRecord: ref<Item_Record> = TweakDBInterface.GetItemRecord(attrTDB);
-                if IsDefined(aRecord) {
-                    transSystem.GiveItem(this.m_vendorObject, attrItemID, 60 - aQty, aRecord.Tags());
-                } else {
-                    transSystem.GiveItem(this.m_vendorObject, attrItemID, 60 - aQty);
-                }
-            }
-        }
-    } else if IsDefined(transSystem) {
-        let attrItemID: ItemID = ItemID.FromTDBID(attrTDB);
-        let aQty: Int32 = transSystem.GetItemQuantity(this.m_vendorObject, attrItemID);
-        if aQty > 0 {
-            transSystem.RemoveItem(this.m_vendorObject, attrItemID, aQty);
-        }
-    }
-
-    // 3. Permanent Health Food
-    if allowFood {
-        if foodIndex >= 0 {
-            if this.m_stock[foodIndex].quantity < 5 {
-                this.m_stock[foodIndex].quantity = 60;
-                this.m_stock[foodIndex].isAvailable = true;
-            }
-        } else {
-            let foodStack: SItemStack;
-            foodStack.itemID = ItemID.FromTDBID(foodTDB);
-            foodStack.quantity = 60;
-            foodStack.isAvailable = true;
-            ArrayPush(this.m_stock, foodStack);
-            if !ArrayContains(this.m_newItems, foodTDB) {
-                ArrayPush(this.m_newItems, foodTDB);
-            }
-        }
-        if IsDefined(transSystem) {
-            let foodItemID: ItemID = ItemID.FromTDBID(foodTDB);
-            let fQty: Int32 = transSystem.GetItemQuantity(this.m_vendorObject, foodItemID);
-            if fQty < 5 {
-                let fRecord: ref<Item_Record> = TweakDBInterface.GetItemRecord(foodTDB);
-                if IsDefined(fRecord) {
-                    transSystem.GiveItem(this.m_vendorObject, foodItemID, 60 - fQty, fRecord.Tags());
-                } else {
-                    transSystem.GiveItem(this.m_vendorObject, foodItemID, 60 - fQty);
-                }
-            }
-        }
-    } else if IsDefined(transSystem) {
-        let foodItemID: ItemID = ItemID.FromTDBID(foodTDB);
-        let fQty: Int32 = transSystem.GetItemQuantity(this.m_vendorObject, foodItemID);
-        if fQty > 0 {
-            transSystem.RemoveItem(this.m_vendorObject, foodItemID, fQty);
-        }
-    }
-
-    // 4. Cyberware Capacity Shard
-    if allowCW {
-        if cwIndex >= 0 {
-            if this.m_stock[cwIndex].quantity < 5 {
-                this.m_stock[cwIndex].quantity = 60;
-                this.m_stock[cwIndex].isAvailable = true;
-            }
-        } else {
-            let cwStack: SItemStack;
-            cwStack.itemID = ItemID.FromTDBID(cwTDB);
-            cwStack.quantity = 60;
-            cwStack.isAvailable = true;
-            ArrayPush(this.m_stock, cwStack);
-            if !ArrayContains(this.m_newItems, cwTDB) {
-                ArrayPush(this.m_newItems, cwTDB);
-            }
-        }
-        if IsDefined(transSystem) {
-            let cwItemID: ItemID = ItemID.FromTDBID(cwTDB);
-            let cQty: Int32 = transSystem.GetItemQuantity(this.m_vendorObject, cwItemID);
-            if cQty < 5 {
-                let cRecord: ref<Item_Record> = TweakDBInterface.GetItemRecord(cwTDB);
-                if IsDefined(cRecord) {
-                    transSystem.GiveItem(this.m_vendorObject, cwItemID, 60 - cQty, cRecord.Tags());
-                } else {
-                    transSystem.GiveItem(this.m_vendorObject, cwItemID, 60 - cQty);
-                }
-            }
-        }
-    } else if IsDefined(transSystem) {
-        let cwItemID: ItemID = ItemID.FromTDBID(cwTDB);
-        let cQty: Int32 = transSystem.GetItemQuantity(this.m_vendorObject, cwItemID);
-        if cQty > 0 {
-            transSystem.RemoveItem(this.m_vendorObject, cwItemID, cQty);
-        }
-    }
+    // 2. Synchronize all PAFS items to vendor stock and TransactionSystem
+    this.SyncPAFSItemStock(perkTDB, allowPerk, transSystem);
+    this.SyncPAFSItemStock(attrTDB, allowAttr, transSystem);
+    this.SyncPAFSItemStock(foodTDB, allowFood, transSystem);
+    this.SyncPAFSItemStock(cwTDB, allowCW, transSystem);
+    this.SyncPAFSItemStock(soloTDB, allowSolo, transSystem);
+    this.SyncPAFSItemStock(shinoTDB, allowShino, transSystem);
+    this.SyncPAFSItemStock(engTDB, allowEng, transSystem);
+    this.SyncPAFSItemStock(netTDB, allowNet, transSystem);
+    this.SyncPAFSItemStock(headTDB, allowHead, transSystem);
 }
 
 // -----------------------------------------------------------------
@@ -568,6 +845,11 @@ private func EnsurePAFSStock(settings: ref<PAFSSettings>) -> Void {
 // -----------------------------------------------------------------
 @wrapMethod(Vendor)
 public func GetItemsForSale(checkPlayerCanBuy: Bool) -> array<SItemStack> {
+    let vendorType: gamedataVendorType = this.GetVendorType();
+    if Equals(vendorType, gamedataVendorType.DropPoint) || Equals(vendorType, gamedataVendorType.VendingMachine) {
+        return wrappedMethod(checkPlayerCanBuy);
+    }
+
     let settings: ref<PAFSSettings> = PAFSSettings.Get(this.m_gameInstance);
     if IsDefined(settings) {
         this.EnsurePAFSStock(settings);
@@ -586,36 +868,56 @@ public func GetItemsForSale(checkPlayerCanBuy: Bool) -> array<SItemStack> {
     let allowAttr: Bool = vendorEnabled && settings.enableAttributeShards;
     let allowFood: Bool = vendorEnabled && settings.enableHealthFood;
     let allowCW: Bool = settings.IsCWCapacityVendorAllowed(vendorID, vendorType, this.m_gameInstance);
-
-    if allowPerk && allowAttr && allowFood && allowCW {
-        return items;
-    }
+    let allowSolo: Bool = settings.IsSkillShardVendorAllowed(vendorID, vendorType, gamedataProficiencyType.StrengthSkill, this.m_gameInstance);
+    let allowShino: Bool = settings.IsSkillShardVendorAllowed(vendorID, vendorType, gamedataProficiencyType.ReflexesSkill, this.m_gameInstance);
+    let allowEng: Bool = settings.IsSkillShardVendorAllowed(vendorID, vendorType, gamedataProficiencyType.TechnicalAbilitySkill, this.m_gameInstance);
+    let allowNet: Bool = settings.IsSkillShardVendorAllowed(vendorID, vendorType, gamedataProficiencyType.IntelligenceSkill, this.m_gameInstance);
+    let allowHead: Bool = settings.IsSkillShardVendorAllowed(vendorID, vendorType, gamedataProficiencyType.CoolSkill, this.m_gameInstance);
 
     let filtered: array<SItemStack>;
     let perkTDB: TweakDBID = t"Items.PAFS_PerkShard";
     let attrTDB: TweakDBID = t"Items.PAFS_AttributeShard";
     let foodTDB: TweakDBID = t"Items.PAFS_HealthFood";
     let cwTDB: TweakDBID = t"Items.PAFS_CyberwareCapacityShard";
+    let soloTDB: TweakDBID = settings.GetActiveSkillShardTDB(gamedataProficiencyType.StrengthSkill);
+    let shinoTDB: TweakDBID = settings.GetActiveSkillShardTDB(gamedataProficiencyType.ReflexesSkill);
+    let engTDB: TweakDBID = settings.GetActiveSkillShardTDB(gamedataProficiencyType.TechnicalAbilitySkill);
+    let netTDB: TweakDBID = settings.GetActiveSkillShardTDB(gamedataProficiencyType.IntelligenceSkill);
+    let headTDB: TweakDBID = settings.GetActiveSkillShardTDB(gamedataProficiencyType.CoolSkill);
     let itemTDB: TweakDBID;
+
+    let addedPerk: Bool = false;
+    let addedAttr: Bool = false;
+    let addedFood: Bool = false;
+    let addedCW: Bool = false;
+    let addedSolo: Bool = false;
+    let addedShino: Bool = false;
+    let addedEng: Bool = false;
+    let addedNet: Bool = false;
+    let addedHead: Bool = false;
 
     for stack in items {
         itemTDB = ItemID.GetTDBID(stack.itemID);
         if itemTDB == perkTDB {
-            if allowPerk {
-                ArrayPush(filtered, stack);
-            }
+            if allowPerk && !addedPerk { ArrayPush(filtered, stack); addedPerk = true; }
         } else if itemTDB == attrTDB {
-            if allowAttr {
-                ArrayPush(filtered, stack);
-            }
+            if allowAttr && !addedAttr { ArrayPush(filtered, stack); addedAttr = true; }
         } else if itemTDB == foodTDB {
-            if allowFood {
-                ArrayPush(filtered, stack);
-            }
+            if allowFood && !addedFood { ArrayPush(filtered, stack); addedFood = true; }
         } else if itemTDB == cwTDB {
-            if allowCW {
-                ArrayPush(filtered, stack);
-            }
+            if allowCW && !addedCW { ArrayPush(filtered, stack); addedCW = true; }
+        } else if itemTDB == soloTDB {
+            if allowSolo && !addedSolo { ArrayPush(filtered, stack); addedSolo = true; }
+        } else if itemTDB == shinoTDB {
+            if allowShino && !addedShino { ArrayPush(filtered, stack); addedShino = true; }
+        } else if itemTDB == engTDB {
+            if allowEng && !addedEng { ArrayPush(filtered, stack); addedEng = true; }
+        } else if itemTDB == netTDB {
+            if allowNet && !addedNet { ArrayPush(filtered, stack); addedNet = true; }
+        } else if itemTDB == headTDB {
+            if allowHead && !addedHead { ArrayPush(filtered, stack); addedHead = true; }
+        } else if PAFSSettings.IsPAFSSkillShard(itemTDB) {
+            // Drop inactive / obsolete tier shards
         } else if itemTDB == t"Items.Custom_Infinite_PerkShard" || itemTDB == t"Items.Custom_Infinite_AttributeShard" || itemTDB == t"Items.Custom_Infinite_HealthFood" {
             // Drop obsolete clone items
         } else {
@@ -646,6 +948,9 @@ public static func GetBuyPrice(vendorObject: wref<GameObject>, itemID: ItemID) -
             }
             if tdbID == t"Items.PAFS_HealthFood" {
                 return settings.GetHealthFoodPrice();
+            }
+            if PAFSSettings.IsPAFSSkillShard(tdbID) {
+                return settings.GetSkillShardPriceByTDB(tdbID);
             }
         }
     }
@@ -721,22 +1026,74 @@ protected cb func OnItemAddedToInventory(evt: ref<ItemAddedEvent>) -> Bool {
         if count > 0 {
             transSystem.RemoveItem(this, evt.itemID, count);
 
-            let totalBonus: Float = 5.0 * Cast<Float>(count);
+            let totalBonus: Float = 7.0 * Cast<Float>(count);
             let modifier: ref<gameConstantStatModifierData> = new gameConstantStatModifierData();
             modifier.modifierType = gameStatModifierType.Additive;
             modifier.statType = gamedataStatType.Health;
             modifier.value = totalBonus;
             GameInstance.GetStatsSystem(this.GetGame()).AddSavedModifier(Cast<StatsObjectID>(this.GetEntityID()), modifier);
 
-            let notification_Message: String = (GetLocalizedText("LocKey#93104") + "\n") + GetLocalizedText("LocKey#93725");
+            let foodName: String = GetLocalizedTextByKey(TweakDBInterface.GetItemRecord(tdbID).DisplayName());
+            if StrLen(foodName) == 0 {
+                foodName = GetLocalizedText("LocKey#93104");
+            }
+            let bonusInt: Int32 = Cast<Int32>(totalBonus);
+            let notification_Message: String = foodName + "\n+" + ToString(bonusInt) + " Max Health";
             this.SetWarningMessage(notification_Message, SimpleMessageType.Neutral);
+        }
+        return true;
+    }
+
+    // 3. Skill Progression Shards Multi-Consumption
+    if PAFSSettings.IsPAFSSkillShard(tdbID) {
+        let transSystem: ref<TransactionSystem> = GameInstance.GetTransactionSystem(this.GetGame());
+        let count: Int32 = transSystem.GetItemQuantity(this, evt.itemID);
+        if count > 0 {
+            transSystem.RemoveItem(this, evt.itemID, count);
+
+            let profType: gamedataProficiencyType = gamedataProficiencyType.StrengthSkill;
+            let skillName: String = "Solo";
+            let xpPerShard: Int32 = 1000;
+
+            if !PAFSSettings.GetSkillShardData(tdbID, profType, skillName, xpPerShard) {
+                let settings: ref<PAFSSettings> = PAFSSettings.Get(this.GetGame());
+                if IsDefined(settings) {
+                    xpPerShard = settings.GetSkillShardXP();
+                }
+            }
+
+            let pds: ref<PlayerDevelopmentSystem> = GameInstance.GetScriptableSystemsContainer(this.GetGame()).Get(n"PlayerDevelopmentSystem") as PlayerDevelopmentSystem;
+            let curLvl: Int32 = 0;
+            if IsDefined(pds) {
+                curLvl = pds.GetProficiencyLevel(this, profType);
+            }
+
+            let shardTitle: String = GetLocalizedTextByKey(TweakDBInterface.GetItemRecord(tdbID).DisplayName());
+            if StrLen(shardTitle) == 0 {
+                shardTitle = "Skill Progression Shard: " + skillName;
+            }
+
+            if curLvl >= 60 {
+                let notification_Message: String = shardTitle + "\nMaximum Level (60) Reached";
+                this.SetWarningMessage(notification_Message, SimpleMessageType.Neutral);
+            } else {
+                let totalXP: Int32 = xpPerShard * count;
+                if IsDefined(pds) {
+                    let request: ref<AddExperience> = new AddExperience();
+                    request.Set(this, totalXP, profType, false);
+                    pds.QueueRequest(request);
+                }
+
+                let notification_Message: String = shardTitle + "\n+" + ToString(totalXP) + " XP";
+                this.SetWarningMessage(notification_Message, SimpleMessageType.Neutral);
+            }
         }
         return true;
     }
 
     let result: Bool = wrappedMethod(evt);
 
-    // 3. Skillbook / Perk & Attribute Shard Multi-Consumption
+    // 4. Perk & Attribute Multi-Consumption
     let itemRecord: ref<Item_Record> = TweakDBInterface.GetItemRecord(tdbID);
     if IsDefined(itemRecord) && Equals(itemRecord.ItemType().Type(), gamedataItemType.Con_Skillbook) {
         let transSystem: ref<TransactionSystem> = GameInstance.GetTransactionSystem(this.GetGame());
@@ -769,10 +1126,14 @@ public func CompleteAction(gameInstance: GameInstance) -> Void {
             let modifier: ref<gameConstantStatModifierData> = new gameConstantStatModifierData();
             modifier.modifierType = gameStatModifierType.Additive;
             modifier.statType = gamedataStatType.Health;
-            modifier.value = 5.0;
+            modifier.value = 7.0;
             GameInstance.GetStatsSystem(gameInstance).AddSavedModifier(Cast<StatsObjectID>(player.GetEntityID()), modifier);
 
-            let notification_Message: String = (GetLocalizedText("LocKey#93104") + "\n") + GetLocalizedText("LocKey#93725");
+            let foodName: String = GetLocalizedTextByKey(TweakDBInterface.GetItemRecord(tdbID).DisplayName());
+            if StrLen(foodName) == 0 {
+                foodName = GetLocalizedText("LocKey#93104");
+            }
+            let notification_Message: String = foodName + "\n+7 Max Health";
             player.SetWarningMessage(notification_Message, SimpleMessageType.Neutral);
         }
     }

@@ -45,6 +45,7 @@ Items.PAFS_AttributeShard:
 Items.PAFS_HealthFood:
   $base: Items.PermanentHealthFood
   isSingleInstance: True
+  effectors: []
   tags:
     - Preload
     - Consumable
@@ -74,7 +75,220 @@ Items.PAFS_CyberwareCapacityShard:
     - DontShowLooted
     - LargeSkillbook
 
-# 6. Shared Vendor Items
+# 6. Custom Skill Progression Shards
+# -------------------------------------------------------------
+# Base Templates
+Items.PAFS_SoloShard:
+  $base: Items.BodySkill_Skillbook
+  displayName: LocKey#93273
+  localizedDescription: LocKey#93274
+  iconPath: brawling_skillbook
+  isSingleInstance: True
+  quality: Quality.Legendary
+  OnEquip: []
+  OnAttach: []
+  OnLooted: []
+  objectActions: []
+  effectors: []
+  statModifiers: []
+  statModifierGroups: []
+  tags:
+    - Preload
+    - Consumable
+    - skillbook
+    - SkipActivityLogOnRemove
+    - DontShowLooted
+    - LargeSkillbook
+
+Items.PAFS_SoloShard_T1:
+  $base: Items.PAFS_SoloShard
+  quality: Quality.Common
+
+Items.PAFS_SoloShard_T2:
+  $base: Items.PAFS_SoloShard
+  quality: Quality.Uncommon
+
+Items.PAFS_SoloShard_T3:
+  $base: Items.PAFS_SoloShard
+  quality: Quality.Rare
+
+Items.PAFS_SoloShard_T4:
+  $base: Items.PAFS_SoloShard
+  quality: Quality.Epic
+
+Items.PAFS_SoloShard_T5:
+  $base: Items.PAFS_SoloShard
+  quality: Quality.Legendary
+
+Items.PAFS_ShinobiShard:
+  $base: Items.ReflexesSkill_Skillbook
+  displayName: LocKey#93276
+  localizedDescription: LocKey#93275
+  iconPath: kenjutsu_skillbook
+  isSingleInstance: True
+  quality: Quality.Legendary
+  OnEquip: []
+  OnAttach: []
+  OnLooted: []
+  objectActions: []
+  effectors: []
+  statModifiers: []
+  statModifierGroups: []
+  tags:
+    - Preload
+    - Consumable
+    - skillbook
+    - SkipActivityLogOnRemove
+    - DontShowLooted
+    - LargeSkillbook
+
+Items.PAFS_ShinobiShard_T1:
+  $base: Items.PAFS_ShinobiShard
+  quality: Quality.Common
+
+Items.PAFS_ShinobiShard_T2:
+  $base: Items.PAFS_ShinobiShard
+  quality: Quality.Uncommon
+
+Items.PAFS_ShinobiShard_T3:
+  $base: Items.PAFS_ShinobiShard
+  quality: Quality.Rare
+
+Items.PAFS_ShinobiShard_T4:
+  $base: Items.PAFS_ShinobiShard
+  quality: Quality.Epic
+
+Items.PAFS_ShinobiShard_T5:
+  $base: Items.PAFS_ShinobiShard
+  quality: Quality.Legendary
+
+Items.PAFS_EngineerShard:
+  $base: Items.TechnicalAbilitySkill_Skillbook
+  displayName: LocKey#51169
+  localizedDescription: LocKey#51170
+  iconPath: engineering_skillbook
+  isSingleInstance: True
+  quality: Quality.Legendary
+  OnEquip: []
+  OnAttach: []
+  OnLooted: []
+  objectActions: []
+  effectors: []
+  statModifiers: []
+  statModifierGroups: []
+  tags:
+    - Preload
+    - Consumable
+    - skillbook
+    - SkipActivityLogOnRemove
+    - DontShowLooted
+    - LargeSkillbook
+
+Items.PAFS_EngineerShard_T1:
+  $base: Items.PAFS_EngineerShard
+  quality: Quality.Common
+
+Items.PAFS_EngineerShard_T2:
+  $base: Items.PAFS_EngineerShard
+  quality: Quality.Uncommon
+
+Items.PAFS_EngineerShard_T3:
+  $base: Items.PAFS_EngineerShard
+  quality: Quality.Rare
+
+Items.PAFS_EngineerShard_T4:
+  $base: Items.PAFS_EngineerShard
+  quality: Quality.Epic
+
+Items.PAFS_EngineerShard_T5:
+  $base: Items.PAFS_EngineerShard
+  quality: Quality.Legendary
+
+Items.PAFS_NetrunnerShard:
+  $base: Items.IntelligenceSkill_Skillbook_Reward
+  displayName: LocKey#93277
+  localizedDescription: LocKey#93278
+  iconPath: hacking_skillbook
+  isSingleInstance: True
+  quality: Quality.Legendary
+  OnEquip: []
+  OnAttach: []
+  OnLooted: []
+  objectActions: []
+  effectors: []
+  statModifiers: []
+  statModifierGroups: []
+  tags:
+    - Preload
+    - Consumable
+    - skillbook
+    - SkipActivityLogOnRemove
+    - DontShowLooted
+    - LargeSkillbook
+
+Items.PAFS_NetrunnerShard_T1:
+  $base: Items.PAFS_NetrunnerShard
+  quality: Quality.Common
+
+Items.PAFS_NetrunnerShard_T2:
+  $base: Items.PAFS_NetrunnerShard
+  quality: Quality.Uncommon
+
+Items.PAFS_NetrunnerShard_T3:
+  $base: Items.PAFS_NetrunnerShard
+  quality: Quality.Rare
+
+Items.PAFS_NetrunnerShard_T4:
+  $base: Items.PAFS_NetrunnerShard
+  quality: Quality.Epic
+
+Items.PAFS_NetrunnerShard_T5:
+  $base: Items.PAFS_NetrunnerShard
+  quality: Quality.Legendary
+
+Items.PAFS_HeadhunterShard:
+  $base: Items.CoolSkill_Skillbook
+  displayName: LocKey#93279
+  localizedDescription: LocKey#93280
+  iconPath: stealth_skillbook
+  isSingleInstance: True
+  quality: Quality.Legendary
+  OnEquip: []
+  OnAttach: []
+  OnLooted: []
+  objectActions: []
+  effectors: []
+  statModifiers: []
+  statModifierGroups: []
+  tags:
+    - Preload
+    - Consumable
+    - skillbook
+    - SkipActivityLogOnRemove
+    - DontShowLooted
+    - LargeSkillbook
+
+Items.PAFS_HeadhunterShard_T1:
+  $base: Items.PAFS_HeadhunterShard
+  quality: Quality.Common
+
+Items.PAFS_HeadhunterShard_T2:
+  $base: Items.PAFS_HeadhunterShard
+  quality: Quality.Uncommon
+
+Items.PAFS_HeadhunterShard_T3:
+  $base: Items.PAFS_HeadhunterShard
+  quality: Quality.Rare
+
+Items.PAFS_HeadhunterShard_T4:
+  $base: Items.PAFS_HeadhunterShard
+  quality: Quality.Epic
+
+Items.PAFS_HeadhunterShard_T5:
+  $base: Items.PAFS_HeadhunterShard
+  quality: Quality.Legendary
+
+# 7. Shared Vendor Items
 Vendors.PAFS_VendorItem_PerkShard:
   $type: VendorItem
   item: Items.PAFS_PerkShard
@@ -95,6 +309,32 @@ Vendors.PAFS_VendorItem_CWCapacityShard:
   item: Items.PAFS_CyberwareCapacityShard
   quantity: [ Vendors.PAFS_StockModifier ]
 
+Vendors.PAFS_VendorItem_SoloShard:
+  $type: VendorItem
+  item: Items.PAFS_SoloShard_T2
+  quantity: [ Vendors.PAFS_StockModifier ]
+
+Vendors.PAFS_VendorItem_ShinobiShard:
+  $type: VendorItem
+  item: Items.PAFS_ShinobiShard_T2
+  quantity: [ Vendors.PAFS_StockModifier ]
+
+Vendors.PAFS_VendorItem_EngineerShard:
+  $type: VendorItem
+  item: Items.PAFS_EngineerShard_T2
+  quantity: [ Vendors.PAFS_StockModifier ]
+
+Vendors.PAFS_VendorItem_NetrunnerShard:
+  $type: VendorItem
+  item: Items.PAFS_NetrunnerShard_T2
+  quantity: [ Vendors.PAFS_StockModifier ]
+
+Vendors.PAFS_VendorItem_HeadhunterShard:
+  $type: VendorItem
+  item: Items.PAFS_HeadhunterShard_T2
+  quantity: [ Vendors.PAFS_StockModifier ]
+
+
 # Weapon Vendors (Gunsmiths)
 # -------------------------------------------------------------
 Vendors.wat_lch_gunsmith_01:
@@ -103,6 +343,11 @@ Vendors.wat_lch_gunsmith_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.wat_kab_gunsmith_01:
   itemStock:
@@ -110,6 +355,11 @@ Vendors.wat_kab_gunsmith_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.wat_kab_gunsmith_02:
   itemStock:
@@ -117,6 +367,11 @@ Vendors.wat_kab_gunsmith_02:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.wat_nid_gunsmith_01:
   itemStock:
@@ -124,6 +379,11 @@ Vendors.wat_nid_gunsmith_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.wbr_jpn_gunsmith_01:
   itemStock:
@@ -131,6 +391,11 @@ Vendors.wbr_jpn_gunsmith_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.cct_dtn_guns_01:
   itemStock:
@@ -138,6 +403,11 @@ Vendors.cct_dtn_guns_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.hey_spr_gunsmith_01:
   itemStock:
@@ -145,6 +415,11 @@ Vendors.hey_spr_gunsmith_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.hey_gle_gunsmith_01:
   itemStock:
@@ -152,6 +427,11 @@ Vendors.hey_gle_gunsmith_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.hey_rey_gunsmith_01:
   itemStock:
@@ -159,6 +439,11 @@ Vendors.hey_rey_gunsmith_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.std_arr_gunsmith_01:
   itemStock:
@@ -166,6 +451,11 @@ Vendors.std_arr_gunsmith_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.std_rcr_gunsmith_01:
   itemStock:
@@ -173,6 +463,11 @@ Vendors.std_rcr_gunsmith_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.pac_wwd_gunsmith_01:
   itemStock:
@@ -180,6 +475,11 @@ Vendors.pac_wwd_gunsmith_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.bls_ina_se1_gunsmith_01a:
   itemStock:
@@ -187,6 +487,11 @@ Vendors.bls_ina_se1_gunsmith_01a:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.bls_ina_se1_gunsmith_02:
   itemStock:
@@ -194,6 +499,11 @@ Vendors.bls_ina_se1_gunsmith_02:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.bls_ina_se5_gunsmith_01:
   itemStock:
@@ -201,6 +511,11 @@ Vendors.bls_ina_se5_gunsmith_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # -------------------------------------------------------------
 # Ripperdocs
@@ -211,6 +526,11 @@ Vendors.wat_lch_ripperdoc_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.wat_kab_ripperdoc_01:
   itemStock:
@@ -218,6 +538,11 @@ Vendors.wat_kab_ripperdoc_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.wat_kab_ripperdoc_02:
   itemStock:
@@ -225,6 +550,11 @@ Vendors.wat_kab_ripperdoc_02:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.wat_kab_ripperdoc_03:
   itemStock:
@@ -232,6 +562,11 @@ Vendors.wat_kab_ripperdoc_03:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.wat_nid_ripperdoc_01:
   itemStock:
@@ -239,6 +574,11 @@ Vendors.wat_nid_ripperdoc_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.wbr_jpn_ripperdoc_01:
   itemStock:
@@ -246,6 +586,11 @@ Vendors.wbr_jpn_ripperdoc_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.wbr_jpn_ripperdoc_02:
   itemStock:
@@ -253,6 +598,11 @@ Vendors.wbr_jpn_ripperdoc_02:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.wbr_hil_ripdoc_01:
   itemStock:
@@ -260,6 +610,11 @@ Vendors.wbr_hil_ripdoc_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.cct_dtn_ripdoc_01:
   itemStock:
@@ -267,6 +622,11 @@ Vendors.cct_dtn_ripdoc_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.hey_spr_ripperdoc_01:
   itemStock:
@@ -274,6 +634,11 @@ Vendors.hey_spr_ripperdoc_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.std_arr_ripperdoc_01:
   itemStock:
@@ -281,6 +646,11 @@ Vendors.std_arr_ripperdoc_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.std_rcr_ripperdoc_01:
   itemStock:
@@ -288,6 +658,11 @@ Vendors.std_rcr_ripperdoc_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.pac_wwd_ripperdoc_01:
   itemStock:
@@ -295,6 +670,11 @@ Vendors.pac_wwd_ripperdoc_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.bls_ina_se1_ripperdoc_01:
   itemStock:
@@ -302,6 +682,11 @@ Vendors.bls_ina_se1_ripperdoc_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.bls_ina_se1_ripperdoc_02:
   itemStock:
@@ -309,6 +694,11 @@ Vendors.bls_ina_se1_ripperdoc_02:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # -------------------------------------------------------------
 # Netrunners & Skill Trainers
@@ -319,6 +709,11 @@ Vendors.wat_kab_netrunner_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.wat_lch_netrunner_01:
   itemStock:
@@ -326,6 +721,11 @@ Vendors.wat_lch_netrunner_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.wbr_jpn_netrunner_01:
   itemStock:
@@ -333,6 +733,11 @@ Vendors.wbr_jpn_netrunner_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.wbr_jpn_netrunner_02:
   itemStock:
@@ -340,6 +745,11 @@ Vendors.wbr_jpn_netrunner_02:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.hey_rey_netrunner_01:
   itemStock:
@@ -347,6 +757,11 @@ Vendors.hey_rey_netrunner_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.pac_cvi_techstore_01:
   itemStock:
@@ -354,6 +769,11 @@ Vendors.pac_cvi_techstore_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.NetrunnerTrainer:
   itemStock:
@@ -361,6 +781,11 @@ Vendors.NetrunnerTrainer:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.MeleeTrainer:
   itemStock:
@@ -368,6 +793,11 @@ Vendors.MeleeTrainer:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.wat_lch_melee_01:
   itemStock:
@@ -375,6 +805,11 @@ Vendors.wat_lch_melee_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.wat_lch_melee_02:
   itemStock:
@@ -382,6 +817,11 @@ Vendors.wat_lch_melee_02:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # -------------------------------------------------------------
 # Junk Shops
@@ -392,6 +832,11 @@ Vendors.wat_kab_junkshop_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.wbr_jpn_junkshop_01:
   itemStock:
@@ -399,6 +844,11 @@ Vendors.wbr_jpn_junkshop_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.wbr_jpn_junkshop_02:
   itemStock:
@@ -406,6 +856,11 @@ Vendors.wbr_jpn_junkshop_02:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.wbr_jpn_junkshop_03:
   itemStock:
@@ -413,6 +868,11 @@ Vendors.wbr_jpn_junkshop_03:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.hey_spr_junkshop_01:
   itemStock:
@@ -420,6 +880,11 @@ Vendors.hey_spr_junkshop_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.hey_gle_junkshop_01:
   itemStock:
@@ -427,6 +892,11 @@ Vendors.hey_gle_junkshop_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.hey_rey_junkshop_01:
   itemStock:
@@ -434,6 +904,11 @@ Vendors.hey_rey_junkshop_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.bls_ina_se1_junkshop_01:
   itemStock:
@@ -441,6 +916,11 @@ Vendors.bls_ina_se1_junkshop_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.bls_ina_se1_junkshop_02:
   itemStock:
@@ -448,6 +928,11 @@ Vendors.bls_ina_se1_junkshop_02:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.bls_ina_se5_junkshop_01:
   itemStock:
@@ -455,6 +940,11 @@ Vendors.bls_ina_se5_junkshop_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # -------------------------------------------------------------
 # Pharmacies / Medstores
@@ -465,6 +955,11 @@ Vendors.wat_lch_medicstore_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.wat_kab_medicstore_01:
   itemStock:
@@ -472,6 +967,11 @@ Vendors.wat_kab_medicstore_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.wat_nid_medicstore_01:
   itemStock:
@@ -479,6 +979,11 @@ Vendors.wat_nid_medicstore_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.wat_nid_medicstore_02:
   itemStock:
@@ -486,6 +991,11 @@ Vendors.wat_nid_medicstore_02:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.wbr_jpn_medicstore_01:
   itemStock:
@@ -493,6 +1003,11 @@ Vendors.wbr_jpn_medicstore_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.wbr_jpn_medicstore_02:
   itemStock:
@@ -500,6 +1015,11 @@ Vendors.wbr_jpn_medicstore_02:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.wbr_jpn_medicstore_03:
   itemStock:
@@ -507,6 +1027,11 @@ Vendors.wbr_jpn_medicstore_03:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.wbr_nok_medic_01:
   itemStock:
@@ -514,6 +1039,11 @@ Vendors.wbr_nok_medic_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.cct_dtn_medic_01:
   itemStock:
@@ -521,6 +1051,11 @@ Vendors.cct_dtn_medic_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.cct_cpz_medic_01:
   itemStock:
@@ -528,6 +1063,11 @@ Vendors.cct_cpz_medic_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.hey_spr_medicstore_01:
   itemStock:
@@ -535,6 +1075,11 @@ Vendors.hey_spr_medicstore_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.std_arr_medicstore_01:
   itemStock:
@@ -542,6 +1087,11 @@ Vendors.std_arr_medicstore_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.std_rcr_medicstore_01:
   itemStock:
@@ -549,6 +1099,11 @@ Vendors.std_rcr_medicstore_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.pac_cvi_medicstore_01:
   itemStock:
@@ -556,6 +1111,11 @@ Vendors.pac_cvi_medicstore_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.bls_ina_se1_medicstore_01:
   itemStock:
@@ -563,6 +1123,11 @@ Vendors.bls_ina_se1_medicstore_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # -------------------------------------------------------------
 # Clothing Stores
@@ -573,6 +1138,11 @@ Vendors.wat_lch_clothingshop_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.wat_kab_clothingshop_01:
   itemStock:
@@ -580,6 +1150,11 @@ Vendors.wat_kab_clothingshop_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.wat_nid_clothingshop_01:
   itemStock:
@@ -587,6 +1162,11 @@ Vendors.wat_nid_clothingshop_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.wbr_jpn_clothingshop_01:
   itemStock:
@@ -594,6 +1174,11 @@ Vendors.wbr_jpn_clothingshop_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.wbr_jpn_clothingshop_02:
   itemStock:
@@ -601,6 +1186,11 @@ Vendors.wbr_jpn_clothingshop_02:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.wbr_hil_clothingshop_01:
   itemStock:
@@ -608,6 +1198,11 @@ Vendors.wbr_hil_clothingshop_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.cct_dtn_cloth_01:
   itemStock:
@@ -615,6 +1210,11 @@ Vendors.cct_dtn_cloth_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.cct_cpz_cloth_02:
   itemStock:
@@ -622,6 +1222,11 @@ Vendors.cct_cpz_cloth_02:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.hey_spr_clothingshop_01:
   itemStock:
@@ -629,6 +1234,11 @@ Vendors.hey_spr_clothingshop_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.std_arr_clothingshop_01:
   itemStock:
@@ -636,6 +1246,11 @@ Vendors.std_arr_clothingshop_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.std_rcr_clothingshop_01:
   itemStock:
@@ -643,6 +1258,11 @@ Vendors.std_rcr_clothingshop_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.pac_cvi_clothingshop_01:
   itemStock:
@@ -650,6 +1270,11 @@ Vendors.pac_cvi_clothingshop_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.pac_wwd_clothingshop_01:
   itemStock:
@@ -657,6 +1282,11 @@ Vendors.pac_wwd_clothingshop_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.bls_ina_se1_clothingshop_01:
   itemStock:
@@ -664,6 +1294,11 @@ Vendors.bls_ina_se1_clothingshop_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # -------------------------------------------------------------
 # Food Shops & Diners
@@ -674,6 +1309,11 @@ Vendors.wat_nid_foodshop_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.bls_ina_se1_foodshop_01:
   itemStock:
@@ -681,6 +1321,11 @@ Vendors.bls_ina_se1_foodshop_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.bls_ina_se1_foodshop_02:
   itemStock:
@@ -688,6 +1333,11 @@ Vendors.bls_ina_se1_foodshop_02:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.bls_ina_se1_foodshop_03:
   itemStock:
@@ -695,6 +1345,11 @@ Vendors.bls_ina_se1_foodshop_03:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 Vendors.bls_ina_se5_foodshop_01:
   itemStock:
@@ -702,6 +1357,11 @@ Vendors.bls_ina_se5_foodshop_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 
 # -------------------------------------------------------------
@@ -714,6 +1374,11 @@ Vendors.cz_stadium_gunsmith_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Dogtown Containers / Stacks Gunsmith
 Vendors.cz_con_gunsmith_01:
@@ -722,6 +1387,11 @@ Vendors.cz_con_gunsmith_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Dogtown Stadium Ripperdoc
 Vendors.cz_stadium_ripperdoc_01:
@@ -730,6 +1400,11 @@ Vendors.cz_stadium_ripperdoc_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Dogtown Longshore Stacks Ripperdoc
 Vendors.cz_con_ripdoc_01:
@@ -738,6 +1413,11 @@ Vendors.cz_con_ripdoc_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Terra Cognita Clinic - Dr. Anderson
 Vendors.cz_monument_ripperdoc_anderson:
@@ -746,6 +1426,11 @@ Vendors.cz_monument_ripperdoc_anderson:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Dogtown Clinic - Farida
 Vendors.cz_monument_ripperdoc_farida:
@@ -754,6 +1439,11 @@ Vendors.cz_monument_ripperdoc_farida:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Dogtown Stadium Netrunner
 Vendors.cz_stadium_netrunner_01:
@@ -762,6 +1452,11 @@ Vendors.cz_stadium_netrunner_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Dogtown Stacks Netrunner
 Vendors.cz_con_netrunner_01:
@@ -770,6 +1465,11 @@ Vendors.cz_con_netrunner_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Dogtown Stadium Apparel
 Vendors.cz_stadium_clothing_001:
@@ -778,6 +1478,11 @@ Vendors.cz_stadium_clothing_001:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Dogtown Stacks Apparel
 Vendors.cz_con_clothingshop_001:
@@ -786,6 +1491,11 @@ Vendors.cz_con_clothingshop_001:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Dogtown Stadium Black Market / Skill Shards - Michal K
 Vendors.cz_stadium_junk_01_michal_k:
@@ -794,6 +1504,11 @@ Vendors.cz_stadium_junk_01_michal_k:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Dogtown Stadium Junk - Marcin I
 Vendors.cz_stadium_junk_01_marcin_i:
@@ -802,6 +1517,11 @@ Vendors.cz_stadium_junk_01_marcin_i:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Dogtown Stacks Junk Shop
 Vendors.cz_con_junkshop_01:
@@ -810,6 +1530,11 @@ Vendors.cz_con_junkshop_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Dogtown Stadium Clinic
 Vendors.cz_stadium_medic_01:
@@ -818,6 +1543,11 @@ Vendors.cz_stadium_medic_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Dogtown Stacks Clinic
 Vendors.cz_con_medic_01:
@@ -826,6 +1556,11 @@ Vendors.cz_con_medic_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Spaceport Clinic
 Vendors.nw4_spaceport_medic_01:
@@ -834,6 +1569,11 @@ Vendors.nw4_spaceport_medic_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Dogtown Stadium Food 01
 Vendors.cz_stadium_food_01:
@@ -842,6 +1582,11 @@ Vendors.cz_stadium_food_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Dogtown Stadium Food 02
 Vendors.cz_stadium_food_02:
@@ -850,6 +1595,11 @@ Vendors.cz_stadium_food_02:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Dogtown Stadium Food 03
 Vendors.cz_stadium_food_03:
@@ -858,6 +1608,11 @@ Vendors.cz_stadium_food_03:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Terra Cognita Food Shop
 Vendors.cz_monument_foodshop_01:
@@ -866,6 +1621,11 @@ Vendors.cz_monument_foodshop_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Dogtown Stacks Food Shop
 Vendors.cz_con_foodshop_01:
@@ -874,6 +1634,11 @@ Vendors.cz_con_foodshop_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 
 # -------------------------------------------------------------
@@ -886,6 +1651,11 @@ Vendors.wat_northside_armorsmith_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Watson Waterfront Armorsmith
 Vendors.wat_waterfront_armorsmith_01:
@@ -894,6 +1664,11 @@ Vendors.wat_waterfront_armorsmith_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Watson Little China Armorsmith
 Vendors.wat_little_china_armorsmith_01:
@@ -902,6 +1677,11 @@ Vendors.wat_little_china_armorsmith_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Watson Kabuki Armorsmith
 Vendors.wat_kabuki_armorsmith_01:
@@ -910,6 +1690,11 @@ Vendors.wat_kabuki_armorsmith_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Westbrook Japantown Armorsmith
 Vendors.wes_japan_town_armorsmith_01:
@@ -918,6 +1703,11 @@ Vendors.wes_japan_town_armorsmith_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # City Center Downtown Armorsmith
 Vendors.cc_downtown_armorsmith_01:
@@ -926,6 +1716,11 @@ Vendors.cc_downtown_armorsmith_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Heywood Wellsprings Armorsmith
 Vendors.heywood_springs_armorsmith_01:
@@ -934,6 +1729,11 @@ Vendors.heywood_springs_armorsmith_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Heywood The Glen Armorsmith
 Vendors.heywood_glen_armorsmith_01:
@@ -942,6 +1742,11 @@ Vendors.heywood_glen_armorsmith_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Heywood Vista Del Rey Armorsmith
 Vendors.heywood_del_rey_armorsmith_01:
@@ -950,6 +1755,11 @@ Vendors.heywood_del_rey_armorsmith_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Santo Domingo Arroyo Armorsmith
 Vendors.santo_domingo_arroyo_armorsmith_01:
@@ -958,6 +1768,11 @@ Vendors.santo_domingo_arroyo_armorsmith_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Santo Domingo Rancho Coronado Armorsmith
 Vendors.santo_domingo_rancho_armorsmith_01:
@@ -966,6 +1781,11 @@ Vendors.santo_domingo_rancho_armorsmith_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Pacifica West Wind Armorsmith 01
 Vendors.pacific_west_armorsmith_01:
@@ -974,6 +1794,11 @@ Vendors.pacific_west_armorsmith_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Pacifica West Wind Armorsmith 02
 Vendors.pacific_west_armorsmith_02:
@@ -982,6 +1807,11 @@ Vendors.pacific_west_armorsmith_02:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Pacifica Coastview Armorsmith
 Vendors.pacific_view_armorsmith_01:
@@ -990,6 +1820,11 @@ Vendors.pacific_view_armorsmith_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 
 # -------------------------------------------------------------
@@ -1002,6 +1837,11 @@ Vendors.wat_lch_cyberware_store_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Watson Northside Cyberware Store
 Vendors.wat_nid_cyberware_store_01:
@@ -1010,6 +1850,11 @@ Vendors.wat_nid_cyberware_store_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Westbrook Japantown Cyberware Store
 Vendors.wbr_jpn_cyberware_store_01:
@@ -1018,6 +1863,11 @@ Vendors.wbr_jpn_cyberware_store_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Westbrook North Oak Cyberware Store
 Vendors.wbr_nok_cyberware_store_01:
@@ -1026,6 +1876,11 @@ Vendors.wbr_nok_cyberware_store_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Westbrook Charter Hill Cyberware Store
 Vendors.wbr_hil_cyberware_store_01:
@@ -1034,6 +1889,11 @@ Vendors.wbr_hil_cyberware_store_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # City Center Downtown Cyberware Store
 Vendors.cct_dtn_cyber_01:
@@ -1042,6 +1902,11 @@ Vendors.cct_dtn_cyber_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Heywood The Glen Cyberware Store
 Vendors.hey_gle_cyberware_store_01:
@@ -1050,6 +1915,11 @@ Vendors.hey_gle_cyberware_store_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Heywood Vista Del Rey Cyberware Store
 Vendors.hey_rey_cyberware_store_01:
@@ -1058,6 +1928,11 @@ Vendors.hey_rey_cyberware_store_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Santo Domingo Arroyo Cyberware Store
 Vendors.std_arr_cyberware_store_01:
@@ -1066,6 +1941,11 @@ Vendors.std_arr_cyberware_store_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Santo Domingo Rancho Coronado Cyberware Store
 Vendors.std_rcr_cyberware_store_01:
@@ -1074,6 +1954,11 @@ Vendors.std_rcr_cyberware_store_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Pacifica Coastview Cyberware Store
 Vendors.pac_cvi_cyberware_store_01:
@@ -1082,6 +1967,11 @@ Vendors.pac_cvi_cyberware_store_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Pacifica West Wind Cyberware Store
 Vendors.pac_wwd_cyberware_store_01:
@@ -1090,6 +1980,11 @@ Vendors.pac_wwd_cyberware_store_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Badlands Cyberware Store
 Vendors.bls_ina_se5_cyberware_store_01:
@@ -1098,6 +1993,11 @@ Vendors.bls_ina_se5_cyberware_store_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 
 # -------------------------------------------------------------
@@ -1110,6 +2010,11 @@ Vendors.wbr_jpn_melee_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Santo Domingo Arroyo Melee Trainer
 Vendors.std_arr_melee_01:
@@ -1118,6 +2023,11 @@ Vendors.std_arr_melee_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Pacifica Coastview Melee Trainer
 Vendors.pac_cvi_melee_01:
@@ -1126,6 +2036,11 @@ Vendors.pac_cvi_melee_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Pacifica West Wind Melee Trainer
 Vendors.pac_wwd_melee_01:
@@ -1134,6 +2049,11 @@ Vendors.pac_wwd_melee_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Badlands Melee Trainer
 Vendors.bls_ina_se5_melee_01:
@@ -1142,6 +2062,11 @@ Vendors.bls_ina_se5_melee_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 
 # -------------------------------------------------------------
@@ -1154,6 +2079,11 @@ Vendors.wat_kab_techstore_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Westbrook Japantown Techstore
 Vendors.wbr_jpn_techstore_01:
@@ -1162,6 +2092,11 @@ Vendors.wbr_jpn_techstore_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Santo Domingo Arroyo Techstore
 Vendors.std_arr_techstore_01:
@@ -1170,6 +2105,11 @@ Vendors.std_arr_techstore_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Santo Domingo Rancho Coronado Techstore
 Vendors.std_rcr_techstore_01:
@@ -1178,6 +2118,11 @@ Vendors.std_rcr_techstore_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 
 # -------------------------------------------------------------
@@ -1190,6 +2135,11 @@ Vendors.wat_awf_foodstore_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Watson Kabuki Food Shop 01
 Vendors.wat_kab_foodshop_01:
@@ -1198,6 +2148,11 @@ Vendors.wat_kab_foodshop_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Watson Kabuki Food Shop 02
 Vendors.wat_kab_foodshop_02:
@@ -1206,6 +2161,11 @@ Vendors.wat_kab_foodshop_02:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Watson Kabuki Food Shop 03
 Vendors.wat_kab_foodshop_03:
@@ -1214,6 +2174,11 @@ Vendors.wat_kab_foodshop_03:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Watson Kabuki Food Shop 04
 Vendors.wat_kab_foodshop_04:
@@ -1222,6 +2187,11 @@ Vendors.wat_kab_foodshop_04:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Watson Little China Food Shop 01
 Vendors.wat_lch_foodshop_01:
@@ -1230,6 +2200,11 @@ Vendors.wat_lch_foodshop_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Watson Little China Food Shop 02
 Vendors.wat_lch_foodshop_02:
@@ -1238,6 +2213,11 @@ Vendors.wat_lch_foodshop_02:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Watson Little China Food Shop 03
 Vendors.wat_lch_foodshop_03:
@@ -1246,6 +2226,11 @@ Vendors.wat_lch_foodshop_03:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Watson Northside Food Shop 02
 Vendors.wat_nid_foodshop_02:
@@ -1254,6 +2239,11 @@ Vendors.wat_nid_foodshop_02:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Westbrook Charter Hill Food Shop 01
 Vendors.wbr_hil_foodshop_01:
@@ -1262,6 +2252,11 @@ Vendors.wbr_hil_foodshop_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Westbrook Charter Hill Food Shop 02
 Vendors.wbr_hil_foodshop_02:
@@ -1270,6 +2265,11 @@ Vendors.wbr_hil_foodshop_02:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Westbrook Japantown Food Shop 01
 Vendors.wbr_jpn_foodshop_01:
@@ -1278,6 +2278,11 @@ Vendors.wbr_jpn_foodshop_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Westbrook Japantown Food Shop 02
 Vendors.wbr_jpn_foodshop_02:
@@ -1286,6 +2291,11 @@ Vendors.wbr_jpn_foodshop_02:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Westbrook Japantown Food Shop 03
 Vendors.wbr_jpn_foodshop_03:
@@ -1294,6 +2304,11 @@ Vendors.wbr_jpn_foodshop_03:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Westbrook Japantown Food Shop 04
 Vendors.wbr_jpn_foodshop_04:
@@ -1302,6 +2317,11 @@ Vendors.wbr_jpn_foodshop_04:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Westbrook Japantown Food Shop 05
 Vendors.wbr_jpn_foodshop_05:
@@ -1310,6 +2330,11 @@ Vendors.wbr_jpn_foodshop_05:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Westbrook Jig-Jig Street Bar
 Vendors.wbr_jpn_jig_bar_01:
@@ -1318,6 +2343,11 @@ Vendors.wbr_jpn_jig_bar_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Westbrook North Oak Food Shop 02
 Vendors.wbr_nok_foodshop_02:
@@ -1326,6 +2356,11 @@ Vendors.wbr_nok_foodshop_02:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # City Center Corp Plaza Food Shop 01
 Vendors.cct_cpz_food_01:
@@ -1334,6 +2369,11 @@ Vendors.cct_cpz_food_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # City Center Corp Plaza Food Shop 02
 Vendors.cct_cpz_food_02:
@@ -1342,6 +2382,11 @@ Vendors.cct_cpz_food_02:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # City Center Downtown Food Shop 01
 Vendors.cct_dtn_food_01:
@@ -1350,6 +2395,11 @@ Vendors.cct_dtn_food_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # City Center Downtown Food Shop 02
 Vendors.cct_dtn_food_02:
@@ -1358,6 +2408,11 @@ Vendors.cct_dtn_food_02:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Heywood The Glen Food Shop 01
 Vendors.hey_gle_foodshop_01:
@@ -1366,6 +2421,11 @@ Vendors.hey_gle_foodshop_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Heywood The Glen Food Shop 02
 Vendors.hey_gle_foodshop_02:
@@ -1374,6 +2434,11 @@ Vendors.hey_gle_foodshop_02:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Heywood Vista Del Rey Food Shop 01
 Vendors.hey_rey_foodshop_01:
@@ -1382,6 +2447,11 @@ Vendors.hey_rey_foodshop_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Heywood Vista Del Rey Food Shop 02
 Vendors.hey_rey_foodshop_02:
@@ -1390,6 +2460,11 @@ Vendors.hey_rey_foodshop_02:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Heywood Vista Del Rey Food Shop 03
 Vendors.hey_rey_foodshop_03:
@@ -1398,6 +2473,11 @@ Vendors.hey_rey_foodshop_03:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Heywood Vista Del Rey Food Shop 04
 Vendors.hey_rey_foodshop_04:
@@ -1406,6 +2486,11 @@ Vendors.hey_rey_foodshop_04:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Heywood Wellsprings Food Shop 01
 Vendors.hey_spr_foodshop_01:
@@ -1414,6 +2499,11 @@ Vendors.hey_spr_foodshop_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Santo Domingo Arroyo Food Shop 01
 Vendors.std_arr_foodshop_01:
@@ -1422,6 +2512,11 @@ Vendors.std_arr_foodshop_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Santo Domingo Arroyo Food Shop 02
 Vendors.std_arr_foodshop_02:
@@ -1430,6 +2525,11 @@ Vendors.std_arr_foodshop_02:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Santo Domingo Arroyo Food Shop 03
 Vendors.std_arr_foodshop_03:
@@ -1438,6 +2538,11 @@ Vendors.std_arr_foodshop_03:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Santo Domingo Arroyo Food Shop 04
 Vendors.std_arr_foodshop_04:
@@ -1446,6 +2551,11 @@ Vendors.std_arr_foodshop_04:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Santo Domingo Rancho Coronado Food Shop 01
 Vendors.std_rcr_foodshop_01:
@@ -1454,6 +2564,11 @@ Vendors.std_rcr_foodshop_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Pacifica Coastview Food Shop 01
 Vendors.pac_cvi_foodshop_01:
@@ -1462,6 +2577,11 @@ Vendors.pac_cvi_foodshop_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Airport Food Shop 01
 Vendors.aip_foodshop_01:
@@ -1470,6 +2590,11 @@ Vendors.aip_foodshop_01:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 
 # -------------------------------------------------------------
@@ -1482,6 +2607,11 @@ Vendors.Kiosk:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Dogtown Street Kiosk
 Vendors.Kiosk_EP1:
@@ -1490,6 +2620,11 @@ Vendors.Kiosk_EP1:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Night City Street Market Stall
 Vendors.Market:
@@ -1498,6 +2633,11 @@ Vendors.Market:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Dogtown Street Market Stall
 Vendors.Market_EP1:
@@ -1506,6 +2646,11 @@ Vendors.Market_EP1:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Night City Street Grilled Food Cart
 Vendors.Grilled_Food:
@@ -1514,6 +2659,11 @@ Vendors.Grilled_Food:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Dogtown Street Grilled Food Cart
 Vendors.Grilled_Food_EP1:
@@ -1522,6 +2672,11 @@ Vendors.Grilled_Food_EP1:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Night City Street Chinese / Noodle Food Cart
 Vendors.Chinese_Food:
@@ -1530,6 +2685,11 @@ Vendors.Chinese_Food:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Dogtown Street Chinese / Noodle Food Cart
 Vendors.Chinese_Food_EP1:
@@ -1538,6 +2698,11 @@ Vendors.Chinese_Food_EP1:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Night City Street Packed Food Stand
 Vendors.Packed_Food:
@@ -1546,6 +2711,11 @@ Vendors.Packed_Food:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Dogtown Street Packed Food Stand
 Vendors.Packed_Food_EP1:
@@ -1554,6 +2724,11 @@ Vendors.Packed_Food_EP1:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Night City Street Drink Stand
 Vendors.Drinks:
@@ -1562,6 +2737,11 @@ Vendors.Drinks:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Dogtown Street Drink Stand
 Vendors.Drinks_EP1:
@@ -1570,6 +2750,11 @@ Vendors.Drinks_EP1:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Night City Street Bazaar Clothing Stall
 Vendors.Clothes:
@@ -1578,6 +2763,11 @@ Vendors.Clothes:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Dogtown Street Bazaar Clothing Stall
 Vendors.Clothes_EP1:
@@ -1586,6 +2776,11 @@ Vendors.Clothes_EP1:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Night City Street Tech Junk Stall
 Vendors.Tech_Junk:
@@ -1594,6 +2789,11 @@ Vendors.Tech_Junk:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
 
 # Dogtown Street Tech Junk Stall
 Vendors.Tech_Junk_EP1:
@@ -1602,3 +2802,8 @@ Vendors.Tech_Junk_EP1:
     - !append Vendors.PAFS_VendorItem_AttributeShard
     - !append Vendors.PAFS_VendorItem_HealthFood
     - !append Vendors.PAFS_VendorItem_CWCapacityShard
+    - !append Vendors.PAFS_VendorItem_SoloShard
+    - !append Vendors.PAFS_VendorItem_ShinobiShard
+    - !append Vendors.PAFS_VendorItem_EngineerShard
+    - !append Vendors.PAFS_VendorItem_NetrunnerShard
+    - !append Vendors.PAFS_VendorItem_HeadhunterShard
