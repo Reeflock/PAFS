@@ -91,7 +91,7 @@ public class PAFSSettings extends ScriptableSystem {
     @runtimeProperty("ModSettings.category", "Advanced Prices")
     @runtimeProperty("ModSettings.category.order", "2")
     @runtimeProperty("ModSettings.displayName", "Health Food Price")
-    @runtimeProperty("ModSettings.description", "Price in E$ for Permanent Health Food (+5 HP). (Custom preset only)")
+    @runtimeProperty("ModSettings.description", "Price in E$ for Permanent Health Food (+7 HP). (Custom preset only)")
     @runtimeProperty("ModSettings.step", "500")
     @runtimeProperty("ModSettings.min", "0")
     @runtimeProperty("ModSettings.max", "100000")
@@ -144,7 +144,7 @@ public class PAFSSettings extends ScriptableSystem {
     @runtimeProperty("ModSettings.category", "Item Availability")
     @runtimeProperty("ModSettings.category.order", "3")
     @runtimeProperty("ModSettings.displayName", "Permanent Health Food")
-    @runtimeProperty("ModSettings.description", "Stock Permanent Health Food (+5 Max Health) at diners and food stalls.")
+    @runtimeProperty("ModSettings.description", "Stock Permanent Health Food (+7 Max Health) at diners and food stalls.")
     public let enableHealthFood: Bool = false;
 
     // -------------------------------------------------------------
@@ -1026,14 +1026,19 @@ protected cb func OnItemAddedToInventory(evt: ref<ItemAddedEvent>) -> Bool {
         if count > 0 {
             transSystem.RemoveItem(this, evt.itemID, count);
 
-            let totalBonus: Float = 5.0 * Cast<Float>(count);
+            let totalBonus: Float = 7.0 * Cast<Float>(count);
             let modifier: ref<gameConstantStatModifierData> = new gameConstantStatModifierData();
             modifier.modifierType = gameStatModifierType.Additive;
             modifier.statType = gamedataStatType.Health;
             modifier.value = totalBonus;
             GameInstance.GetStatsSystem(this.GetGame()).AddSavedModifier(Cast<StatsObjectID>(this.GetEntityID()), modifier);
 
-            let notification_Message: String = (GetLocalizedText("LocKey#93104") + "\n") + GetLocalizedText("LocKey#93725");
+            let foodName: String = GetLocalizedTextByKey(TweakDBInterface.GetItemRecord(tdbID).DisplayName());
+            if StrLen(foodName) == 0 {
+                foodName = GetLocalizedText("LocKey#93104");
+            }
+            let bonusInt: Int32 = Cast<Int32>(totalBonus);
+            let notification_Message: String = foodName + "\n+" + ToString(bonusInt) + " Max Health";
             this.SetWarningMessage(notification_Message, SimpleMessageType.Neutral);
         }
         return true;
@@ -1121,10 +1126,14 @@ public func CompleteAction(gameInstance: GameInstance) -> Void {
             let modifier: ref<gameConstantStatModifierData> = new gameConstantStatModifierData();
             modifier.modifierType = gameStatModifierType.Additive;
             modifier.statType = gamedataStatType.Health;
-            modifier.value = 5.0;
+            modifier.value = 7.0;
             GameInstance.GetStatsSystem(gameInstance).AddSavedModifier(Cast<StatsObjectID>(player.GetEntityID()), modifier);
 
-            let notification_Message: String = (GetLocalizedText("LocKey#93104") + "\n") + GetLocalizedText("LocKey#93725");
+            let foodName: String = GetLocalizedTextByKey(TweakDBInterface.GetItemRecord(tdbID).DisplayName());
+            if StrLen(foodName) == 0 {
+                foodName = GetLocalizedText("LocKey#93104");
+            }
+            let notification_Message: String = foodName + "\n+7 Max Health";
             player.SetWarningMessage(notification_Message, SimpleMessageType.Neutral);
         }
     }
