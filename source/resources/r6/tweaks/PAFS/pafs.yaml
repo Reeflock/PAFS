@@ -45,6 +45,7 @@ Items.PAFS_AttributeShard:
 Items.PAFS_HealthFood:
   $base: Items.PermanentHealthFood
   isSingleInstance: True
+  effectors: []
   tags:
     - Preload
     - Consumable

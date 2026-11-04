@@ -399,7 +399,7 @@ public class PAFSSettings extends ScriptableSystem {
         if Equals(type, gamedataVendorType.RipperDoc) {
             return this.enableRipperdocs;
         }
-        if Equals(type, gamedataVendorType.SkillTrainer) {
+        if Equals(type, gamedataVendorType.SkillTrainer) || Equals(type, gamedataVendorType.Tech) || Equals(type, gamedataVendorType.Cyberware) {
             return this.enableNetrunners;
         }
         if Equals(type, gamedataVendorType.Junk) || Equals(type, gamedataVendorType.TechJunk) || Equals(type, gamedataVendorType.Kiosk) || Equals(type, gamedataVendorType.Market) {
@@ -411,10 +411,10 @@ public class PAFSSettings extends ScriptableSystem {
         if Equals(type, gamedataVendorType.Food) || Equals(type, gamedataVendorType.Drinks) || Equals(type, gamedataVendorType.GrilledFood) || Equals(type, gamedataVendorType.PackedFood) {
             return this.enableFood;
         }
-        if Equals(type, gamedataVendorType.Clothes) || Equals(type, gamedataVendorType.Armorsmith) {
+        if Equals(type, gamedataVendorType.Clothing) || Equals(type, gamedataVendorType.Clothes) || Equals(type, gamedataVendorType.Armorsmith) {
             return this.enableClothing;
         }
-        if Equals(type, gamedataVendorType.VendingMachine) {
+        if Equals(type, gamedataVendorType.DropPoint) || Equals(type, gamedataVendorType.VendingMachine) {
             return false;
         }
         return true;
@@ -576,7 +576,11 @@ public class PAFSSettings extends ScriptableSystem {
     }
 
     public func GetActiveSkillShardTDB(prof: gamedataProficiencyType) -> TweakDBID {
-        return PAFSSettings.GetSkillShardTDB(prof, this.skillTier);
+        let tdb: TweakDBID = PAFSSettings.GetSkillShardTDB(prof, this.skillTier);
+        if TDBID.IsValid(tdb) {
+            return tdb;
+        }
+        return PAFSSettings.GetSkillShardTDB(prof, PAFSSkillShardTier.Tier2);
     }
 
     public static func IsPAFSSkillShard(tdbID: TweakDBID) -> Bool {
@@ -687,6 +691,10 @@ public class PAFSSettings extends ScriptableSystem {
 // -----------------------------------------------------------------
 @addMethod(Vendor)
 private func SyncPAFSItemStock(tdbID: TweakDBID, allowed: Bool, transSystem: ref<TransactionSystem>) -> Void {
+    if !TDBID.IsValid(tdbID) {
+        return;
+    }
+
     let itemID: ItemID = ItemID.FromTDBID(tdbID);
     let foundIndex: Int32 = -1;
     let i: Int32 = 0;
@@ -837,6 +845,11 @@ private func EnsurePAFSStock(settings: ref<PAFSSettings>) -> Void {
 // -----------------------------------------------------------------
 @wrapMethod(Vendor)
 public func GetItemsForSale(checkPlayerCanBuy: Bool) -> array<SItemStack> {
+    let vendorType: gamedataVendorType = this.GetVendorType();
+    if Equals(vendorType, gamedataVendorType.DropPoint) || Equals(vendorType, gamedataVendorType.VendingMachine) {
+        return wrappedMethod(checkPlayerCanBuy);
+    }
+
     let settings: ref<PAFSSettings> = PAFSSettings.Get(this.m_gameInstance);
     if IsDefined(settings) {
         this.EnsurePAFSStock(settings);
