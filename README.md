@@ -4,20 +4,8 @@ A lightweight, highly configurable progression and economy overhaul for **Cyberp
 
 Complete with real-time in-game Mod Settings, authentic CDPR localization & icons, strict cap protections, and safe, save-friendly injection.
 
-> [!IMPORTANT]
-> ### ⏳ First Time Installing on an Existing Save?
-> **You MUST advance in-game time by 24 hours for vendor stocks to refresh!**
-> 
-> *⚠️ **Note:** This refers to **IN-GAME time** (which takes 2 seconds using the fast-forward feature), **NOT** 24 real-world hours! Do not sit and wait in real life.*
-> 
-> In *Cyberpunk 2077*, vendor inventories are cached on a 24-hour cycle. When loading an existing save file after installing this mod, vendors you have already visited will **not** display new items until time advances.
-> 
-> #### 🕒 How to Skip Time Instantly (Takes 2 Seconds):
-> 1. Press **`I`** (or open the character/inventory hub menu).
-> 2. Look at the bottom-left corner of the screen and click **"Skip Time"** (or press the button shown on your HUD).
-> 3. Move the slider to **24 Hours** and confirm.
-> 
-> *(Alternatively, walk up to the bed in any of V's apartments and sleep for 24 in-game hours).*
+> [!NOTE]
+> **⚡ Instant & Seamless Stocking:** Unlike older versions, you no longer need to skip 24 in-game hours for items to appear! Thanks to dynamic vendor stock synchronization, items are populated the very instant you open any vendor menu, even on pre-existing save files.*
 
 ---
 
@@ -129,8 +117,6 @@ Download and install the release archive through Vortex or your preferred mod ma
 2. Open `PAFS.cpmodproj` in [WolvenKit](https://github.com/WolvenKit/WolvenKit).
 3. Click **Install**.
 
-> [!TIP]
-> After installing, load your save and **Skip Time by 24 in-game hours** to refresh vendor inventories!
 
 ---
 
